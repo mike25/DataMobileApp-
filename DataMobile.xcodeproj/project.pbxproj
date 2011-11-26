@@ -15,6 +15,11 @@
 		A16E8C0C148075B800F66E96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0B148075B800F66E96 /* main.m */; };
 		A16E8C10148075B800F66E96 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
 		A16E8C13148075B800F66E96 /* DataMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
+		A16E8C221480760300F66E96 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C211480760300F66E96 /* CoreLocation.framework */; };
+		A196CDE81480784600F61C06 /* CSVExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDE71480784600F61C06 /* CSVExporter.m */; };
+		A196CDEC1480785C00F61C06 /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEB1480785C00F61C06 /* AlertViewManager.m */; };
+		A196CDEE148078CD00F61C06 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A196CDED148078CD00F61C06 /* Storyboard.storyboard */; };
+		A196CDF11480790700F61C06 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDF01480790700F61C06 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +28,21 @@
 		A16E8BFF148075B800F66E96 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A16E8C01148075B800F66E96 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A16E8C03148075B800F66E96 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		A16E8C07148075B800F66E96 /* DataMobile-Info.plist */ = {isa = PBXFileReference; path = "DataMobile-Info.plist"; sourceTree = "<group>"; };
+		A16E8C07148075B800F66E96 /* DataMobile-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DataMobile-Info.plist"; sourceTree = "<group>"; };
 		A16E8C09148075B800F66E96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A16E8C0B148075B800F66E96 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A16E8C0D148075B800F66E96 /* DataMobile-Prefix.pch */ = {isa = PBXFileReference; path = "DataMobile-Prefix.pch"; sourceTree = "<group>"; };
-		A16E8C0E148075B800F66E96 /* DMAppDelegate.h */ = {isa = PBXFileReference; path = DMAppDelegate.h; sourceTree = "<group>"; };
+		A16E8C0D148075B800F66E96 /* DataMobile-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DataMobile-Prefix.pch"; sourceTree = "<group>"; };
+		A16E8C0E148075B800F66E96 /* DMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMAppDelegate.h; sourceTree = "<group>"; };
 		A16E8C0F148075B800F66E96 /* DMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMAppDelegate.m; sourceTree = "<group>"; };
 		A16E8C12148075B800F66E96 /* DataMobile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataMobile.xcdatamodel; sourceTree = "<group>"; };
+		A16E8C211480760300F66E96 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A196CDE61480784600F61C06 /* CSVExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVExporter.h; sourceTree = "<group>"; };
+		A196CDE71480784600F61C06 /* CSVExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVExporter.m; sourceTree = "<group>"; };
+		A196CDEA1480785C00F61C06 /* AlertViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewManager.h; sourceTree = "<group>"; };
+		A196CDEB1480785C00F61C06 /* AlertViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewManager.m; sourceTree = "<group>"; };
+		A196CDED148078CD00F61C06 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		A196CDEF1480790600F61C06 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		A196CDF01480790700F61C06 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16E8C221480760300F66E96 /* CoreLocation.framework in Frameworks */,
 				A16E8BFE148075B800F66E96 /* UIKit.framework in Frameworks */,
 				A16E8C00148075B800F66E96 /* Foundation.framework in Frameworks */,
 				A16E8C02148075B800F66E96 /* CoreGraphics.framework in Frameworks */,
@@ -67,6 +81,7 @@
 		A16E8BFC148075B800F66E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A16E8C211480760300F66E96 /* CoreLocation.framework */,
 				A16E8BFD148075B800F66E96 /* UIKit.framework */,
 				A16E8BFF148075B800F66E96 /* Foundation.framework */,
 				A16E8C01148075B800F66E96 /* CoreGraphics.framework */,
@@ -78,8 +93,15 @@
 		A16E8C05148075B800F66E96 /* DataMobile */ = {
 			isa = PBXGroup;
 			children = (
+				A196CDED148078CD00F61C06 /* Storyboard.storyboard */,
+				A196CDEF1480790600F61C06 /* MainViewController.h */,
+				A196CDF01480790700F61C06 /* MainViewController.m */,
 				A16E8C0E148075B800F66E96 /* DMAppDelegate.h */,
 				A16E8C0F148075B800F66E96 /* DMAppDelegate.m */,
+				A196CDE61480784600F61C06 /* CSVExporter.h */,
+				A196CDE71480784600F61C06 /* CSVExporter.m */,
+				A196CDEA1480785C00F61C06 /* AlertViewManager.h */,
+				A196CDEB1480785C00F61C06 /* AlertViewManager.m */,
 				A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */,
 				A16E8C06148075B800F66E96 /* Supporting Files */,
 			);
@@ -149,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A16E8C0A148075B800F66E96 /* InfoPlist.strings in Resources */,
+				A196CDEE148078CD00F61C06 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +185,9 @@
 				A16E8C0C148075B800F66E96 /* main.m in Sources */,
 				A16E8C10148075B800F66E96 /* DMAppDelegate.m in Sources */,
 				A16E8C13148075B800F66E96 /* DataMobile.xcdatamodeld in Sources */,
+				A196CDE81480784600F61C06 /* CSVExporter.m in Sources */,
+				A196CDEC1480785C00F61C06 /* AlertViewManager.m in Sources */,
+				A196CDF11480790700F61C06 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +291,7 @@
 				A16E8C18148075B800F66E96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

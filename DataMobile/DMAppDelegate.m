@@ -15,12 +15,103 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
+@synthesize locationManager;
+
+- (void)startManager
+{
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager setDelegate:self];
+    
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+    [self.locationManager setDistanceFilter:DISTANCEFILTER];    
+    
+    self.locationManager.purpose = @"Do you want me to record your GPS Location ?" ;
+    
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation
+{
+    // Save new Location :
+    NSManagedObject* location = [NSEntityDescription insertNewObjectForEntityForName:@"Location"
+                                                              inManagedObjectContext:self.managedObjectContext];
+    
+    NSDictionary* locationDico = [[NSDictionary alloc] initWithObjectsAndKeys: 
+                                  [NSNumber numberWithDouble:newLocation.altitude], @"altitude",
+                                  [NSNumber numberWithDouble:newLocation.coordinate.longitude], @"longitude",
+                                  [NSNumber numberWithDouble:newLocation.coordinate.latitude], @"latitude",
+                                  [NSNumber numberWithDouble:newLocation.speed], @"speed",
+                                  [NSNumber numberWithDouble:newLocation.course], @"direction",
+                                  [NSNumber numberWithDouble:newLocation.horizontalAccuracy], @"h_accuracy",
+                                  [NSNumber numberWithDouble:newLocation.verticalAccuracy], @"v_accuracy",
+                                  newLocation.timestamp, @"timestamp",
+                                  nil];
+    [location setValuesForKeysWithDictionary:locationDico];
+}
+
+- (void)stopManager
+{
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager = nil;
+    [self saveContext];
+}
+
+- (NSArray*)fetchAllLocations
+{
+    return [self fetchAllObjects:@"Location"];
+}
+
+- (void)deleteAllLocations
+{
+    [self deleteAllObjects:@"Location"];
+}
+
+- (NSArray*)fetchAllObjects:(NSString *)entityName
+{
+    [self saveContext];
+    NSEntityDescription *eDescription = [NSEntityDescription
+                                         entityForName:entityName 
+                                         inManagedObjectContext:self.managedObjectContext]; 
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    request.entity = eDescription;
+    NSError *error;
+    
+    return  [self.managedObjectContext executeFetchRequest:request error:&error];
+}
+
+- (void) deleteAllObjects: (NSString*)entityName  
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:__managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *items = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    for (NSManagedObject *managedObject in items) 
+    {
+        [self.managedObjectContext deleteObject:managedObject];
+        // object deleted
+    }
+    if (![self.managedObjectContext save:&error]) 
+    {
+        // error deleting object
+    }
+    [self saveContext];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    [self stopManager];
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+
     return YES;
 }
 
