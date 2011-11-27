@@ -30,6 +30,7 @@
  */
 - (void)updateSend;
 - (DMAppDelegate*)appDelegate;
+- (void)logsave;
 
 
 @end

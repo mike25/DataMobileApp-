@@ -49,10 +49,7 @@
     [locations writeToFile:filename 
                 atomically:YES 
                   encoding:NSStringEncodingConversionAllowLossy 
-                     error:&error];        
-    
-    NSLog(@"%@",[error description]);
-    
+                     error:&error];       
     return true ;
 }
 

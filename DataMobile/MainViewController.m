@@ -42,6 +42,7 @@
 {
     alertManager = [[AlertViewManager alloc] init];
     alertManager.observer = self;
+    
     [[alertManager createConfirmRecordView] show];
 }
 
@@ -69,8 +70,8 @@
     }
     
     [CSVExporter exportObjects:objects toLocation:@"locations.csv"];
-    
     [[self appDelegate] deleteAllLocations];
+    [[alertManager createSuccessfullSentAlert] show];
 }
 
 - (void)updateSend
@@ -101,18 +102,22 @@
 {
     [super viewDidLoad];
     
-    UIApplication* app = [UIApplication sharedApplication];
     NSNotificationCenter* defaultCtr = [NSNotificationCenter defaultCenter];
     
     [defaultCtr addObserver:self
                    selector:@selector(updateSend)
                        name:NSManagedObjectContextDidSaveNotification
-                     object:app];
-    
+                     object:[[self appDelegate] managedObjectContext]];
+
     [defaultCtr addObserver:self
                    selector:@selector(updateSend)
                        name:UIApplicationWillEnterForegroundNotification
-                     object:app];
+                     object:[UIApplication sharedApplication]];
+}
+
+- (void)logsave
+{
+    NSLog(@"Context saved");
 }
 
 - (void)viewDidUnload

@@ -14,8 +14,6 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
-    UIAlertView* message;
-    
     switch ([alertView tag]) 
     { 
         case RECORD:
@@ -71,7 +69,46 @@
         default:
             break;
     }
-    [message show];
+}
+
+- (UIAlertView*)createConfirmRecordView
+{
+    NSString* msgtxt = [[NSString alloc] initWithFormat:@"(max = %d)", MAXRECORDINGPERIOD];
+    
+    UIAlertView* alertView = [self createOkCancelAlert:@"Enter number of days" 
+                                           withMessage:msgtxt 
+                                                setTag:RECORD];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    
+    return alertView;  
+}
+
+- (UIAlertView*)createSuccessfullSentAlert
+{
+    return [self createOkAlert:@"Data successfully Sent" 
+                   withMessage:@"Thank you for participating"
+                        setTag:DATA_SENT];
+}
+
+- (UIAlertView*)createConfirmStopAlert
+{
+    return [self createOkCancelAlert:@"Are you sure ?" 
+                         withMessage:@"The application will stop recording your movements" 
+                              setTag:RECORD_STOPPED_CONFIRM];
+}
+
+- (UIAlertView*)createOkCancelAlert:(NSString*)title 
+                        withMessage:(NSString*)message
+                             setTag:(alertViewTag)tag
+{
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK" 
+                                              otherButtonTitles:@"Cancel", nil];
+    
+    [alertView setTag:tag];
+    return alertView;
 }
 
 - (UIAlertView*)createOkAlert:(NSString*)title withMessage:(NSString*)message setTag:(alertViewTag)tag
@@ -83,20 +120,6 @@
                                               otherButtonTitles:nil];
     [alertView setTag:tag];
     return alertView;
-}
-
-- (UIAlertView*)createConfirmRecordView
-{
-    NSString* msgtxt = [[NSString alloc] initWithFormat:@"(max = %d)", MAXRECORDINGPERIOD];
-    
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Enter number of days"
-                                                        message:msgtxt
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK" 
-                                              otherButtonTitles:@"Cancel", nil];
-    [alertView setTag:RECORD];
-    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    return alertView;  
 }
 
 @end
