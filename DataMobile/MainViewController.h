@@ -15,22 +15,25 @@
 @interface MainViewController : UIViewController <AlertObserver>
 
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
+@property (strong, nonatomic) IBOutlet UIButton *stopButton;
+@property (strong, nonatomic) IBOutlet UILabel *recordingLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) IBOutlet UIButton *dataButton;
 
 @property (strong, nonatomic) AlertViewManager* alertManager;
 
 - (IBAction)startRecording:(id)sender;
+- (IBAction)stopRecording:(id)sender;
 - (IBAction)sendData:(id)sender;
 
 - (void)inputCorrect:(int)numOfDays;
+- (void)stopRecordingConfirmed;
 
 /**
  * helper methods
  */
 - (void)updateSend;
 - (DMAppDelegate*)appDelegate;
-- (void)logsave;
-
+- (void)switchStateToRecording:(BOOL)recording;
 
 @end

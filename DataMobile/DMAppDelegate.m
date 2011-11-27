@@ -23,7 +23,7 @@
     [self.locationManager setDelegate:self];
     
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-    [self.locationManager setDistanceFilter:DISTANCEFILTER];    
+    [self.locationManager setDistanceFilter:DISTANCEFILTER];
     
     self.locationManager.purpose = @"Do you want me to record your GPS Location ?" ;
     

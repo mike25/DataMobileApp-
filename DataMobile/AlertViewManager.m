@@ -65,6 +65,18 @@
         {
             [[self createConfirmRecordView] show];
         }   break;
+        
+        case RECORD_STOPPED_CONFIRM:
+        {
+            if([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"OK"])
+            {
+                [self.observer stopRecordingConfirmed];
+                
+                [[self createOkAlert:@"Recording Stopped" 
+                        withMessage:@"If you data has been recording, we would grateful if you send them to us." 
+                             setTag:RECORD_STOPPED] show];
+            }
+        }
             
         default:
             break;

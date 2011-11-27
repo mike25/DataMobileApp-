@@ -15,6 +15,8 @@
 @implementation MainViewController
 
 @synthesize startButton;
+@synthesize stopButton;
+@synthesize recordingLabel;
 @synthesize dataLabel;
 @synthesize dataButton;
 @synthesize alertManager;
@@ -46,10 +48,17 @@
     [[alertManager createConfirmRecordView] show];
 }
 
+- (IBAction)stopRecording:(id)sender 
+{
+    [[alertManager createConfirmStopAlert] show];
+}
+
 - (void)inputCorrect:(int)numOfDays;
 {
     DMAppDelegate* appdelegate = [self appDelegate];
     [appdelegate startManager];
+    
+    [self switchStateToRecording:true];
     
     // Defining a Timer to stop recording after x seconds has passed.
     [NSTimer scheduledTimerWithTimeInterval:numOfDays*3600*24
@@ -57,6 +66,12 @@
                                    selector:@selector(stopManager) 
                                    userInfo:nil 
                                     repeats:NO];
+}
+
+- (void)stopRecordingConfirmed
+{
+    [[self appDelegate] stopManager];
+    [self switchStateToRecording:false];
 }
 
 - (IBAction)sendData:(id)sender 
@@ -88,6 +103,22 @@
     }
 }
 
+- (void)switchStateToRecording:(BOOL)recording
+{
+    if(recording)
+    {
+        self.startButton.hidden = true;
+        self.stopButton.hidden = false;
+        recordingLabel.hidden = false;
+    }
+    else
+    {
+        self.startButton.hidden = false;
+        self.stopButton.hidden = true;
+        recordingLabel.hidden = true;    
+    }
+}
+
 - (DMAppDelegate*)appDelegate
 {
     return (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -115,11 +146,6 @@
                      object:[UIApplication sharedApplication]];
 }
 
-- (void)logsave
-{
-    NSLog(@"Context saved");
-}
-
 - (void)viewDidUnload
 {
     [self setStartButton:nil];
@@ -128,6 +154,8 @@
     
     [self setAlertManager:nil];
     
+    [self setStopButton:nil];
+    [self setRecordingLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

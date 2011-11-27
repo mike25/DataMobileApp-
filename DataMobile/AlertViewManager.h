@@ -14,6 +14,7 @@
  * Executes when the user has entered a correct value (number of days < maxnumberofdays)
  */
 - (void)inputCorrect:(int)numOfDays;
+- (void)stopRecordingConfirmed;
 
 @end
 

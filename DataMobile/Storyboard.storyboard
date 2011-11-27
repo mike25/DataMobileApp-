@@ -57,13 +57,37 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zvl-fT-RZK">
+                                <rect key="frame" x="117" y="211" width="87" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopRecording:" destination="NdM-nc-t1B" eventType="touchUpInside" id="XRe-n8-uDV"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Recording..." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="yvz-gL-dhB">
+                                <rect key="frame" x="117" y="182" width="87" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="dataButton" destination="oaT-w0-i7x" id="gQx-xb-ddO"/>
                         <outlet property="dataLabel" destination="JbO-aW-347" id="aIF-NV-o20"/>
+                        <outlet property="recordingLabel" destination="yvz-gL-dhB" id="ReD-iI-hkn"/>
                         <outlet property="startButton" destination="jqD-BN-Tg1" id="nyz-GL-i7E"/>
+                        <outlet property="stopButton" destination="zvl-fT-RZK" id="Fpc-nt-ujO"/>
                     </connections>
                 </viewController>
             </objects>
@@ -76,9 +100,12 @@
             <relationships>
                 <relationship kind="action" name="sendData:"/>
                 <relationship kind="action" name="startRecording:"/>
+                <relationship kind="action" name="stopRecording:"/>
                 <relationship kind="outlet" name="dataButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dataLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recordingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="stopButton" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>
