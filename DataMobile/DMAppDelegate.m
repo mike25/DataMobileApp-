@@ -15,24 +15,7 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
-@synthesize locationManager;
-
-- (void)startManager
-{
-    self.locationManager = [[CLLocationManager alloc] init];
-    [self.locationManager setDelegate:self];
-    
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-    [self.locationManager setDistanceFilter:DISTANCEFILTER];
-    
-    self.locationManager.purpose = @"Do you want me to record your GPS Location ?" ;
-    
-    [self.locationManager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation 
-           fromLocation:(CLLocation *)oldLocation
+- (void)didUpdateToLocation:(CLLocation *)newLocation
 {
     // Save new Location :
     NSManagedObject* location = [NSEntityDescription insertNewObjectForEntityForName:@"Location"
@@ -51,10 +34,8 @@
     [location setValuesForKeysWithDictionary:locationDico];
 }
 
-- (void)stopManager
+- (void)managerStopped
 {
-    [self.locationManager stopUpdatingLocation];
-    self.locationManager = nil;
     [self saveContext];
 }
 
@@ -103,9 +84,9 @@
     [self saveContext];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+- (void)didFailWithError:(NSError *)error;
 {
-    [self stopManager];
+    // DO nothing for now.
 }
 
 

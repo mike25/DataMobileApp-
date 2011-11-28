@@ -19,8 +19,10 @@
 @synthesize recordingLabel;
 @synthesize dataLabel;
 @synthesize dataButton;
-@synthesize alertManager;
 
+@synthesize alertManager;
+@synthesize locationManager;
+@synthesize appDelegate;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,14 +57,14 @@
 
 - (void)inputCorrect:(int)numOfDays;
 {
-    DMAppDelegate* appdelegate = [self appDelegate];
-    [appdelegate startManager];
-    
-    [self switchStateToRecording:true];
+    locationManager = [[MyLocationManager alloc] init];
+    [locationManager.observers addObject:self];
+    [locationManager.observers addObject:self.appDelegate];
+    [locationManager startManager];
     
     // Defining a Timer to stop recording after x seconds has passed.
     [NSTimer scheduledTimerWithTimeInterval:numOfDays*3600*24
-                                     target:appdelegate
+                                     target:locationManager
                                    selector:@selector(stopManager) 
                                    userInfo:nil 
                                     repeats:NO];
@@ -70,14 +72,24 @@
 
 - (void)stopRecordingConfirmed
 {
-    [[self appDelegate] stopManager];
+    [self.locationManager stopManager];
+    locationManager = nil;
+}
+
+- (void)managerStarted
+{
+    [self switchStateToRecording:true];
+}
+
+- (void)managerStopped
+{
     [self switchStateToRecording:false];
 }
 
 - (IBAction)sendData:(id)sender 
 {
     
-    NSArray *objects = [[self appDelegate] fetchAllLocations];
+    NSArray *objects = [self.appDelegate fetchAllLocations];
     
     if (objects == nil)
     {
@@ -85,13 +97,13 @@
     }
     
     [CSVExporter exportObjects:objects toLocation:@"locations.csv"];
-    [[self appDelegate] deleteAllLocations];
+    [self.appDelegate deleteAllLocations];
     [[alertManager createSuccessfullSentAlert] show];
 }
 
 - (void)updateSend
 {
-    if([[[self appDelegate] fetchAllLocations] count] != 0)
+    if([[self.appDelegate fetchAllLocations] count] != 0)
     {
         dataLabel.hidden = false;
         dataButton.hidden = false;
@@ -119,12 +131,6 @@
     }
 }
 
-- (DMAppDelegate*)appDelegate
-{
-    return (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
-}
-
-
 #pragma mark - View lifecycle
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -132,14 +138,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];    
     
-    NSNotificationCenter* defaultCtr = [NSNotificationCenter defaultCenter];
-    
+    NSNotificationCenter* defaultCtr = [NSNotificationCenter defaultCenter];    
     [defaultCtr addObserver:self
                    selector:@selector(updateSend)
                        name:NSManagedObjectContextDidSaveNotification
-                     object:[[self appDelegate] managedObjectContext]];
-
+                     object:[self.appDelegate managedObjectContext]];
     [defaultCtr addObserver:self
                    selector:@selector(updateSend)
                        name:UIApplicationWillEnterForegroundNotification
@@ -153,6 +159,7 @@
     [self setDataButton:nil];
     
     [self setAlertManager:nil];
+    [self setLocationManager:nil];
     
     [self setStopButton:nil];
     [self setRecordingLabel:nil];

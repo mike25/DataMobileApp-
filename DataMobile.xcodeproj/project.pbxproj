@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* MyLocationManager.m */; };
 		A16E8BFE148075B800F66E96 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFD148075B800F66E96 /* UIKit.framework */; };
 		A16E8C00148075B800F66E96 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFF148075B800F66E96 /* Foundation.framework */; };
 		A16E8C02148075B800F66E96 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C01148075B800F66E96 /* CoreGraphics.framework */; };
@@ -16,6 +17,7 @@
 		A16E8C10148075B800F66E96 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
 		A16E8C13148075B800F66E96 /* DataMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
 		A16E8C221480760300F66E96 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C211480760300F66E96 /* CoreLocation.framework */; };
+		A18F3290148309CA0029B2BF /* FileSender.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F328F148309CA0029B2BF /* FileSender.m */; };
 		A196CDE81480784600F61C06 /* CSVExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDE71480784600F61C06 /* CSVExporter.m */; };
 		A196CDEC1480785C00F61C06 /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEB1480785C00F61C06 /* AlertViewManager.m */; };
 		A196CDEE148078CD00F61C06 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A196CDED148078CD00F61C06 /* Storyboard.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A16AEBD11483F0480079A0AA /* MyLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocationManager.h; sourceTree = "<group>"; };
+		A16AEBD21483F0480079A0AA /* MyLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocationManager.m; sourceTree = "<group>"; };
 		A16E8BF9148075B800F66E96 /* DataMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16E8BFD148075B800F66E96 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A16E8BFF148075B800F66E96 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -36,6 +40,8 @@
 		A16E8C0F148075B800F66E96 /* DMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMAppDelegate.m; sourceTree = "<group>"; };
 		A16E8C12148075B800F66E96 /* DataMobile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataMobile.xcdatamodel; sourceTree = "<group>"; };
 		A16E8C211480760300F66E96 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A18F328E148309CA0029B2BF /* FileSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSender.h; sourceTree = "<group>"; };
+		A18F328F148309CA0029B2BF /* FileSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSender.m; sourceTree = "<group>"; };
 		A196CDE61480784600F61C06 /* CSVExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVExporter.h; sourceTree = "<group>"; };
 		A196CDE71480784600F61C06 /* CSVExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVExporter.m; sourceTree = "<group>"; };
 		A196CDEA1480785C00F61C06 /* AlertViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewManager.h; sourceTree = "<group>"; };
@@ -96,12 +102,16 @@
 				A196CDED148078CD00F61C06 /* Storyboard.storyboard */,
 				A196CDEF1480790600F61C06 /* MainViewController.h */,
 				A196CDF01480790700F61C06 /* MainViewController.m */,
+				A196CDEA1480785C00F61C06 /* AlertViewManager.h */,
+				A196CDEB1480785C00F61C06 /* AlertViewManager.m */,
+				A16AEBD11483F0480079A0AA /* MyLocationManager.h */,
+				A16AEBD21483F0480079A0AA /* MyLocationManager.m */,
 				A16E8C0E148075B800F66E96 /* DMAppDelegate.h */,
 				A16E8C0F148075B800F66E96 /* DMAppDelegate.m */,
 				A196CDE61480784600F61C06 /* CSVExporter.h */,
 				A196CDE71480784600F61C06 /* CSVExporter.m */,
-				A196CDEA1480785C00F61C06 /* AlertViewManager.h */,
-				A196CDEB1480785C00F61C06 /* AlertViewManager.m */,
+				A18F328E148309CA0029B2BF /* FileSender.h */,
+				A18F328F148309CA0029B2BF /* FileSender.m */,
 				A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */,
 				A16E8C06148075B800F66E96 /* Supporting Files */,
 			);
@@ -188,6 +198,8 @@
 				A196CDE81480784600F61C06 /* CSVExporter.m in Sources */,
 				A196CDEC1480785C00F61C06 /* AlertViewManager.m in Sources */,
 				A196CDF11480790700F61C06 /* MainViewController.m in Sources */,
+				A18F3290148309CA0029B2BF /* FileSender.m in Sources */,
+				A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -73,7 +73,7 @@
                 [self.observer stopRecordingConfirmed];
                 
                 [[self createOkAlert:@"Recording Stopped" 
-                        withMessage:@"If you data has been recording, we would grateful if you send them to us." 
+                        withMessage:@"If you data has recorded data, we would grateful if you send them to us." 
                              setTag:RECORD_STOPPED] show];
             }
         }

@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "AlertViewManager.h"
+#import "MyLocationManager.h"
 
 @class DMAppDelegate;
 
-@interface MainViewController : UIViewController <AlertObserver>
+@interface MainViewController : UIViewController <AlertObserver, MyLocationManagerObserver>
 
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
@@ -21,6 +22,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *dataButton;
 
 @property (strong, nonatomic) AlertViewManager* alertManager;
+@property (strong, nonatomic) MyLocationManager* locationManager;
+
+@property (weak, nonatomic) DMAppDelegate* appDelegate;
 
 - (IBAction)startRecording:(id)sender;
 - (IBAction)stopRecording:(id)sender;
@@ -28,6 +32,9 @@
 
 - (void)inputCorrect:(int)numOfDays;
 - (void)stopRecordingConfirmed;
+
+- (void)managerStarted;
+- (void)managerStopped;
 
 /**
  * helper methods
