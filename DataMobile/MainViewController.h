@@ -30,7 +30,7 @@
 - (IBAction)stopRecording:(id)sender;
 - (IBAction)sendData:(id)sender;
 
-- (void)inputCorrect:(int)numOfDays;
+- (void)inputCorrect:(NSInteger)numOfDays;
 - (void)stopRecordingConfirmed;
 
 - (void)managerStarted;

@@ -7,25 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PickerObserver.h"
 
 @protocol AlertObserver
 
 /**
  * Executes when the user has entered a correct value (number of days < maxnumberofdays)
  */
-- (void)inputCorrect:(int)numOfDays;
+- (void)inputCorrect:(NSInteger)numOfDays;
 - (void)stopRecordingConfirmed;
 
 @end
 
-@interface AlertViewManager : NSObject <UIAlertViewDelegate> 
+@interface AlertViewManager : NSObject <UIAlertViewDelegate, PickerObserver> 
 
 // for tagging alertviews
 typedef enum
 {
-    RECORD = 1,
-    NOT_A_DAY = 2,
-    TOO_lONG = 3,
     RECORD_STARTED = 4,
     RECORD_STOPPED = 5,
     RECORD_STOPPED_CONFIRM = 6,
@@ -37,6 +35,8 @@ typedef enum
 - (UIAlertView*)createConfirmRecordView;
 - (UIAlertView*)createSuccessfullSentAlert;
 - (UIAlertView*)createConfirmStopAlert;
+
+- (void)inputSelectedWithDay:(NSInteger)numOfDays;
 
 /**
  * Helper Methods

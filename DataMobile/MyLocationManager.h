@@ -18,14 +18,6 @@
 
 @end
 
-typedef enum 
-{
-    STARTED = 1,
-    STOPPED = 2,
-    UPDATE = 3,
-    FAIl = 4
-}  ObserverAction ;
-
 @interface MyLocationManager : NSObject <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) NSMutableArray* observers;

@@ -9,7 +9,7 @@
 #endif
 
 #ifndef DISTANCEFILTER
-#define DISTANCEFILTER 30
+#define DISTANCEFILTER 10
 #endif
 
 #ifndef MAXRECORDINGPERIOD

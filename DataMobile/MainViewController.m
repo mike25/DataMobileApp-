@@ -11,6 +11,7 @@
 #import "CSVExporter.h"
 #import "DMAppDelegate.h"
 #import "AlertViewManager.h"
+#import "DatePickerController.h"
 
 @implementation MainViewController
 
@@ -47,7 +48,9 @@
     alertManager = [[AlertViewManager alloc] init];
     alertManager.observer = self;
     
-    [[alertManager createConfirmRecordView] show];
+    DatePickerController* picker = [self.storyboard instantiateViewControllerWithIdentifier:@"DatePicker"];
+    picker.observer = [self alertManager];
+    [self presentModalViewController:picker animated:YES];
 }
 
 - (IBAction)stopRecording:(id)sender 
@@ -55,7 +58,7 @@
     [[alertManager createConfirmStopAlert] show];
 }
 
-- (void)inputCorrect:(int)numOfDays;
+- (void)inputCorrect:(NSInteger)numOfDays;
 {
     locationManager = [[MyLocationManager alloc] init];
     [locationManager.observers addObject:self];
@@ -139,8 +142,7 @@
 {
     [super viewDidLoad];
 
-    appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];    
-    
+    appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];         
     NSNotificationCenter* defaultCtr = [NSNotificationCenter defaultCenter];    
     [defaultCtr addObserver:self
                    selector:@selector(updateSend)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* MyLocationManager.m */; };
+		A16AEBD7148432CD0079A0AA /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
 		A16E8BFE148075B800F66E96 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFD148075B800F66E96 /* UIKit.framework */; };
 		A16E8C00148075B800F66E96 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFF148075B800F66E96 /* Foundation.framework */; };
 		A16E8C02148075B800F66E96 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C01148075B800F66E96 /* CoreGraphics.framework */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		A16AEBD11483F0480079A0AA /* MyLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocationManager.h; sourceTree = "<group>"; };
 		A16AEBD21483F0480079A0AA /* MyLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocationManager.m; sourceTree = "<group>"; };
+		A16AEBD5148432CD0079A0AA /* DatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerController.h; sourceTree = "<group>"; };
+		A16AEBD6148432CD0079A0AA /* DatePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerController.m; sourceTree = "<group>"; };
 		A16E8BF9148075B800F66E96 /* DataMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16E8BFD148075B800F66E96 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A16E8BFF148075B800F66E96 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,6 +52,7 @@
 		A196CDED148078CD00F61C06 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		A196CDEF1480790600F61C06 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		A196CDF01480790700F61C06 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		A1FBE3611486E81200BB3D5F /* PickerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerObserver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,9 @@
 				A196CDF01480790700F61C06 /* MainViewController.m */,
 				A196CDEA1480785C00F61C06 /* AlertViewManager.h */,
 				A196CDEB1480785C00F61C06 /* AlertViewManager.m */,
+				A1FBE3611486E81200BB3D5F /* PickerObserver.h */,
+				A16AEBD5148432CD0079A0AA /* DatePickerController.h */,
+				A16AEBD6148432CD0079A0AA /* DatePickerController.m */,
 				A16AEBD11483F0480079A0AA /* MyLocationManager.h */,
 				A16AEBD21483F0480079A0AA /* MyLocationManager.m */,
 				A16E8C0E148075B800F66E96 /* DMAppDelegate.h */,
@@ -200,6 +207,7 @@
 				A196CDF11480790700F61C06 /* MainViewController.m in Sources */,
 				A18F3290148309CA0029B2BF /* FileSender.m in Sources */,
 				A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */,
+				A16AEBD7148432CD0079A0AA /* DatePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
