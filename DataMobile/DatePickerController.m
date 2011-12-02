@@ -37,7 +37,7 @@ numberOfRowsInComponent:(NSInteger)component
      didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    selectedNumOfDays = row;
+    selectedNumOfDays = row+1;
 }
 
 - (IBAction)cancel:(id)sender 

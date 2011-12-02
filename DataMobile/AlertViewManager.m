@@ -21,10 +21,6 @@
             if([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"OK"])
             {
                 [self.observer stopRecordingConfirmed];
-                
-                [[self createOkAlert:@"Recording Stopped" 
-                        withMessage:@"If you data has recorded data, we would grateful if you send them to us." 
-                             setTag:RECORD_STOPPED] show];
             }
         }
             
@@ -33,9 +29,18 @@
     }
 }
 
-- (UIAlertView*)createConfirmRecordView
+- (UIAlertView*)createSuccessfullStartAlert
 {
-    return nil;
+    return [self createOkAlert:@"Recording started" 
+                   withMessage:@"You can put the recorder in background now, please dont reboot your iphone, as you would need to start this application again."
+                        setTag:RECORD_STARTED];
+}
+
+- (UIAlertView*)createSuccessfullStopAlert
+{
+    return [self createOkAlert:@"Recording Stopped" 
+                   withMessage:@"If you data has recorded data, we would grateful if you send them to us." 
+                        setTag:RECORD_STOPPED];
 }
 
 - (UIAlertView*)createSuccessfullSentAlert
@@ -50,16 +55,6 @@
     return [self createOkCancelAlert:@"Are you sure ?" 
                          withMessage:@"The application will stop recording your movements" 
                               setTag:RECORD_STOPPED_CONFIRM];
-}
-
-- (void)inputSelectedWithDay:(NSInteger)numOfDays
-{
-    [observer inputCorrect:numOfDays];
-    
-    [[self createOkAlert:@"Recording started" 
-             withMessage:@"You can put the recorder in background now, please dont reboot your iphone, as you would need to start this application again."
-                  setTag:RECORD_STARTED] show];
-    
 }
 
 - (UIAlertView*)createOkCancelAlert:(NSString*)title 

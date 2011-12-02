@@ -10,6 +10,6 @@
 
 @interface CSVExporter : NSObject
 
-+(BOOL)exportObjects:(NSArray*)array toLocation:(NSString*)destination;
++(NSString*)exportObjects:(NSArray*)array toLocation:(NSString*)destination;
 
 @end

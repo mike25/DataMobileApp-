@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A169767C14873199006E8AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
 		A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* MyLocationManager.m */; };
 		A16AEBD7148432CD0079A0AA /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
-		A16E8BFE148075B800F66E96 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFD148075B800F66E96 /* UIKit.framework */; };
 		A16E8C00148075B800F66E96 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFF148075B800F66E96 /* Foundation.framework */; };
-		A16E8C02148075B800F66E96 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C01148075B800F66E96 /* CoreGraphics.framework */; };
 		A16E8C04148075B800F66E96 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C03148075B800F66E96 /* CoreData.framework */; };
 		A16E8C0A148075B800F66E96 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A16E8C08148075B800F66E96 /* InfoPlist.strings */; };
 		A16E8C0C148075B800F66E96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0B148075B800F66E96 /* main.m */; };
@@ -26,14 +25,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A169767B14873199006E8AB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A16979B01487399F006E8AB7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A16979B2148739B1006E8AB7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A16979B4148739C3006E8AB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A16979B6148739C9006E8AB7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A16979B8148739D4006E8AB7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A16AEBD11483F0480079A0AA /* MyLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocationManager.h; sourceTree = "<group>"; };
 		A16AEBD21483F0480079A0AA /* MyLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocationManager.m; sourceTree = "<group>"; };
 		A16AEBD5148432CD0079A0AA /* DatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerController.h; sourceTree = "<group>"; };
 		A16AEBD6148432CD0079A0AA /* DatePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerController.m; sourceTree = "<group>"; };
 		A16E8BF9148075B800F66E96 /* DataMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A16E8BFD148075B800F66E96 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A16E8BFF148075B800F66E96 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A16E8C01148075B800F66E96 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A16E8C03148075B800F66E96 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A16E8C07148075B800F66E96 /* DataMobile-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DataMobile-Info.plist"; sourceTree = "<group>"; };
 		A16E8C09148075B800F66E96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -53,6 +56,8 @@
 		A196CDEF1480790600F61C06 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		A196CDF01480790700F61C06 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		A1FBE3611486E81200BB3D5F /* PickerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerObserver.h; sourceTree = "<group>"; };
+		A1FBE3641486F1C200BB3D5F /* AlertObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertObserver.h; sourceTree = "<group>"; };
+		A1FBE3661486F37600BB3D5F /* MyLocationManagerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocationManagerObserver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +65,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A169767C14873199006E8AB7 /* UIKit.framework in Frameworks */,
 				A16E8C221480760300F66E96 /* CoreLocation.framework in Frameworks */,
-				A16E8BFE148075B800F66E96 /* UIKit.framework in Frameworks */,
 				A16E8C00148075B800F66E96 /* Foundation.framework in Frameworks */,
-				A16E8C02148075B800F66E96 /* CoreGraphics.framework in Frameworks */,
 				A16E8C04148075B800F66E96 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,10 +95,14 @@
 		A16E8BFC148075B800F66E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A16979B2148739B1006E8AB7 /* libz.dylib */,
+				A16979B01487399F006E8AB7 /* CFNetwork.framework */,
+				A16979B8148739D4006E8AB7 /* SystemConfiguration.framework */,
+				A16979B6148739C9006E8AB7 /* MobileCoreServices.framework */,
+				A16979B4148739C3006E8AB7 /* CoreGraphics.framework */,
+				A169767B14873199006E8AB7 /* UIKit.framework */,
 				A16E8C211480760300F66E96 /* CoreLocation.framework */,
-				A16E8BFD148075B800F66E96 /* UIKit.framework */,
 				A16E8BFF148075B800F66E96 /* Foundation.framework */,
-				A16E8C01148075B800F66E96 /* CoreGraphics.framework */,
 				A16E8C03148075B800F66E96 /* CoreData.framework */,
 			);
 			name = Frameworks;
@@ -106,13 +114,9 @@
 				A196CDED148078CD00F61C06 /* Storyboard.storyboard */,
 				A196CDEF1480790600F61C06 /* MainViewController.h */,
 				A196CDF01480790700F61C06 /* MainViewController.m */,
-				A196CDEA1480785C00F61C06 /* AlertViewManager.h */,
-				A196CDEB1480785C00F61C06 /* AlertViewManager.m */,
-				A1FBE3611486E81200BB3D5F /* PickerObserver.h */,
-				A16AEBD5148432CD0079A0AA /* DatePickerController.h */,
-				A16AEBD6148432CD0079A0AA /* DatePickerController.m */,
-				A16AEBD11483F0480079A0AA /* MyLocationManager.h */,
-				A16AEBD21483F0480079A0AA /* MyLocationManager.m */,
+				A1FBE3651486F2E700BB3D5F /* AlertManager */,
+				A1FBE3631486F18400BB3D5F /* DatePicker */,
+				A1FBE3681486F3D900BB3D5F /* MyLocationManager */,
 				A16E8C0E148075B800F66E96 /* DMAppDelegate.h */,
 				A16E8C0F148075B800F66E96 /* DMAppDelegate.m */,
 				A196CDE61480784600F61C06 /* CSVExporter.h */,
@@ -134,6 +138,36 @@
 				A16E8C0D148075B800F66E96 /* DataMobile-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A1FBE3631486F18400BB3D5F /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				A1FBE3611486E81200BB3D5F /* PickerObserver.h */,
+				A16AEBD5148432CD0079A0AA /* DatePickerController.h */,
+				A16AEBD6148432CD0079A0AA /* DatePickerController.m */,
+			);
+			name = DatePicker;
+			sourceTree = "<group>";
+		};
+		A1FBE3651486F2E700BB3D5F /* AlertManager */ = {
+			isa = PBXGroup;
+			children = (
+				A1FBE3641486F1C200BB3D5F /* AlertObserver.h */,
+				A196CDEA1480785C00F61C06 /* AlertViewManager.h */,
+				A196CDEB1480785C00F61C06 /* AlertViewManager.m */,
+			);
+			name = AlertManager;
+			sourceTree = "<group>";
+		};
+		A1FBE3681486F3D900BB3D5F /* MyLocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				A16AEBD11483F0480079A0AA /* MyLocationManager.h */,
+				A16AEBD21483F0480079A0AA /* MyLocationManager.m */,
+				A1FBE3661486F37600BB3D5F /* MyLocationManagerObserver.h */,
+			);
+			name = MyLocationManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +205,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = A16E8BEE148075B800F66E96;
 			productRefGroup = A16E8BFA148075B800F66E96 /* Products */;
@@ -273,6 +308,7 @@
 		A16E8C17148075B800F66E96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DataMobile/DataMobile-Prefix.pch";
 				INFOPLIST_FILE = "DataMobile/DataMobile-Info.plist";
@@ -284,6 +320,7 @@
 		A16E8C18148075B800F66E96 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DataMobile/DataMobile-Prefix.pch";
 				INFOPLIST_FILE = "DataMobile/DataMobile-Info.plist";

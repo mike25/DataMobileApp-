@@ -7,37 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MyLocationManagerObserver.h"
 
-@protocol MyLocationManagerObserver <NSObject>
+@interface MyLocationManager : NSObject
 
-@optional
-- (void)managerStarted;
-- (void)managerStopped;
-- (void)didUpdateToLocation:(CLLocation *)newLocation;
-- (void)didFailWithError:(NSError *)error;
-
-@end
-
-@interface MyLocationManager : NSObject <CLLocationManagerDelegate>
-
-@property (strong, nonatomic) NSMutableArray* observers;
+@property (weak, nonatomic) id<MyLocationManagerObserver> observer;
 @property (strong,  nonatomic) CLLocationManager* manager;
 
-- (void)startManager;
+- (void)startManagerWithDelegate:(id)delegate;
 - (void)stopManager;
-
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation 
-           fromLocation:(CLLocation *)oldLocation;
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
-
-/*
- * Helper Methods 
- */
-- (void)notifyObserversForStartAction;
-- (void)notifyObserversForStopAction;
-- (void)notifyObserversForUpdateActionWithLocation:(CLLocation *)newLocation;
-- (void)notifyObserversForFailActionWithError:(NSError *)error;
 
 @end

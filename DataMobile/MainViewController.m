@@ -12,6 +12,7 @@
 #import "DMAppDelegate.h"
 #import "AlertViewManager.h"
 #import "DatePickerController.h"
+#import "FileSender.h"
 
 @implementation MainViewController
 
@@ -22,7 +23,6 @@
 @synthesize dataButton;
 
 @synthesize alertManager;
-@synthesize locationManager;
 @synthesize appDelegate;
 
 
@@ -46,10 +46,12 @@
 - (IBAction)startRecording:(id)sender 
 {
     alertManager = [[AlertViewManager alloc] init];
+    
+    // For being alerted when the user uses "No"
     alertManager.observer = self;
     
     DatePickerController* picker = [self.storyboard instantiateViewControllerWithIdentifier:@"DatePicker"];
-    picker.observer = [self alertManager];
+    picker.observer = self;
     [self presentModalViewController:picker animated:YES];
 }
 
@@ -58,35 +60,35 @@
     [[alertManager createConfirmStopAlert] show];
 }
 
-- (void)inputCorrect:(NSInteger)numOfDays;
-{
-    locationManager = [[MyLocationManager alloc] init];
-    [locationManager.observers addObject:self];
-    [locationManager.observers addObject:self.appDelegate];
-    [locationManager startManager];
-    
-    // Defining a Timer to stop recording after x seconds has passed.
-    [NSTimer scheduledTimerWithTimeInterval:numOfDays*3600*24
-                                     target:locationManager
-                                   selector:@selector(stopManager) 
-                                   userInfo:nil 
-                                    repeats:NO];
-}
-
 - (void)stopRecordingConfirmed
 {
-    [self.locationManager stopManager];
-    locationManager = nil;
+    [appDelegate stopLocationManager];
+}
+
+- (void)inputSelectedWithDay:(NSInteger)numOfDays;
+{
+    daysToRecord = numOfDays;
+    [appDelegate startManagerWithObserver:self];
 }
 
 - (void)managerStarted
 {
     [self switchStateToRecording:true];
+    
+    // Defining a Timer to stop recording after x seconds has passed.
+    [NSTimer scheduledTimerWithTimeInterval:daysToRecord*3600*24
+                                     target:self.appDelegate
+                                   selector:@selector(stopLocationManager) 
+                                   userInfo:nil 
+                                    repeats:NO];
+    
+    [[alertManager createSuccessfullStartAlert] show];
 }
 
 - (void)managerStopped
 {
     [self switchStateToRecording:false];
+    [[alertManager createSuccessfullStopAlert] show];    
 }
 
 - (IBAction)sendData:(id)sender 
@@ -99,7 +101,10 @@
         NSLog(@"There was an error!");
     }
     
-    [CSVExporter exportObjects:objects toLocation:@"locations.csv"];
+    NSString* string_objects = [CSVExporter exportObjects:objects toLocation:@"locations.csv"];    
+    
+    //[FileSender sendString:string_objects ToURL:INSERTLOCATIONURL];
+    
     [self.appDelegate deleteAllLocations];
     [[alertManager createSuccessfullSentAlert] show];
 }
@@ -144,10 +149,7 @@
 
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];         
     NSNotificationCenter* defaultCtr = [NSNotificationCenter defaultCenter];    
-    [defaultCtr addObserver:self
-                   selector:@selector(updateSend)
-                       name:NSManagedObjectContextDidSaveNotification
-                     object:[self.appDelegate managedObjectContext]];
+
     [defaultCtr addObserver:self
                    selector:@selector(updateSend)
                        name:UIApplicationWillEnterForegroundNotification
@@ -161,7 +163,6 @@
     [self setDataButton:nil];
     
     [self setAlertManager:nil];
-    [self setLocationManager:nil];
     
     [self setStopButton:nil];
     [self setRecordingLabel:nil];

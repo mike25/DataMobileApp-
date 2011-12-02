@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AlertViewManager.h"
+#import "AlertObserver.h"
 #import "MyLocationManager.h"
+#import "MyLocationManagerObserver.h"
+#import "PickerObserver.h"
 
 @class DMAppDelegate;
+@class AlertViewManager;
 
-@interface MainViewController : UIViewController <AlertObserver, MyLocationManagerObserver>
+@interface MainViewController : UIViewController <AlertObserver, MyLocationManagerObserver, PickerObserver>
+{
+    @private int daysToRecord;
+}
 
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
@@ -22,15 +28,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *dataButton;
 
 @property (strong, nonatomic) AlertViewManager* alertManager;
-@property (strong, nonatomic) MyLocationManager* locationManager;
-
 @property (weak, nonatomic) DMAppDelegate* appDelegate;
 
 - (IBAction)startRecording:(id)sender;
 - (IBAction)stopRecording:(id)sender;
 - (IBAction)sendData:(id)sender;
 
-- (void)inputCorrect:(NSInteger)numOfDays;
+- (void)inputSelectedWithDay:(NSInteger)numOfDays;
 - (void)stopRecordingConfirmed;
 
 - (void)managerStarted;

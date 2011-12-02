@@ -11,7 +11,7 @@
 
 @implementation CSVExporter 
 
-+(BOOL)exportObjects:(NSArray*)array toLocation:(NSString*)destination
++(NSString*)exportObjects:(NSArray*)array toLocation:(NSString*)destination
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];    
@@ -50,7 +50,7 @@
                 atomically:YES 
                   encoding:NSStringEncodingConversionAllowLossy 
                      error:&error];       
-    return true ;
+    return locations ;
 }
 
 @end

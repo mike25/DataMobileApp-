@@ -8,6 +8,8 @@
 
 #import "DMAppDelegate.h"
 
+#import "MyLocationManager.h"
+
 @implementation DMAppDelegate
 
 @synthesize window = _window;
@@ -15,7 +17,25 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
-- (void)didUpdateToLocation:(CLLocation *)newLocation
+@synthesize locationManager;
+
+- (void)startManagerWithObserver:(id)observer
+{
+    self.locationManager = [[MyLocationManager alloc] init];
+    locationManager.observer = observer;
+    [locationManager startManagerWithDelegate:self];
+}
+
+- (void)stopLocationManager
+{
+    [self.locationManager stopManager];
+    locationManager = nil;
+    [self saveContext];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation;
 {
     // Save new Location :
     NSManagedObject* location = [NSEntityDescription insertNewObjectForEntityForName:@"Location"
@@ -34,9 +54,9 @@
     [location setValuesForKeysWithDictionary:locationDico];
 }
 
-- (void)managerStopped
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
 {
-    [self saveContext];
+    // DO nothing for now.
 }
 
 - (NSArray*)fetchAllLocations
@@ -82,11 +102,6 @@
         // error deleting object
     }
     [self saveContext];
-}
-
-- (void)didFailWithError:(NSError *)error;
-{
-    // DO nothing for now.
 }
 
 

@@ -7,19 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#import "AlertObserver.h"
 #import "PickerObserver.h"
 
-@protocol AlertObserver
-
-/**
- * Executes when the user has entered a correct value (number of days < maxnumberofdays)
- */
-- (void)inputCorrect:(NSInteger)numOfDays;
-- (void)stopRecordingConfirmed;
-
-@end
-
-@interface AlertViewManager : NSObject <UIAlertViewDelegate, PickerObserver> 
+@interface AlertViewManager : NSObject <UIAlertViewDelegate> 
 
 // for tagging alertviews
 typedef enum
@@ -32,11 +24,10 @@ typedef enum
 
 @property (weak, nonatomic) id<AlertObserver> observer;
 
-- (UIAlertView*)createConfirmRecordView;
+- (UIAlertView*)createSuccessfullStartAlert;
+- (UIAlertView*)createSuccessfullStopAlert;
 - (UIAlertView*)createSuccessfullSentAlert;
 - (UIAlertView*)createConfirmStopAlert;
-
-- (void)inputSelectedWithDay:(NSInteger)numOfDays;
 
 /**
  * Helper Methods

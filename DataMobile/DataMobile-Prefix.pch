@@ -16,6 +16,10 @@
 #define MAXRECORDINGPERIOD 5
 #endif
 
+#ifndef INSERTLOCATIONURL
+#define INSERTLOCATIONURL @"http://dyn-164-209.wireless.concordia.ca/~MML/index.php/dataMobile/newUser"
+#endif
+
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>

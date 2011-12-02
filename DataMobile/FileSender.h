@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FileSender : NSObject
+@interface FileSender : NSObject <NSURLConnectionDelegate>
+
++ (void)sendString:(NSString*)string ToURL:(NSString*)url;
 
 @end
