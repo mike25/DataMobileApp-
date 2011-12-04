@@ -19,6 +19,16 @@
 
 @synthesize locationManager;
 
+- (DMAppDelegate*)init
+{
+    self = [super init] ;
+    if(self != NULL)
+    {
+        [self createUserIdIfNotExists];
+    }
+    return self ;
+}
+
 - (void)startManagerWithObserver:(id)observer
 {
     self.locationManager = [[MyLocationManager alloc] init];
@@ -57,6 +67,19 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
 {
     // DO nothing for now.
+}
+
+- (void)createUserIdIfNotExists
+{
+    if([[self fetchAllObjects:@"User"] count] == 0)
+    {
+        NSManagedObject* newUser = [NSEntityDescription insertNewObjectForEntityForName:@"User"
+                                                                  inManagedObjectContext:self.managedObjectContext];
+
+        int rand = abs((unsigned)arc4random()); 
+        [newUser setValue:[NSNumber numberWithInt:rand] forKey:@"id"];
+        [self saveContext];
+    }
 }
 
 - (NSArray*)fetchAllLocations

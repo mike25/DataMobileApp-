@@ -102,8 +102,14 @@
     }
     
     NSString* string_objects = [CSVExporter exportObjects:objects toLocation:@"locations.csv"];    
+    NSString* user_id = [[[appDelegate fetchAllObjects:@"User"] objectAtIndex:0] valueForKey:@"id"];
     
-    //[FileSender sendString:string_objects ToURL:INSERTLOCATIONURL];
+    
+    NSDictionary* postData = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                    string_objects, @"text",
+                                                    user_id, @"id", nil];
+    
+    [FileSender sendPostData:postData ToURL:INSERTLOCATIONURL];
     
     [self.appDelegate deleteAllLocations];
     [[alertManager createSuccessfullSentAlert] show];

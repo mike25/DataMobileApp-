@@ -37,7 +37,7 @@ numberOfRowsInComponent:(NSInteger)component
      didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    selectedNumOfDays = row+1;
+    selectedNumOfDays = [[days objectAtIndex:row] intValue];
 }
 
 - (IBAction)cancel:(id)sender 
@@ -53,7 +53,7 @@ numberOfRowsInComponent:(NSInteger)component
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]; 
     if (self) {
         // Custom initialization
     }
@@ -87,6 +87,9 @@ numberOfRowsInComponent:(NSInteger)component
                                                             , MAXRECORDINGPERIOD];
     
     days = [[NSMutableArray alloc] initWithCapacity:MAXRECORDINGPERIOD];
+    
+    // Default Value ;    
+    selectedNumOfDays = 1 ;
     for(int i = 1; i <= MAXRECORDINGPERIOD ; i++)
     {
         [days insertObject:[NSNumber numberWithInt:i] atIndex:i-1];

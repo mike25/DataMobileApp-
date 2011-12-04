@@ -10,6 +10,12 @@
 
 @interface FileSender : NSObject <NSURLConnectionDelegate>
 
-+ (void)sendString:(NSString*)string ToURL:(NSString*)url;
++ (void)sendPostData:(NSDictionary*)dico ToURL:(NSString*)url;
+
+/**
+* Code Taken and modified from : git://gist.github.com/916845.git
+* Put a query string onto the end of a url
+*/
++(NSString*)addQueryStringToUrl:(NSString*)url params:(NSDictionary *)params;
 
 @end
