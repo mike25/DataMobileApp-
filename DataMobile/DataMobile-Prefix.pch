@@ -17,7 +17,7 @@
 #endif
 
 #ifndef INSERTLOCATIONURL
-#define INSERTLOCATIONURL @"http://dyn-164-209.wireless.concordia.ca/~MML/index.php/dataMobile/newUser"
+#define INSERTLOCATIONURL @"http://datamob.us.to/~MML/index.php/dataMobile/newUser"
 #endif
 
 #ifdef __OBJC__
