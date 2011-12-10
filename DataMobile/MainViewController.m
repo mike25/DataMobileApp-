@@ -108,12 +108,11 @@
     NSDictionary* postData = [[NSDictionary alloc] initWithObjectsAndKeys:
                                                     string_objects, @"text",
                                                     user_id, @"id", nil];
-
+    
     [FileSender sendPostData:postData ToURL:INSERTLOCATIONURL];
     
     [self.appDelegate deleteAllLocations];
     [[alertManager createSuccessfullSentAlert] show];
-    [self updateSend];
 }
 
 - (void)updateSend
@@ -146,19 +145,6 @@
     }
 }
 
-
-- (void)createUserIdIfNotExists
-{
-    if([[appDelegate fetchAllObjects:@"User"] count] == 0)
-    {
-        CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
-        CFStringRef UUIDSRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
-        
-        [appDelegate insertUserWithId:[NSString stringWithFormat:@"%@", UUIDSRef]];
-        [appDelegate saveContext];
-    }
-}
-
 #pragma mark - View lifecycle
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -166,18 +152,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
-    [self createUserIdIfNotExists];
-    
+
+    appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];         
     NSNotificationCenter* defaultCtr = [NSNotificationCenter defaultCenter];    
 
     [defaultCtr addObserver:self
                    selector:@selector(updateSend)
                        name:UIApplicationWillEnterForegroundNotification
                      object:[UIApplication sharedApplication]];
-    
-    
 }
 
 - (void)viewDidUnload

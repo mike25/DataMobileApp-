@@ -29,8 +29,8 @@
         // Remove failed
     }
             
-    NSString* titles = [[NSString alloc] initWithFormat:@"altitude, latitude, longitude, speed, direction, h_accuracy, v_accuracy, timestamp"];
-    NSMutableString* locations = [[NSMutableString alloc] initWithFormat:@""];
+    NSMutableString* locations = [[NSMutableString alloc] initWithFormat:@"altitude, latitude, longitude, speed, direction, h_accuracy, v_accuracy, timestamp\n"];
+    
     for (NSManagedObject *oneObject in array)
     {
         NSString* location = [NSString stringWithFormat:@"%@, %@, %@, %@, %@, %@, %@, %@\n",
@@ -46,8 +46,7 @@
         [locations appendString:location];
     }
     
-    [[NSString stringWithFormat:@"%@\n%@", titles, locations ] 
-               writeToFile:filename 
+    [locations writeToFile:filename 
                 atomically:YES 
                   encoding:NSStringEncodingConversionAllowLossy 
                      error:&error];       

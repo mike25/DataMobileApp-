@@ -19,6 +19,16 @@
 
 @synthesize locationManager;
 
+- (DMAppDelegate*)init
+{
+    self = [super init] ;
+    if(self != NULL)
+    {
+        [self createUserIdIfNotExists];
+    }
+    return self ;
+}
+
 - (void)startManagerWithObserver:(id)observer
 {
     self.locationManager = [[MyLocationManager alloc] init];
@@ -59,13 +69,17 @@
     // DO nothing for now.
 }
 
-- (void)insertUserWithId:(NSString*)uuid
+- (void)createUserIdIfNotExists
 {
-    NSManagedObject* newUser = [NSEntityDescription insertNewObjectForEntityForName:@"User"
-                                                             inManagedObjectContext:self.managedObjectContext];
+    if([[self fetchAllObjects:@"User"] count] == 0)
+    {
+        NSManagedObject* newUser = [NSEntityDescription insertNewObjectForEntityForName:@"User"
+                                                                  inManagedObjectContext:self.managedObjectContext];
 
-    [newUser setValue:uuid forKey:@"id"];
-
+        int rand = abs((unsigned)arc4random()); 
+        [newUser setValue:[NSNumber numberWithInt:rand] forKey:@"id"];
+        [self saveContext];
+    }
 }
 
 - (NSArray*)fetchAllLocations
@@ -244,8 +258,8 @@
          
          If you encounter schema incompatibility errors during development, you can reduce their frequency by:
          * Simply deleting the existing store:
-         */[[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
-         /*
+         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+         
          * Performing automatic lightweight migration by passing the following dictionary as the options parameter: 
          [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
          
