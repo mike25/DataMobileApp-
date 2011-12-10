@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A131DDE414941B3B0075062B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
+		A131DDE514941B3B0075062B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFF148075B800F66E96 /* Foundation.framework */; };
+		A131DDE614941B3B0075062B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A131DDC814941AF40075062B /* CoreGraphics.framework */; };
+		A131DDEC14941B3B0075062B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A131DDEA14941B3B0075062B /* InfoPlist.strings */; };
+		A131DDEE14941B3B0075062B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A131DDED14941B3B0075062B /* main.m */; };
+		A131DDF914941BD90075062B /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A131DDF714941BAB0075062B /* GHUnitIOS.framework */; };
 		A169767C14873199006E8AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
 		A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* MyLocationManager.m */; };
 		A16AEBD7148432CD0079A0AA /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
@@ -25,12 +31,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A131DDC814941AF40075062B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A131DDE214941B3B0075062B /* DataMobileTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataMobileTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A131DDE914941B3B0075062B /* DataMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DataMobileTests-Info.plist"; sourceTree = "<group>"; };
+		A131DDEB14941B3B0075062B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A131DDED14941B3B0075062B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A131DDEF14941B3B0075062B /* DataMobileTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DataMobileTests-Prefix.pch"; sourceTree = "<group>"; };
+		A131DDF714941BAB0075062B /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		A169767B14873199006E8AB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A16979B01487399F006E8AB7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		A16979B2148739B1006E8AB7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		A16979B4148739C3006E8AB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A16979B6148739C9006E8AB7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		A16979B8148739D4006E8AB7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A16AEBD11483F0480079A0AA /* MyLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocationManager.h; sourceTree = "<group>"; };
 		A16AEBD21483F0480079A0AA /* MyLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocationManager.m; sourceTree = "<group>"; };
 		A16AEBD5148432CD0079A0AA /* DatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerController.h; sourceTree = "<group>"; };
@@ -61,6 +69,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A131DDDF14941B3B0075062B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A131DDF914941BD90075062B /* GHUnitIOS.framework in Frameworks */,
+				A131DDE414941B3B0075062B /* UIKit.framework in Frameworks */,
+				A131DDE514941B3B0075062B /* Foundation.framework in Frameworks */,
+				A131DDE614941B3B0075062B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A16E8BF6148075B800F66E96 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,10 +94,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A131DDE714941B3B0075062B /* DataMobileTests */ = {
+			isa = PBXGroup;
+			children = (
+				A131DDE814941B3B0075062B /* Supporting Files */,
+			);
+			path = DataMobileTests;
+			sourceTree = "<group>";
+		};
+		A131DDE814941B3B0075062B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A131DDE914941B3B0075062B /* DataMobileTests-Info.plist */,
+				A131DDEA14941B3B0075062B /* InfoPlist.strings */,
+				A131DDED14941B3B0075062B /* main.m */,
+				A131DDEF14941B3B0075062B /* DataMobileTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A16E8BEE148075B800F66E96 = {
 			isa = PBXGroup;
 			children = (
 				A16E8C05148075B800F66E96 /* DataMobile */,
+				A131DDE714941B3B0075062B /* DataMobileTests */,
 				A16E8BFC148075B800F66E96 /* Frameworks */,
 				A16E8BFA148075B800F66E96 /* Products */,
 			);
@@ -88,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				A16E8BF9148075B800F66E96 /* DataMobile.app */,
+				A131DDE214941B3B0075062B /* DataMobileTests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,15 +135,12 @@
 		A16E8BFC148075B800F66E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A16979B2148739B1006E8AB7 /* libz.dylib */,
-				A16979B01487399F006E8AB7 /* CFNetwork.framework */,
-				A16979B8148739D4006E8AB7 /* SystemConfiguration.framework */,
-				A16979B6148739C9006E8AB7 /* MobileCoreServices.framework */,
-				A16979B4148739C3006E8AB7 /* CoreGraphics.framework */,
+				A131DDF714941BAB0075062B /* GHUnitIOS.framework */,
 				A169767B14873199006E8AB7 /* UIKit.framework */,
 				A16E8C211480760300F66E96 /* CoreLocation.framework */,
 				A16E8BFF148075B800F66E96 /* Foundation.framework */,
 				A16E8C03148075B800F66E96 /* CoreData.framework */,
+				A131DDC814941AF40075062B /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -173,6 +210,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A131DDE114941B3B0075062B /* DataMobileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A131DDF314941B3B0075062B /* Build configuration list for PBXNativeTarget "DataMobileTests" */;
+			buildPhases = (
+				A131DDDE14941B3B0075062B /* Sources */,
+				A131DDDF14941B3B0075062B /* Frameworks */,
+				A131DDE014941B3B0075062B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DataMobileTests;
+			productName = DataMobileTests;
+			productReference = A131DDE214941B3B0075062B /* DataMobileTests.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A16E8BF8148075B800F66E96 /* DataMobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A16E8C16148075B800F66E96 /* Build configuration list for PBXNativeTarget "DataMobile" */;
@@ -213,11 +267,20 @@
 			projectRoot = "";
 			targets = (
 				A16E8BF8148075B800F66E96 /* DataMobile */,
+				A131DDE114941B3B0075062B /* DataMobileTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A131DDE014941B3B0075062B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A131DDEC14941B3B0075062B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A16E8BF7148075B800F66E96 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,6 +293,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A131DDDE14941B3B0075062B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A131DDEE14941B3B0075062B /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A16E8BF5148075B800F66E96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -249,6 +320,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A131DDEA14941B3B0075062B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A131DDEB14941B3B0075062B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		A16E8C08148075B800F66E96 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -260,6 +339,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A131DDF414941B3B0075062B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DataMobileTests/DataMobileTests-Prefix.pch";
+				INFOPLIST_FILE = "DataMobileTests/DataMobileTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A131DDF514941B3B0075062B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DataMobileTests/DataMobileTests-Prefix.pch";
+				INFOPLIST_FILE = "DataMobileTests/DataMobileTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		A16E8C14148075B800F66E96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -332,6 +451,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A131DDF314941B3B0075062B /* Build configuration list for PBXNativeTarget "DataMobileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A131DDF414941B3B0075062B /* Debug */,
+				A131DDF514941B3B0075062B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A16E8BF3148075B800F66E96 /* Build configuration list for PBXProject "DataMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
