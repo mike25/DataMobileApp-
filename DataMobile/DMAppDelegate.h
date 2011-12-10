@@ -30,7 +30,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
 
-- (void)createUserIdIfNotExists;
+- (void)insertUserWithId:(NSString*)uuid;
 
 - (NSArray*)fetchAllLocations;
 - (void) deleteAllLocations;

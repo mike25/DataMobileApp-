@@ -31,7 +31,11 @@
     
     if (!error) 
     {
-        NSLog(@"%@", returnString);
+        NSLog(@"%@ done", returnString);
+    }
+    else 
+    {
+        NSLog(@"Error during sending");
     }
 }
 

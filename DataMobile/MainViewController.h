@@ -46,5 +46,6 @@
 - (void)updateSend;
 - (DMAppDelegate*)appDelegate;
 - (void)switchStateToRecording:(BOOL)recording;
+- (void)createUserIdIfNotExists;
 
 @end
