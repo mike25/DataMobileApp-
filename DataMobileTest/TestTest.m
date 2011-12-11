@@ -20,4 +20,13 @@
     STAssertNotNil(yourApplicationDelegate, @"UIApplication failed to find the AppDelegate");
 }
 
+- (void)setUp {
+    // Run before each test method
+}
+
+- (void)tearDown {
+    // Run after each test method
+}
+
+
 @end

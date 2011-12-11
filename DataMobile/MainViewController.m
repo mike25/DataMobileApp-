@@ -96,11 +96,6 @@
     
     NSArray *objects = [self.appDelegate fetchAllLocations];
     
-    if (objects == nil)
-    {
-        NSLog(@"There was an error!");
-    }
-    
     NSString* string_objects = [CSVExporter exportObjects:objects toLocation:@"locations.csv"];    
     NSString* user_id = [[[appDelegate fetchAllObjects:@"User"] objectAtIndex:0] valueForKey:@"id"];
     
@@ -109,7 +104,8 @@
                                                     string_objects, @"text",
                                                     user_id, @"id", nil];
 
-    [FileSender sendPostData:postData ToURL:INSERTLOCATIONURL];
+    FileSender* fileSender = [[FileSender alloc] init];
+    [fileSender sendPostData:postData ToURL:INSERTLOCATIONURL];
     
     [self.appDelegate deleteAllLocations];
     [[alertManager createSuccessfullSentAlert] show];

@@ -10,7 +10,10 @@
 
 @interface FileSender : NSObject <NSURLConnectionDelegate>
 
-+ (void)sendPostData:(NSDictionary*)dico ToURL:(NSString*)url;
+@property (strong,nonatomic) NSError* error;
+@property (strong,nonatomic) NSString* responseString;
+
+-(void)sendPostData:(NSDictionary*)dico ToURL:(NSString*)url;
 
 /**
 * Code Taken and modified from : git://gist.github.com/916845.git

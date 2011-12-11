@@ -11,7 +11,10 @@
 
 @implementation FileSender
 
-+ (void)sendPostData:(NSDictionary*)dico ToURL:(NSString*)url
+@synthesize error;
+@synthesize responseString;
+
+-(void)sendPostData:(NSDictionary*)dico ToURL:(NSString*)url
 {
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     request.HTTPMethod = @"POST" ;
@@ -23,20 +26,13 @@
     request.HTTPBody = data;
                 
     NSURLResponse* response;
-    NSError *error ;
+    NSError *c_error ;
     
-    NSData* returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSData* returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&c_error];
     NSString* returnString = [NSString stringWithUTF8String:[returnData bytes]];
     
-    
-    if (!error) 
-    {
-        NSLog(@"%@ done", returnString);
-    }
-    else 
-    {
-        NSLog(@"Error during sending");
-    }
+    self.error = c_error;
+    self.responseString = returnString;
 }
 
 /**
