@@ -9,6 +9,16 @@
 #import "FileSender.h"
 
 
+@interface FileSender ()
+
+/**
+ * Code Taken and modified from : git://gist.github.com/916845.git
+ * Put a query string onto the end of a url
+ */
++(NSString*)addQueryStringToUrl:(NSString*)url params:(NSDictionary *)params;
+
+@end
+
 @implementation FileSender
 
 @synthesize error;
@@ -67,3 +77,5 @@
 }
 
 @end
+
+

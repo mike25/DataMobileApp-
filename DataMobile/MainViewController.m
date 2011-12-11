@@ -14,6 +14,14 @@
 #import "DatePickerController.h"
 #import "FileSender.h"
 
+@interface MainViewController ()
+
+- (void)updateSend;
+- (void)switchStateToRecording:(BOOL)recording;
+- (void)createUserIdIfNotExists;
+
+@end
+
 @implementation MainViewController
 
 @synthesize startButton;

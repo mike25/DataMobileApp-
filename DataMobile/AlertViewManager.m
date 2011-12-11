@@ -8,6 +8,13 @@
 
 #import "AlertViewManager.h"
 
+@interface AlertViewManager ()
+
+- (UIAlertView*)createOkAlert:(NSString*)title withMessage:(NSString*)message setTag:(alertViewTag)tag;
+- (UIAlertView*)createOkCancelAlert:(NSString*)title withMessage:(NSString*)message setTag:(alertViewTag)tag;
+
+@end
+
 @implementation AlertViewManager
 
 @synthesize observer;

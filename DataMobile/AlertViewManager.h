@@ -24,16 +24,11 @@ typedef enum
 
 @property (weak, nonatomic) id<AlertObserver> observer;
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+
 - (UIAlertView*)createSuccessfullStartAlert;
 - (UIAlertView*)createSuccessfullStopAlert;
 - (UIAlertView*)createSuccessfullSentAlert;
 - (UIAlertView*)createConfirmStopAlert;
-
-/**
- * Helper Methods
- */
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
-- (UIAlertView*)createOkAlert:(NSString*)title withMessage:(NSString*)message setTag:(alertViewTag)tag;
-- (UIAlertView*)createOkCancelAlert:(NSString*)title withMessage:(NSString*)message setTag:(alertViewTag)tag;
 
 @end

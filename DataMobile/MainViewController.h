@@ -40,12 +40,4 @@
 - (void)managerStarted;
 - (void)managerStopped;
 
-/**
- * helper methods
- */
-- (void)updateSend;
-- (DMAppDelegate*)appDelegate;
-- (void)switchStateToRecording:(BOOL)recording;
-- (void)createUserIdIfNotExists;
-
 @end
