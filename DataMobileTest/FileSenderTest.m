@@ -11,8 +11,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define TESTURL @"http://datamb.info.tm/~MML/DataMobile-Web/test"
-
 @implementation FileSenderTest
 
 // All code under test is in the iOS Application
@@ -38,9 +36,6 @@
 {
     [sender sendPostData:postDico ToURL:TESTURL];
     
-    NSError* error = sender.error;
-    
-    STAssertFalse(&error, @"FileSender's error must be false if connection was successful");
     STAssertNotNil(sender.responseString, @"sender contains the response sent by the server.");
     STAssertEqualObjects(sender.responseString, @"Array\n(\n    [id] => FAKE-ID-999\n    [text] => FAKE-TEXT-999\n)", @"response returned by the server");
 }

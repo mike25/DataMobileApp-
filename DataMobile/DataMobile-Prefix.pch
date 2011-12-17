@@ -17,7 +17,7 @@
 #endif
 
 #ifndef INSERTLOCATIONURL
-#define INSERTLOCATIONURL @"http://datamb.info.tm/~MML/DataMobile-Web/insertGps"
+#define INSERTLOCATIONURL @"http://datamobile.local/insertGps"
 #endif
 
 #ifdef __OBJC__

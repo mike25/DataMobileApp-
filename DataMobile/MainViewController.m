@@ -114,7 +114,7 @@
 
     FileSender* fileSender = [[FileSender alloc] init];
     [fileSender sendPostData:postData ToURL:INSERTLOCATIONURL];
-    
+        
     [self.appDelegate deleteAllLocations];
     [[alertManager createSuccessfullSentAlert] show];
     [self updateSend];

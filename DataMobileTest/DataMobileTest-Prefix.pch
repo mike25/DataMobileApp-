@@ -6,3 +6,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+
+#ifndef TESTURL
+#define TESTURL @"http://datamobile.local/test"
+#endif
+
+
