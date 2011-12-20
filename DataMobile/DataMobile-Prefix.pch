@@ -8,18 +8,6 @@
 #warning "This project uses features only available in iOS SDK 3.0 and later."
 #endif
 
-#ifndef DISTANCEFILTER
-#define DISTANCEFILTER 10
-#endif
-
-#ifndef MAXRECORDINGPERIOD
-#define MAXRECORDINGPERIOD 5
-#endif
-
-#ifndef INSERTLOCATIONURL
-#define INSERTLOCATIONURL @"http://datamobile.local/insertGps"
-#endif
-
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>

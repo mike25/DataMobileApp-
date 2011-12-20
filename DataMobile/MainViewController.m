@@ -13,6 +13,7 @@
 #import "AlertViewManager.h"
 #import "DatePickerController.h"
 #import "FileSender.h"
+#import "Config.h"
 
 @interface MainViewController ()
 
@@ -113,7 +114,8 @@
                                                     user_id, @"id", nil];
 
     FileSender* fileSender = [[FileSender alloc] init];
-    [fileSender sendPostData:postData ToURL:INSERTLOCATIONURL];
+    [fileSender sendPostData:postData 
+                       ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]];
         
     [self.appDelegate deleteAllLocations];
     [[alertManager createSuccessfullSentAlert] show];
@@ -170,6 +172,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [Config loadForFileName:@"config"];
     
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
     [self createUserIdIfNotExists];

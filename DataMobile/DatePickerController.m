@@ -7,6 +7,7 @@
 //
 
 #import "DatePickerController.h"
+#import "Config.h"
 
 @implementation DatePickerController 
 
@@ -83,14 +84,16 @@ numberOfRowsInComponent:(NSInteger)component
 {
     [super viewDidLoad];
     
-    self.pickerTitleLabel.text = [NSString stringWithFormat:@"Enter number of days (max = %d)"
-                                                            , MAXRECORDINGPERIOD];
+    int max_period = [[Config instance] integerValueForKey:@"maxRecordingPeriod"];
     
-    days = [[NSMutableArray alloc] initWithCapacity:MAXRECORDINGPERIOD];
+    self.pickerTitleLabel.text = [NSString stringWithFormat:@"Enter number of days (max = %d)"
+                                                            , max_period];
+    
+    days = [[NSMutableArray alloc] initWithCapacity:max_period];
     
     // Default Value ;    
     selectedNumOfDays = 1 ;
-    for(int i = 1; i <= MAXRECORDINGPERIOD ; i++)
+    for(int i = 1; i <= max_period ; i++)
     {
         [days insertObject:[NSNumber numberWithInt:i] atIndex:i-1];
     }

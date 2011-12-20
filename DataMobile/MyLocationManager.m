@@ -8,6 +8,7 @@
 
 #import "MyLocationManager.h"
 #import "MyLocationManagerObserver.h"
+#import "Config.h"
 
 @implementation MyLocationManager
 
@@ -18,7 +19,7 @@
 {
     self.manager = [[CLLocationManager alloc] init];
     [self.manager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-    [self.manager setDistanceFilter:DISTANCEFILTER];
+    self.manager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
     self.manager.purpose = @"Do you want me to record your GPS Location ?" ;
     
     self.manager.delegate = delegate;
