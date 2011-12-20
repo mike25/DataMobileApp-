@@ -16,5 +16,7 @@
 +(Config*)instance;
 
 -(id)valueForKey:(NSString*)key;
+-(NSString*)stringValueForKey:(NSString*)key;
+-(int)integerValueForKey:(NSString*)key;
 
 @end

@@ -44,12 +44,11 @@
 
 - (void)testValuesForKeys
 {
-    NSString* value1 = (NSString*)[[Config instance] valueForKey:@"key1"];
+    NSString* value1 = [[Config instance] stringValueForKey:@"key1"];
     STAssertEqualObjects(value1, @"value1", @"value for key1 is not the one expected");
 
-    NSString* value2 = (NSString*)[[Config instance] valueForKey:@"anotherKey"];
-    int int_value2 = [value2 intValue];
-    STAssertEquals(int_value2, 999, @"value for anotherKey is not the one expected");
+    int value2 = [[Config instance] integerValueForKey:@"anotherKey"]; 
+    STAssertEquals(value2, 999, @"value for anotherKey is not the one expected");
     
     STAssertNil([[Config instance] valueForKey:@"insertLocationUrl"], @"the dico has one key that should not be there");
 }

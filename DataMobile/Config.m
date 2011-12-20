@@ -34,10 +34,7 @@ static BOOL initialized = NO;
     
     NSString *path = [[NSBundle mainBundle] pathForResource:name
                                                      ofType:@"plist"];
-    instance.configs = [NSDictionary dictionaryWithContentsOfFile:path];
-    
-    NSLog(@"Loaded %@.", [instance.configs description]);
-    
+    instance.configs = [NSDictionary dictionaryWithContentsOfFile:path];    
     return instance;
 }
 
@@ -49,6 +46,17 @@ static BOOL initialized = NO;
 -(id)valueForKey:(NSString*)key
 {
     return [self.configs valueForKey:key];
+}
+
+-(NSString*)stringValueForKey:(NSString*)key
+{
+    return (NSString*)[self valueForKey:key];
+}
+
+-(int)integerValueForKey:(NSString*)key
+{
+    NSString *value = (NSString*)[self stringValueForKey:key];
+    return [value intValue];
 }
 
 @end

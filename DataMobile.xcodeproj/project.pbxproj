@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A14998B414A0066200F108DC /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FA2795149C2EAC009745EB /* config-test.plist */; };
 		A14AC87C1494383300C36EB6 /* FileSenderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A14AC87B1494383300C36EB6 /* FileSenderTest.m */; };
 		A169767C14873199006E8AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
 		A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* MyLocationManager.m */; };
@@ -32,7 +33,6 @@
 		A1FA278B149C2220009745EB /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FA278A149C2220009745EB /* config.plist */; };
 		A1FA278E149C22D4009745EB /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA278D149C22D4009745EB /* Config.m */; };
 		A1FA2792149C2C2F009745EB /* ConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA2791149C2C2F009745EB /* ConfigTest.m */; };
-		A1FA2797149C4879009745EB /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FA2795149C2EAC009745EB /* config-test.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,7 +184,6 @@
 				A16E8C0B148075B800F66E96 /* main.m */,
 				A16E8C0D148075B800F66E96 /* DataMobile-Prefix.pch */,
 				A1FA278A149C2220009745EB /* config.plist */,
-				A1FA2795149C2EAC009745EB /* config-test.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -210,6 +209,7 @@
 				A18CD06214916716000CC7E7 /* DataMobileTest-Info.plist */,
 				A18CD06314916716000CC7E7 /* InfoPlist.strings */,
 				A18CD06914916716000CC7E7 /* DataMobileTest-Prefix.pch */,
+				A1FA2795149C2EAC009745EB /* config-test.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -329,7 +329,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1FA2797149C4879009745EB /* config-test.plist in Resources */,
 				A16E8C0A148075B800F66E96 /* InfoPlist.strings in Resources */,
 				A196CDEE148078CD00F61C06 /* Storyboard.storyboard in Resources */,
 				A1FA278B149C2220009745EB /* config.plist in Resources */,
@@ -340,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14998B414A0066200F108DC /* config-test.plist in Resources */,
 				A18CD06514916716000CC7E7 /* InfoPlist.strings in Resources */,
 				A18CD074149169E9000CC7E7 /* Location.gpx in Resources */,
 			);
