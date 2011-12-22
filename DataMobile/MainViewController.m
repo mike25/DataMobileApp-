@@ -18,8 +18,10 @@
 @interface MainViewController ()
 
 - (void)updateSend;
+- (void)displaySend:(BOOL)display;
 - (void)switchStateToRecording:(BOOL)recording;
 - (void)createUserIdIfNotExists;
+- (void)displaySendingInProgress:(BOOL)sending;
 
 @end
 
@@ -30,6 +32,7 @@
 @synthesize recordingLabel;
 @synthesize dataLabel;
 @synthesize dataButton;
+@synthesize sendingLabel;
 
 @synthesize alertManager;
 @synthesize appDelegate;
@@ -102,6 +105,7 @@
 
 - (IBAction)sendData:(id)sender 
 {
+    [self displaySendingInProgress:true];
     
     NSArray *objects = [self.appDelegate fetchAllLocations];
     
@@ -119,12 +123,18 @@
         
     [self.appDelegate deleteAllLocations];
     [[alertManager createSuccessfullSentAlert] show];
-    [self updateSend];
+    
+    [self displaySendingInProgress:false];
 }
 
 - (void)updateSend
+{    
+    [self displaySend:[[self.appDelegate fetchAllLocations] count] != 0 ];
+}
+
+- (void)displaySend:(BOOL)display
 {
-    if([[self.appDelegate fetchAllLocations] count] != 0)
+    if(display)
     {
         dataLabel.hidden = false;
         dataButton.hidden = false;
@@ -140,8 +150,7 @@
 {
     if(recording)
     {
-        self.startButton.hidden = true;
-        self.stopButton.hidden = false;
+        [self displaySend:false];
         recordingLabel.hidden = false;
     }
     else
@@ -149,6 +158,20 @@
         self.startButton.hidden = false;
         self.stopButton.hidden = true;
         recordingLabel.hidden = true;    
+    }
+}
+
+- (void)displaySendingInProgress:(BOOL)sending
+{
+    if(sending)
+    {
+        dataLabel.hidden = true;
+        dataButton.hidden = true;
+        self.sendingLabel.hidden = false;
+    }
+    else
+    {
+        self.sendingLabel.hidden = true;
     }
 }
 
@@ -198,6 +221,7 @@
     
     [self setStopButton:nil];
     [self setRecordingLabel:nil];
+    [self setSendingLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

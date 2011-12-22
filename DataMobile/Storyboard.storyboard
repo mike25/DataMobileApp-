@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11A2061" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="NdM-nc-t1B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="NdM-nc-t1B">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -79,6 +79,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sending..." lineBreakMode="tailTruncation" minimumFontSize="10" id="Bup-y1-Fc9">
+                                <rect key="frame" x="123" y="398" width="75" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -86,6 +93,7 @@
                         <outlet property="dataButton" destination="oaT-w0-i7x" id="gQx-xb-ddO"/>
                         <outlet property="dataLabel" destination="JbO-aW-347" id="aIF-NV-o20"/>
                         <outlet property="recordingLabel" destination="yvz-gL-dhB" id="ReD-iI-hkn"/>
+                        <outlet property="sendingLabel" destination="Bup-y1-Fc9" id="gwY-ln-FkH"/>
                         <outlet property="startButton" destination="jqD-BN-Tg1" id="nyz-GL-i7E"/>
                         <outlet property="stopButton" destination="zvl-fT-RZK" id="Fpc-nt-ujO"/>
                     </connections>
@@ -175,6 +183,7 @@
                 <relationship kind="outlet" name="dataButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dataLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="recordingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sendingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="stopButton" candidateClass="UIButton"/>
             </relationships>

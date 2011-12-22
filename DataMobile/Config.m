@@ -11,30 +11,32 @@
 @implementation Config
 
 @synthesize configs;
+@synthesize fileLoaded;
 
 static Config* instance;
-static BOOL initialized = NO;
 
 /**
  * Singleton implementation
  */
 + (void)initialize
 {
-    if(!initialized)
+    if (instance == nil) 
     {
-        initialized = YES;
         instance = [[Config alloc] init];
     }
 }
 
 +(Config*)loadForFileName:(NSString*)name
 {
-    initialized = NO;    
-    [Config initialize];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:name
-                                                     ofType:@"plist"];
-    instance.configs = [NSDictionary dictionaryWithContentsOfFile:path];    
+    if (![instance.fileLoaded isEqualToString:name]) 
+    {
+        [Config initialize];
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:name
+                                                         ofType:@"plist"];
+        instance.configs = [NSDictionary dictionaryWithContentsOfFile:path];
+        instance.fileLoaded = name;
+    }
     return instance;
 }
 

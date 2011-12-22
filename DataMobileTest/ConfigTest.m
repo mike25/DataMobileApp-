@@ -14,11 +14,12 @@
 
 - (void)setUp 
 {
-    [Config loadForFileName:@"config-test"];
+    STAssertNotNil([Config loadForFileName:@"config-test"], @"instance has not been initialized");
 }
 
 -(void)testDictionnaryIsLoaded
 {
+    [Config loadForFileName:@"config-test"];
     STAssertNotNil([[Config instance] configs], @"dictionnary is not loaded");
 }
 
@@ -38,7 +39,7 @@
     Config* instance = [Config instance];
     STAssertNotNil([instance configs] , @"no dictionnary is found");
     
-    NSUInteger size = 2 ;
+    NSUInteger size = 3 ;
     STAssertEquals([[instance configs] count], size, @"The number of entries found in the config file is not the one expected");
 }
 

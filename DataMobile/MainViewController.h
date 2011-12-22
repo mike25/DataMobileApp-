@@ -26,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *recordingLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) IBOutlet UIButton *dataButton;
+@property (strong, nonatomic) IBOutlet UILabel *sendingLabel;
 
 @property (strong, nonatomic) AlertViewManager* alertManager;
 @property (weak, nonatomic) DMAppDelegate* appDelegate;

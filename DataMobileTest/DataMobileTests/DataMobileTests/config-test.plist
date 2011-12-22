@@ -2,11 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>distanceFilter</key>
-	<integer>10</integer>
-	<key>insertLocationUrl</key>
-	<string>http://datamb.info.tm/insertGps</string>
-	<key>maxRecordingPeriod</key>
-	<integer>5</integer>
+	<key>key1</key>
+	<string>value1</string>
+	<key>anotherKey</key>
+	<integer>999</integer>
+	<key>url</key>
+	<string>http://datamobile.local/test</string>
 </dict>
 </plist>

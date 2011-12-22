@@ -8,6 +8,7 @@
 
 #import "FileSenderTest.h"
 #import "FileSender.h"
+#import "Config.h"
 
 #import <UIKit/UIKit.h>
 
@@ -34,7 +35,9 @@
 
 - (void)testSendPostData 
 {
-    [sender sendPostData:postDico ToURL:TESTURL];
+    NSString* url = [[Config loadForFileName:@"config-test"] stringValueForKey:@"url"];
+    STAssertNotNil(url, @"url could not have been determined.");
+    [sender sendPostData:postDico ToURL:url];
     
     STAssertNotNil(sender.responseString, @"sender contains the response sent by the server.");
     STAssertEqualObjects(sender.responseString, @"Array\n(\n    [id] => FAKE-ID-999\n    [text] => FAKE-TEXT-999\n)", @"response returned by the server");

@@ -11,6 +11,7 @@
 @interface Config : NSObject
 
 @property (strong, nonatomic) NSDictionary* configs;
+@property (strong, nonatomic) NSString* fileLoaded;
 
 +(Config*)loadForFileName:(NSString*)name;
 +(Config*)instance;
