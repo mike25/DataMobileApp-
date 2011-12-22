@@ -72,7 +72,7 @@
 {
     return [self fetchAllObjects:@"Location"];
 }
- 
+
 - (void)deleteAllLocations
 {
     [self deleteAllObjects:@"Location"];
