@@ -150,7 +150,8 @@
 {
     if(recording)
     {
-        [self displaySend:false];
+        self.startButton.hidden = true;
+        self.stopButton.hidden = false;
         recordingLabel.hidden = false;
     }
     else
@@ -165,8 +166,7 @@
 {
     if(sending)
     {
-        dataLabel.hidden = true;
-        dataButton.hidden = true;
+        [self displaySend:false];
         self.sendingLabel.hidden = false;
     }
     else
