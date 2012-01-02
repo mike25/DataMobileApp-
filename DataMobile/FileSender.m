@@ -22,9 +22,10 @@
 @implementation FileSender
 
 @synthesize error;
-@synthesize responseString;
 
--(void)sendPostData:(NSDictionary*)dico ToURL:(NSString*)url
+-(void)sendRequestWithPostData:(NSDictionary*)dico 
+                                  ToURL:(NSString*)url 
+                           WithDelegate:(id)delegate
 {
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     request.HTTPMethod = @"POST" ;
@@ -35,15 +36,23 @@
     NSData* data = [NSData dataWithBytes:[requestString UTF8String] length:[requestString length]];    
     request.HTTPBody = data;
                 
-    NSURLResponse* response;
-    NSError *c_error ;
-    
-    NSData* returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&c_error];
-    NSString* returnString = [NSString stringWithUTF8String:[returnData bytes]];
-    
-    self.error = c_error;
-    self.responseString = returnString;
+    [[NSURLConnection alloc] initWithRequest:request 
+                                    delegate:delegate 
+                            startImmediately:YES];
 }
+
++(BOOL)errorMessageReceivedFromServer:(NSString*)dataResponse
+{
+    // matching the server response to "An error occured during saving your data"
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"An error occured during saving your data"
+                                                                            options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    NSArray *matches = [regex matchesInString:dataResponse
+                                    options:0
+                                      range:NSMakeRange(0, [dataResponse length])];
+    return [matches count] != 0;
+}
+
 
 /**
  * Code Taken and modified from : git://gist.github.com/916845.git

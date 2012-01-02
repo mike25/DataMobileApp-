@@ -11,8 +11,11 @@
 @interface FileSender : NSObject <NSURLConnectionDelegate>
 
 @property (strong,nonatomic) NSError* error;
-@property (strong,nonatomic) NSString* responseString;
 
--(void)sendPostData:(NSDictionary*)dico ToURL:(NSString*)url;
+-(void)sendRequestWithPostData:(NSDictionary*)dico 
+                                  ToURL:(NSString*)url 
+                           WithDelegate:(id)delegate;
+
++(BOOL)errorMessageReceivedFromServer:(NSString*)dataResponse;
 
 @end

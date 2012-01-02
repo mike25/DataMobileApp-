@@ -39,7 +39,7 @@
     Config* instance = [Config instance];
     STAssertNotNil([instance configs] , @"no dictionnary is found");
     
-    NSUInteger size = 3 ;
+    NSUInteger size = 4 ;
     STAssertEquals([[instance configs] count], size, @"The number of entries found in the config file is not the one expected");
 }
 

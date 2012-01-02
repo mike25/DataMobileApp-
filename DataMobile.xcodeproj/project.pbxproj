@@ -48,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		A101D9AB14A2ACE900DFC446 /* config-test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "config-test.plist"; path = "DataMobileTest/DataMobileTests/DataMobileTests/config-test.plist"; sourceTree = SOURCE_ROOT; };
-		A14AC87A1494383300C36EB6 /* FileSenderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSenderTest.h; sourceTree = "<group>"; };
 		A14AC87B1494383300C36EB6 /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
 		A169767B14873199006E8AB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A16979B01487399F006E8AB7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -197,7 +196,6 @@
 				A18CD07014916949000CC7E7 /* TestTest.h */,
 				A18CD07114916949000CC7E7 /* TestTest.m */,
 				A18CD073149169E9000CC7E7 /* Location.gpx */,
-				A14AC87A1494383300C36EB6 /* FileSenderTest.h */,
 				A14AC87B1494383300C36EB6 /* FileSenderTest.m */,
 				A1FA2790149C2C2F009745EB /* ConfigTest.h */,
 				A1FA2791149C2C2F009745EB /* ConfigTest.m */,

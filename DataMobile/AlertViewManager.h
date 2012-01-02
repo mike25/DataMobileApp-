@@ -16,6 +16,7 @@
 // for tagging alertviews
 typedef enum
 {
+    ERROR_OCCURED = 3,
     RECORD_STARTED = 4,
     RECORD_STOPPED = 5,
     RECORD_STOPPED_CONFIRM = 6,
@@ -30,5 +31,6 @@ typedef enum
 - (UIAlertView*)createSuccessfullStopAlert;
 - (UIAlertView*)createSuccessfullSentAlert;
 - (UIAlertView*)createConfirmStopAlert;
+- (UIAlertView*)createErrorAlertWithErrorMessage:(NSString*)message;
 
 @end

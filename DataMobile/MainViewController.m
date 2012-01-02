@@ -19,6 +19,7 @@
 
 - (void)updateSend;
 - (void)displaySend:(BOOL)display;
+- (void)displaySendIf:(BOOL)display;
 - (void)switchStateToRecording:(BOOL)recording;
 - (void)createUserIdIfNotExists;
 - (void)displaySendingInProgress:(BOOL)sending;
@@ -86,6 +87,7 @@
 - (void)managerStarted
 {
     [self switchStateToRecording:true];
+    [self displaySend:true];
     
     // Defining a Timer to stop recording after x seconds has passed.
     [NSTimer scheduledTimerWithTimeInterval:daysToRecord*3600*24
@@ -118,18 +120,55 @@
                                                     user_id, @"id", nil];
 
     FileSender* fileSender = [[FileSender alloc] init];
-    [fileSender sendPostData:postData 
-                       ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]];
+    [fileSender sendRequestWithPostData:postData
+                       ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]
+                WithDelegate:self];
+}
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSString* data_response = [NSString stringWithUTF8String:[data bytes]];
+    if (![FileSender errorMessageReceivedFromServer:data_response])
+    {
+        [self.appDelegate deleteAllLocations];
+        [[alertManager createSuccessfullSentAlert] show];    
+        [self displaySendingInProgress:false];
+    }
+    else
+    {
+        [self displaySend:true];
+        [[alertManager createErrorAlertWithErrorMessage:data_response] show];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection 
+  didFailWithError:(NSError *)error
+{
+    [[alertManager createErrorAlertWithErrorMessage:[error description]] show];
+    [self displaySend:true];
+}
+
+- (void)createUserIdIfNotExists
+{
+    if([[appDelegate fetchAllObjects:@"User"] count] == 0)
+    {
+        CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
+        CFStringRef UUIDSRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
         
-    [self.appDelegate deleteAllLocations];
-    [[alertManager createSuccessfullSentAlert] show];
-    
-    [self displaySendingInProgress:false];
+        [appDelegate insertUserWithId:[NSString stringWithFormat:@"%@", UUIDSRef]];
+        [appDelegate saveContext];
+    }
 }
 
 - (void)updateSend
 {    
-    [self displaySend:[[self.appDelegate fetchAllLocations] count] != 0 ];
+    [self displaySendIf:[[self.appDelegate fetchAllLocations] count] != 0 ];
+}
+
+- (void)displaySendIf:(BOOL)display
+{
+    [self displaySend:display];
 }
 
 - (void)displaySend:(BOOL)display
@@ -138,6 +177,7 @@
     {
         dataLabel.hidden = false;
         dataButton.hidden = false;
+        sendingLabel.hidden = true;
     }
     else
     {
@@ -158,7 +198,7 @@
     {
         self.startButton.hidden = false;
         self.stopButton.hidden = true;
-        recordingLabel.hidden = true;    
+        recordingLabel.hidden = true;
     }
 }
 
@@ -175,39 +215,19 @@
     }
 }
 
-
-- (void)createUserIdIfNotExists
-{
-    if([[appDelegate fetchAllObjects:@"User"] count] == 0)
-    {
-        CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
-        CFStringRef UUIDSRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
-        
-        [appDelegate insertUserWithId:[NSString stringWithFormat:@"%@", UUIDSRef]];
-        [appDelegate saveContext];
-    }
-}
-
 #pragma mark - View lifecycle
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
+    [super viewDidLoad];    
     [Config loadForFileName:@"config"];
+    
+    [self updateSend];
     
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
     [self createUserIdIfNotExists];
-    
-    NSNotificationCenter* defaultCtr = [NSNotificationCenter defaultCenter];    
-
-    [defaultCtr addObserver:self
-                   selector:@selector(updateSend)
-                       name:UIApplicationWillEnterForegroundNotification
-                     object:[UIApplication sharedApplication]];
-    
     
 }
 
@@ -222,6 +242,7 @@
     [self setStopButton:nil];
     [self setRecordingLabel:nil];
     [self setSendingLabel:nil];
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

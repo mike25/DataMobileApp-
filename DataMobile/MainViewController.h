@@ -16,7 +16,7 @@
 @class DMAppDelegate;
 @class AlertViewManager;
 
-@interface MainViewController : UIViewController <AlertObserver, MyLocationManagerObserver, PickerObserver>
+@interface MainViewController : UIViewController <AlertObserver, MyLocationManagerObserver, PickerObserver, NSURLConnectionDataDelegate>
 {
     @private int daysToRecord;
 }
@@ -40,5 +40,9 @@
 
 - (void)managerStarted;
 - (void)managerStopped;
+
+//- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 
 @end

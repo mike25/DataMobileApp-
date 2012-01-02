@@ -7,6 +7,8 @@
 	<key>anotherKey</key>
 	<integer>999</integer>
 	<key>url</key>
-	<string>http://datamobile.local/test</string>
+	<string>http://datamb.info.tm/test</string>
+	<key>url-insert</key>
+	<string>http://datamb.info.tm/insertGps</string>
 </dict>
 </plist>
