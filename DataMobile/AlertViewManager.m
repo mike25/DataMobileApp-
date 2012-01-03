@@ -64,7 +64,7 @@
                               setTag:RECORD_STOPPED_CONFIRM];
 }
 
-- (UIAlertView*)createErrorAlertWithErrorMessage:(NSString*)message
+- (UIAlertView*)createErrorAlertWithMessage:(NSString*)message
 {
     return [self createOkAlert:@"Error Occured" 
                    withMessage:message

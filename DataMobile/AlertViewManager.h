@@ -31,6 +31,6 @@ typedef enum
 - (UIAlertView*)createSuccessfullStopAlert;
 - (UIAlertView*)createSuccessfullSentAlert;
 - (UIAlertView*)createConfirmStopAlert;
-- (UIAlertView*)createErrorAlertWithErrorMessage:(NSString*)message;
+- (UIAlertView*)createErrorAlertWithMessage:(NSString*)message;
 
 @end

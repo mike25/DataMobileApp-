@@ -35,6 +35,7 @@
     NSString* requestString = [NSString stringWithFormat:[FileSender addQueryStringToUrl:@"" params:dico]]; 
     NSData* data = [NSData dataWithBytes:[requestString UTF8String] length:[requestString length]];    
     request.HTTPBody = data;
+    request.timeoutInterval = 10;
                 
     [[NSURLConnection alloc] initWithRequest:request 
                                     delegate:delegate 

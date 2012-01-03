@@ -17,12 +17,18 @@
 
 @interface MainViewController ()
 
+// For determining the different states of the state button
+typedef enum
+{
+    NO_SEND = 1,
+    SEND_IN_PROGRESS = 2,
+    SEND_BUTTON = 3
+} SendState;
+
+- (void)setSendState:(SendState)state;
 - (void)updateSend;
-- (void)displaySend:(BOOL)display;
-- (void)displaySendIf:(BOOL)display;
 - (void)switchStateToRecording:(BOOL)recording;
 - (void)createUserIdIfNotExists;
-- (void)displaySendingInProgress:(BOOL)sending;
 
 @end
 
@@ -87,7 +93,7 @@
 - (void)managerStarted
 {
     [self switchStateToRecording:true];
-    [self displaySend:true];
+    [self setSendState:SEND_BUTTON];
     
     // Defining a Timer to stop recording after x seconds has passed.
     [NSTimer scheduledTimerWithTimeInterval:daysToRecord*3600*24
@@ -107,7 +113,7 @@
 
 - (IBAction)sendData:(id)sender 
 {
-    [self displaySendingInProgress:true];
+    [self setSendState:SEND_IN_PROGRESS];
     
     NSArray *objects = [self.appDelegate fetchAllLocations];
     
@@ -133,20 +139,20 @@
     {
         [self.appDelegate deleteAllLocations];
         [[alertManager createSuccessfullSentAlert] show];    
-        [self displaySendingInProgress:false];
+        [self setSendState:NO_SEND];
     }
     else
     {
-        [self displaySend:true];
-        [[alertManager createErrorAlertWithErrorMessage:data_response] show];
+        [[alertManager createErrorAlertWithMessage:data_response] show];
+        [self setSendState:SEND_BUTTON];
     }
 }
 
 - (void)connection:(NSURLConnection *)connection 
   didFailWithError:(NSError *)error
-{
-    [[alertManager createErrorAlertWithErrorMessage:[error description]] show];
-    [self displaySend:true];
+{    
+    [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
+    [self setSendState:SEND_BUTTON];
 }
 
 - (void)createUserIdIfNotExists
@@ -161,29 +167,43 @@
     }
 }
 
+- (void)setSendState:(SendState)state
+{
+    switch (state) 
+    {
+        case NO_SEND:
+        {            
+            dataLabel.hidden = true;
+            dataButton.hidden = true;
+            sendingLabel.hidden = true;        
+        }
+            break;
+
+        case SEND_IN_PROGRESS:
+        {
+            dataLabel.hidden = true;
+            dataButton.hidden = true;
+            sendingLabel.hidden = false;                    
+        }
+            break;
+            
+        case SEND_BUTTON:
+        {
+            dataLabel.hidden = false;
+            dataButton.hidden = false;
+            sendingLabel.hidden = true;                    
+        }
+            break;            
+            
+        default:
+            break;
+    }
+}
+
 - (void)updateSend
 {    
-    [self displaySendIf:[[self.appDelegate fetchAllLocations] count] != 0 ];
-}
-
-- (void)displaySendIf:(BOOL)display
-{
-    [self displaySend:display];
-}
-
-- (void)displaySend:(BOOL)display
-{
-    if(display)
-    {
-        dataLabel.hidden = false;
-        dataButton.hidden = false;
-        sendingLabel.hidden = true;
-    }
-    else
-    {
-        dataLabel.hidden = true;
-        dataButton.hidden = true;
-    }
+    [self setSendState:([[self.appDelegate fetchAllLocations] count] != 0) ? SEND_BUTTON 
+                                                                            :NO_SEND] ;
 }
 
 - (void)switchStateToRecording:(BOOL)recording
@@ -202,23 +222,9 @@
     }
 }
 
-- (void)displaySendingInProgress:(BOOL)sending
-{
-    if(sending)
-    {
-        [self displaySend:false];
-        self.sendingLabel.hidden = false;
-    }
-    else
-    {
-        self.sendingLabel.hidden = true;
-    }
-}
-
 #pragma mark - View lifecycle
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];    
