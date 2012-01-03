@@ -15,8 +15,6 @@
 #import "FileSender.h"
 #import "Config.h"
 
-@interface MainViewController ()
-
 // For determining the different states of the state button
 typedef enum
 {
@@ -24,6 +22,11 @@ typedef enum
     SEND_IN_PROGRESS = 2,
     SEND_BUTTON = 3
 } SendState;
+
+@interface MainViewController () 
+{
+    @private SendState sendState;
+}
 
 - (void)setSendState:(SendState)state;
 - (void)updateSend;
@@ -93,7 +96,6 @@ typedef enum
 - (void)managerStarted
 {
     [self switchStateToRecording:true];
-    [self setSendState:SEND_BUTTON];
     
     // Defining a Timer to stop recording after x seconds has passed.
     [NSTimer scheduledTimerWithTimeInterval:daysToRecord*3600*24
@@ -109,6 +111,14 @@ typedef enum
 {
     [self switchStateToRecording:false];
     [[alertManager createSuccessfullStopAlert] show];    
+}
+
+- (void)didUpdate
+{
+    if (sendState != SEND_IN_PROGRESS)
+    {
+        [self setSendState:SEND_BUTTON];
+    }
 }
 
 - (IBAction)sendData:(id)sender 
@@ -169,6 +179,7 @@ typedef enum
 
 - (void)setSendState:(SendState)state
 {
+    sendState = state;
     switch (state) 
     {
         case NO_SEND:
@@ -203,7 +214,7 @@ typedef enum
 - (void)updateSend
 {    
     [self setSendState:([[self.appDelegate fetchAllLocations] count] != 0) ? SEND_BUTTON 
-                                                                            :NO_SEND] ;
+                                                                            :sendState] ;
 }
 
 - (void)switchStateToRecording:(BOOL)recording

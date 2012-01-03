@@ -40,6 +40,7 @@
 
 - (void)managerStarted;
 - (void)managerStopped;
+- (void)didUpdate;
 
 //- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;

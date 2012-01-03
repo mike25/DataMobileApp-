@@ -52,6 +52,8 @@
                                   newLocation.timestamp, @"timestamp",
                                   nil];
     [location setValuesForKeysWithDictionary:locationDico];
+    
+    [locationManager.observer didUpdate];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;

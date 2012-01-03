@@ -13,5 +13,6 @@
 @optional
 - (void)managerStarted;
 - (void)managerStopped;
+- (void)didUpdate;
 
 @end
