@@ -20,7 +20,6 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)insertLocation:(CLLocation*)newLocation;
-
 - (void)insertUserWithId:(NSString*)uuid;
 
 - (NSArray*)fetchAllLocations;
