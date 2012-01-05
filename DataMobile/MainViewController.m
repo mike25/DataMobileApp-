@@ -14,6 +14,7 @@
 #import "DatePickerController.h"
 #import "FileSender.h"
 #import "Config.h"
+#import "MyLocationManager.h"
 
 // For determining the different states of the state button
 typedef enum
@@ -32,6 +33,7 @@ typedef enum
 - (void)updateSend;
 - (void)switchStateToRecording:(BOOL)recording;
 - (void)createUserIdIfNotExists;
+- (void)startLocationManager;
 
 @end
 
@@ -45,7 +47,9 @@ typedef enum
 @synthesize sendingLabel;
 
 @synthesize alertManager;
+
 @synthesize appDelegate;
+@synthesize locationManager;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -84,13 +88,13 @@ typedef enum
 
 - (void)stopRecordingConfirmed
 {
-    [appDelegate stopLocationManager];
+    [locationManager stopManager];
 }
 
 - (void)inputSelectedWithDay:(NSInteger)numOfDays;
 {
     daysToRecord = numOfDays;
-    [appDelegate startManagerWithObserver:self];
+    [self startLocationManager];
 }
 
 - (void)managerStarted
@@ -99,8 +103,8 @@ typedef enum
     
     // Defining a Timer to stop recording after x seconds has passed.
     [NSTimer scheduledTimerWithTimeInterval:daysToRecord*3600*24
-                                     target:self.appDelegate
-                                   selector:@selector(stopLocationManager) 
+                                     target:self.locationManager
+                                   selector:@selector(stopManager) 
                                    userInfo:nil 
                                     repeats:NO];
     
@@ -113,14 +117,6 @@ typedef enum
     [[alertManager createSuccessfullStopAlert] show];    
 }
 
-- (void)didUpdate
-{
-    if (sendState != SEND_IN_PROGRESS)
-    {
-        [self setSendState:SEND_BUTTON];
-    }
-}
-
 - (IBAction)sendData:(id)sender 
 {
     [self setSendState:SEND_IN_PROGRESS];
@@ -128,8 +124,7 @@ typedef enum
     NSArray *objects = [self.appDelegate fetchAllLocations];
     
     NSString* string_objects = [CSVExporter exportObjects:objects toLocation:@"locations.csv"];    
-    NSString* user_id = [[[appDelegate fetchAllObjects:@"User"] objectAtIndex:0] valueForKey:@"id"];
-    
+    NSString* user_id = [[[appDelegate fetchAllObjects:@"User"] objectAtIndex:0] valueForKey:@"id"];    
     
     NSDictionary* postData = [[NSDictionary alloc] initWithObjectsAndKeys:
                                                     string_objects, @"text",
@@ -139,6 +134,17 @@ typedef enum
     [fileSender sendRequestWithPostData:postData
                        ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]
                 WithDelegate:self];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation
+{
+    [self.appDelegate insertLocation:newLocation];
+    if (sendState != SEND_IN_PROGRESS)
+    {
+        [self setSendState:SEND_BUTTON];
+    }
 }
 
 
@@ -231,6 +237,13 @@ typedef enum
         self.stopButton.hidden = true;
         recordingLabel.hidden = true;
     }
+}
+
+- (void)startLocationManager
+{
+    locationManager = [[MyLocationManager alloc] init];
+    locationManager.observer = self;
+    [locationManager startManagerWithDelegate:self];
 }
 
 #pragma mark - View lifecycle

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyLocationManagerObserver.h"
 
 @class MyLocationManager;
+@class CLLocation;
 
-@interface DMAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
+@interface DMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -19,16 +19,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (strong, nonatomic) MyLocationManager* locationManager;
-
-- (void)startManagerWithObserver:(id)observer;
-- (void)stopLocationManager;
-
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation 
-           fromLocation:(CLLocation *)oldLocation;
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
+- (void)insertLocation:(CLLocation*)newLocation;
 
 - (void)insertUserWithId:(NSString*)uuid;
 

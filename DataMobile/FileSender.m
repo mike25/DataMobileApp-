@@ -7,6 +7,7 @@
 //
 
 #import "FileSender.h"
+#import "Config.h"
 
 
 @interface FileSender ()
@@ -35,7 +36,7 @@
     NSString* requestString = [NSString stringWithFormat:[FileSender addQueryStringToUrl:@"" params:dico]]; 
     NSData* data = [NSData dataWithBytes:[requestString UTF8String] length:[requestString length]];    
     request.HTTPBody = data;
-    request.timeoutInterval = 10;
+    request.timeoutInterval = [[Config instance] integerValueForKey:@"connexionTimeoutSeconds"];
                 
     [[NSURLConnection alloc] initWithRequest:request 
                                     delegate:delegate 

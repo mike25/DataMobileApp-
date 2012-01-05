@@ -17,25 +17,7 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
-@synthesize locationManager;
-
-- (void)startManagerWithObserver:(id)observer
-{
-    self.locationManager = [[MyLocationManager alloc] init];
-    locationManager.observer = observer;
-    [locationManager startManagerWithDelegate:self];
-}
-
-- (void)stopLocationManager
-{
-    [self.locationManager stopManager];
-    locationManager = nil;
-    [self saveContext];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation 
-           fromLocation:(CLLocation *)oldLocation;
+- (void)insertLocation:(CLLocation*)newLocation
 {
     // Save new Location :
     NSManagedObject* location = [NSEntityDescription insertNewObjectForEntityForName:@"Location"
@@ -53,12 +35,6 @@
                                   nil];
     [location setValuesForKeysWithDictionary:locationDico];
     
-    [locationManager.observer didUpdate];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
-{
-    // DO nothing for now.
 }
 
 - (void)insertUserWithId:(NSString*)uuid
