@@ -3,12 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>distanceFilter</key>
-	<integer>10</integer>
+	<integer>75</integer>
 	<key>insertLocationUrl</key>
 	<string>http://datamb.info.tm/insertGps</string>
 	<key>maxRecordingPeriod</key>
 	<integer>5</integer>
 	<key>connexionTimeoutSeconds</key>
+	<integer>10</integer>
+	<key>Accuracy</key>
 	<integer>10</integer>
 </dict>
 </plist>

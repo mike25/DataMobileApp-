@@ -18,7 +18,7 @@
 - (void)startManagerWithDelegate:(id)delegate
 {
     self.manager = [[CLLocationManager alloc] init];
-    [self.manager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+    [self.manager setDesiredAccuracy:[[Config instance] integerValueForKey:@"Accuracy"]];
     self.manager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
     self.manager.purpose = @"Do you want me to record your GPS Location ?" ;
     

@@ -41,6 +41,9 @@
     didUpdateToLocation:(CLLocation *)newLocation 
            fromLocation:(CLLocation *)oldLocation;
 
+- (void)locationManager:(CLLocationManager *)manager 
+       didFailWithError:(NSError *)error;
+
 - (void)inputSelectedWithDay:(NSInteger)numOfDays;
 - (void)stopRecordingConfirmed;
 
