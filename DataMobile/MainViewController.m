@@ -15,22 +15,10 @@
 #import "FileSender.h"
 #import "Config.h"
 #import "MyLocationManager.h"
-
-// For determining the different states of the state button
-typedef enum
-{
-    NO_SEND = 1,
-    SEND_IN_PROGRESS = 2,
-    SEND_BUTTON = 3
-} SendState;
+#import "SendState.h"
 
 @interface MainViewController () 
-{
-    @private SendState sendState;
-}
 
-- (void)setSendState:(SendState)state;
-- (void)updateSend;
 - (void)switchStateToRecording:(BOOL)recording;
 - (void)createUserIdIfNotExists;
 - (void)startLocationManager;
@@ -47,6 +35,7 @@ typedef enum
 @synthesize sendingLabel;
 
 @synthesize alertManager;
+@synthesize sendState;
 
 @synthesize appDelegate;
 @synthesize locationManager;
@@ -119,8 +108,8 @@ typedef enum
 }
 
 - (IBAction)sendData:(id)sender 
-{
-    [self setSendState:SEND_IN_PROGRESS];
+{    
+    [sendState didSendDataForController:self];
     
     NSArray *objects = [self.appDelegate fetchAllLocations];
     
@@ -142,10 +131,7 @@ typedef enum
            fromLocation:(CLLocation *)oldLocation
 {
     [self.appDelegate insertLocation:newLocation];
-    if (sendState != SEND_IN_PROGRESS)
-    {
-        [self setSendState:SEND_BUTTON];
-    }
+    [self.sendState locationManagerDidUpdateForController:self];
 }
 
 
@@ -155,13 +141,13 @@ typedef enum
     if (![FileSender errorMessageReceivedFromServer:data_response])
     {
         [self.appDelegate deleteAllLocations];
-        [[alertManager createSuccessfullSentAlert] show];    
-        [self setSendState:NO_SEND];
+        [[alertManager createSuccessfullSentAlert] show];
+        [sendState connectionDidReceiveDataWithoutErrorForController:self];
     }
     else
     {
         [[alertManager createErrorAlertWithMessage:data_response] show];
-        [self setSendState:SEND_BUTTON];
+        [sendState connectionDidReceiveDataWithErrorForController:self];
     }
 }
 
@@ -169,7 +155,7 @@ typedef enum
   didFailWithError:(NSError *)error
 {    
     [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
-    [self setSendState:SEND_BUTTON];
+    [sendState connectionDidFailForController:self];
 }
 
 - (void)createUserIdIfNotExists
@@ -182,46 +168,6 @@ typedef enum
         [appDelegate insertUserWithId:[NSString stringWithFormat:@"%@", UUIDSRef]];
         [appDelegate saveContext];
     }
-}
-
-- (void)setSendState:(SendState)state
-{
-    sendState = state;
-    switch (state) 
-    {
-        case NO_SEND:
-        {            
-            dataLabel.hidden = true;
-            dataButton.hidden = true;
-            sendingLabel.hidden = true;        
-        }
-            break;
-
-        case SEND_IN_PROGRESS:
-        {
-            dataLabel.hidden = true;
-            dataButton.hidden = true;
-            sendingLabel.hidden = false;                    
-        }
-            break;
-            
-        case SEND_BUTTON:
-        {
-            dataLabel.hidden = false;
-            dataButton.hidden = false;
-            sendingLabel.hidden = true;                    
-        }
-            break;            
-            
-        default:
-            break;
-    }
-}
-
-- (void)updateSend
-{    
-    [self setSendState:([[self.appDelegate fetchAllLocations] count] != 0) ? SEND_BUTTON 
-                                                                            :sendState] ;
 }
 
 - (void)switchStateToRecording:(BOOL)recording
@@ -255,7 +201,7 @@ typedef enum
     [super viewDidLoad];    
     [Config loadForFileName:@"config"];
     
-    [self updateSend];
+    self.sendState = [SendState determineInitialStateForController:self];
     
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
     [self createUserIdIfNotExists];

@@ -164,31 +164,6 @@
             <point key="canvasLocation" x="457" y="67"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DatePickerController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DatePickerController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="numberOfDaysSelected:"/>
-                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="pickerTitleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sendData:"/>
-                <relationship kind="action" name="startRecording:"/>
-                <relationship kind="action" name="stopRecording:"/>
-                <relationship kind="outlet" name="dataButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="dataLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="recordingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sendingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stopButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

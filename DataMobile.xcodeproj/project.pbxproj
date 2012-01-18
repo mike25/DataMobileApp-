@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
+		3CE9FED714C650D800CC79C9 /* NoSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED614C650D800CC79C9 /* NoSendState.m */; };
+		3CE9FEDA14C650FE00CC79C9 /* SendingSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED914C650FE00CC79C9 /* SendingSendState.m */; };
+		3CE9FEDD14C6511B00CC79C9 /* SendableSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */; };
 		A101D9AC14A2ACE900DFC446 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
 		A101D9AD14A2ADAE00DFC446 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
 		A14AC87C1494383300C36EB6 /* FileSenderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A14AC87B1494383300C36EB6 /* FileSenderTest.m */; };
@@ -47,6 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3CE9FECC14C6472000CC79C9 /* SendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendState.h; path = State/SendState.h; sourceTree = "<group>"; };
+		3CE9FED114C64D9E00CC79C9 /* SendState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendState.m; sourceTree = "<group>"; };
+		3CE9FED514C650D800CC79C9 /* NoSendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSendState.h; sourceTree = "<group>"; };
+		3CE9FED614C650D800CC79C9 /* NoSendState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoSendState.m; sourceTree = "<group>"; };
+		3CE9FED814C650FE00CC79C9 /* SendingSendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingSendState.h; sourceTree = "<group>"; };
+		3CE9FED914C650FE00CC79C9 /* SendingSendState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingSendState.m; sourceTree = "<group>"; };
+		3CE9FEDB14C6511A00CC79C9 /* SendableSendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendableSendState.h; sourceTree = "<group>"; };
+		3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendableSendState.m; sourceTree = "<group>"; };
 		A101D9AB14A2ACE900DFC446 /* config-test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "config-test.plist"; path = "DataMobileTest/DataMobileTests/DataMobileTests/config-test.plist"; sourceTree = SOURCE_ROOT; };
 		A14AC87B1494383300C36EB6 /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
 		A169767B14873199006E8AB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -122,6 +134,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3CE9FED414C6509500CC79C9 /* SendStates */ = {
+			isa = PBXGroup;
+			children = (
+				3CE9FECC14C6472000CC79C9 /* SendState.h */,
+				3CE9FED114C64D9E00CC79C9 /* SendState.m */,
+				3CE9FED514C650D800CC79C9 /* NoSendState.h */,
+				3CE9FED614C650D800CC79C9 /* NoSendState.m */,
+				3CE9FED814C650FE00CC79C9 /* SendingSendState.h */,
+				3CE9FED914C650FE00CC79C9 /* SendingSendState.m */,
+				3CE9FEDB14C6511A00CC79C9 /* SendableSendState.h */,
+				3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */,
+			);
+			name = SendStates;
+			sourceTree = "<group>";
+		};
 		A16E8BEE148075B800F66E96 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +192,7 @@
 				A196CDEF1480790600F61C06 /* MainViewController.h */,
 				A196CDF01480790700F61C06 /* MainViewController.m */,
 				A16E8C0E148075B800F66E96 /* DMAppDelegate.h */,
+				3CE9FED414C6509500CC79C9 /* SendStates */,
 				A16E8C0F148075B800F66E96 /* DMAppDelegate.m */,
 				A1FBE3651486F2E700BB3D5F /* AlertManager */,
 				A1FBE3631486F18400BB3D5F /* DatePicker */,
@@ -378,6 +406,10 @@
 				A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */,
 				A16AEBD7148432CD0079A0AA /* DatePickerController.m in Sources */,
 				A1FA278E149C22D4009745EB /* Config.m in Sources */,
+				3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */,
+				3CE9FED714C650D800CC79C9 /* NoSendState.m in Sources */,
+				3CE9FEDA14C650FE00CC79C9 /* SendingSendState.m in Sources */,
+				3CE9FEDD14C6511B00CC79C9 /* SendableSendState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

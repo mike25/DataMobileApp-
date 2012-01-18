@@ -15,6 +15,7 @@
 @class MyLocationManager;
 @class DMAppDelegate;
 @class AlertViewManager;
+@class SendState;
 
 @interface MainViewController : UIViewController <AlertObserver, MyLocationManagerObserver, CLLocationManagerDelegate, PickerObserver, NSURLConnectionDataDelegate>
 {
@@ -30,6 +31,7 @@
 
 @property (strong, nonatomic) AlertViewManager* alertManager;
 @property (strong, nonatomic) MyLocationManager* locationManager;
+@property (strong, nonatomic) SendState* sendState;
 
 @property (weak, nonatomic) DMAppDelegate* appDelegate;
 
