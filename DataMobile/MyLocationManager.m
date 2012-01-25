@@ -29,7 +29,7 @@
 
 - (void)stopManager
 {
-    [self.manager stopUpdatingLocation];
+    [self.manager stopMonitoringSignificantLocationChanges];
     self.manager = nil;
     [self.observer managerStopped];
 }
