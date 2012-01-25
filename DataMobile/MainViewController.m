@@ -104,7 +104,7 @@
 - (void)managerStopped
 {
     [self switchStateToRecording:false];
-    [[alertManager createSuccessfullStopAlert] show];    
+    [[alertManager createSuccessfullStopAlert] show];
 }
 
 - (IBAction)sendData:(id)sender 
@@ -132,13 +132,21 @@
 {
     [self.appDelegate insertLocation:newLocation];
     [self.sendState locationManagerDidUpdateForController:self];
+    [manager stopUpdatingLocation]; 
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
        didFailWithError:(NSError *)error
 {
-    [locationManager stopManager];
-    [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
+    if ([error domain] == kCLErrorDomain && [error code] == 0) 
+    {
+        [manager startUpdatingLocation];
+    }
+    else
+    {
+        [locationManager stopManager];
+        [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data

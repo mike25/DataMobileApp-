@@ -12,6 +12,8 @@
 @interface MyLocationManager : NSObject
 
 @property (weak, nonatomic) id<MyLocationManagerObserver> observer;
+@property (weak, nonatomic) id myDelegate;
+
 @property (strong,  nonatomic) CLLocationManager* manager;
 
 - (void)startManagerWithDelegate:(id)delegate;
