@@ -134,6 +134,12 @@
     [self.sendState locationManagerDidUpdateForController:self];
 }
 
+- (void)locationManager:(CLLocationManager *)manager 
+       didFailWithError:(NSError *)error
+{
+    [locationManager stopManager];
+    [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
+}
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {

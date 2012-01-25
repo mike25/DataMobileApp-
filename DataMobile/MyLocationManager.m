@@ -23,7 +23,7 @@
     self.manager.purpose = @"Do you want me to record your GPS Location ?" ;
     
     self.manager.delegate = delegate;
-    [self.manager startUpdatingLocation];
+    [self.manager startMonitoringSignificantLocationChanges];
     [self.observer managerStarted];
 }
 
