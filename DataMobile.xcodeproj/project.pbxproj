@@ -106,7 +106,6 @@
 		A1FA2791149C2C2F009745EB /* ConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
 		A1FBE3611486E81200BB3D5F /* PickerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerObserver.h; sourceTree = "<group>"; };
 		A1FBE3641486F1C200BB3D5F /* AlertObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertObserver.h; sourceTree = "<group>"; };
-		A1FBE3661486F37600BB3D5F /* MyLocationManagerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocationManagerObserver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,7 +278,6 @@
 			children = (
 				A16AEBD11483F0480079A0AA /* MyLocationManager.h */,
 				A16AEBD21483F0480079A0AA /* MyLocationManager.m */,
-				A1FBE3661486F37600BB3D5F /* MyLocationManagerObserver.h */,
 			);
 			name = MyLocationManager;
 			sourceTree = "<group>";

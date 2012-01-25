@@ -7,51 +7,42 @@
 //
 
 #import "MyLocationManager.h"
-#import "MyLocationManagerObserver.h"
 #import "Config.h"
-
-@interface MyLocationManager ()
-
-- (void)update;
-
-@end
 
 @implementation MyLocationManager
 
 @synthesize manager;
-@synthesize observer;
 @synthesize myDelegate;
+@synthesize repeatingTimer;
 
 - (void)startManagerWithDelegate:(id)delegate
 {
-    self.manager = [[CLLocationManager alloc] init];
-    [self.manager setDesiredAccuracy:[[Config instance] integerValueForKey:@"Accuracy"]];
-    self.manager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
-    self.manager.purpose = @"Do you want me to record your GPS Location ?" ;
+    manager = [[CLLocationManager alloc] init];
+    [manager setDesiredAccuracy:[[Config instance] integerValueForKey:@"Accuracy"]];
+    manager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
+    manager.purpose = @"Do you want me to record your GPS Location ?" ;    
+    manager.delegate = delegate;
     
-    myDelegate = delegate;
-
-    [self update];
-    [NSTimer scheduledTimerWithTimeInterval:600 
-                                     target:self
-                                   selector:@selector(update) 
+    [manager startUpdatingLocation];
+    /*repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:5
+                                     target:manager
+                                   selector:@selector(startUpdatingLocation) 
                                    userInfo:nil
-                                    repeats:YES];     
-    [self.observer managerStarted];
+                                    repeats:YES];*/
 }
 
 - (void)stopManager
 {
-    [self.manager stopUpdatingLocation];      
-    self.manager = nil;
-    
-    [self.observer managerStopped];
-}
 
-- (void)update
-{
-    self.manager.delegate = myDelegate;
-    [self.manager startUpdatingLocation];
+    [repeatingTimer invalidate];
+    manager.delegate = nil;
+    [manager stopUpdatingLocation];
+        
+    self.manager = nil;
+    repeatingTimer = nil;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidStopUpdatingLocation" 
+                                                        object:self];
 }
 
 @end

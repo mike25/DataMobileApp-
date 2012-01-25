@@ -21,7 +21,6 @@
 
 - (void)switchStateToRecording:(BOOL)recording;
 - (void)createUserIdIfNotExists;
-- (void)startLocationManager;
 
 @end
 
@@ -40,7 +39,6 @@
 @synthesize appDelegate;
 @synthesize locationManager;
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -53,8 +51,9 @@
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+    
     [self.appDelegate saveContext];
+    [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
 }
@@ -84,12 +83,14 @@
 - (void)inputSelectedWithDay:(NSInteger)numOfDays;
 {
     daysToRecord = numOfDays;
-    [self startLocationManager];
-}
-
-- (void)managerStarted
-{
-    [self switchStateToRecording:true];
+    
+    /* start Recording */
+    locationManager = [[MyLocationManager alloc] init];
+    [locationManager startManagerWithDelegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(managerDidStopUpdatingLocation)
+                                                 name:@"ManagerDidStopUpdatingLocation" 
+                                               object:locationManager];
     
     // Defining a Timer to stop recording after x seconds has passed.
     [NSTimer scheduledTimerWithTimeInterval:daysToRecord*3600*24
@@ -97,11 +98,12 @@
                                    selector:@selector(stopManager) 
                                    userInfo:nil 
                                     repeats:NO];
-    
-    [[alertManager createSuccessfullStartAlert] show];
+
+    [self switchStateToRecording:true];
+    [[alertManager createSuccessfullStartAlert] show];    
 }
 
-- (void)managerStopped
+- (void)managerDidStopUpdatingLocation
 {
     [self switchStateToRecording:false];
     [[alertManager createSuccessfullStopAlert] show];
@@ -132,7 +134,9 @@
 {
     [self.appDelegate insertLocation:newLocation];
     [self.sendState locationManagerDidUpdateForController:self];
-    [manager stopUpdatingLocation]; 
+    
+    [manager stopUpdatingLocation];
+    NSLog(@"didupdatecalled");
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
@@ -200,13 +204,6 @@
     }
 }
 
-- (void)startLocationManager
-{
-    locationManager = [[MyLocationManager alloc] init];
-    locationManager.observer = self;
-    [locationManager startManagerWithDelegate:self];
-}
-
 #pragma mark - View lifecycle
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -219,7 +216,6 @@
     
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
     [self createUserIdIfNotExists];
-    
 }
 
 - (void)viewDidUnload

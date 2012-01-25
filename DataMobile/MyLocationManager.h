@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MyLocationManagerObserver.h"
 
 @interface MyLocationManager : NSObject
 
-@property (weak, nonatomic) id<MyLocationManagerObserver> observer;
 @property (weak, nonatomic) id myDelegate;
 
 @property (strong,  nonatomic) CLLocationManager* manager;
+@property (strong, nonatomic) NSTimer* repeatingTimer;
 
 - (void)startManagerWithDelegate:(id)delegate;
 - (void)stopManager;
