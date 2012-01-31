@@ -7,31 +7,47 @@
 //
 
 #import "MyLocationManager.h"
-#import "MyLocationManagerObserver.h"
 #import "Config.h"
 
 @implementation MyLocationManager
 
 @synthesize manager;
-@synthesize observer;
+@synthesize repeatingTimer;
 
 - (void)startManagerWithDelegate:(id)delegate
 {
+    UIApplication *app = [UIApplication sharedApplication];
+    
+    UIBackgroundTaskIdentifier bgTask = [app beginBackgroundTaskWithExpirationHandler:^{ 
+        [app endBackgroundTask:bgTask];
+    }];
+    
     self.manager = [[CLLocationManager alloc] init];
     [self.manager setDesiredAccuracy:[[Config instance] integerValueForKey:@"Accuracy"]];
     self.manager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
     self.manager.purpose = @"Do you want me to record your GPS Location ?" ;
-    
     self.manager.delegate = delegate;
-    [self.manager startMonitoringSignificantLocationChanges];
-    [self.observer managerStarted];
+    
+    repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:300 
+                                     target:manager
+                                   selector:@selector(startUpdatingLocation) 
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    [self.manager startUpdatingLocation];
 }
 
 - (void)stopManager
 {
-    [self.manager stopMonitoringSignificantLocationChanges];
+    [repeatingTimer invalidate];
+    manager.delegate = nil;
+    [manager stopUpdatingLocation];
+    
     self.manager = nil;
-    [self.observer managerStopped];
+    repeatingTimer = nil;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidStopUpdatingLocation" 
+                                                        object:self];
 }
 
 

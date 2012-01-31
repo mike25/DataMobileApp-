@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "AlertObserver.h"
-#import "MyLocationManagerObserver.h"
 #import "PickerObserver.h"
 
 @class MyLocationManager;
@@ -17,7 +16,7 @@
 @class AlertViewManager;
 @class SendState;
 
-@interface MainViewController : UIViewController <AlertObserver, MyLocationManagerObserver, CLLocationManagerDelegate, PickerObserver, NSURLConnectionDataDelegate>
+@interface MainViewController : UIViewController <AlertObserver, CLLocationManagerDelegate, PickerObserver, NSURLConnectionDataDelegate>
 {
     @private int daysToRecord;
 }
@@ -49,8 +48,7 @@
 - (void)inputSelectedWithDay:(NSInteger)numOfDays;
 - (void)stopRecordingConfirmed;
 
-- (void)managerStarted;
-- (void)managerStopped;
+- (void)managerDidStopUpdatingLocation;
 
 //- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;

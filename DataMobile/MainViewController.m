@@ -21,7 +21,6 @@
 
 - (void)switchStateToRecording:(BOOL)recording;
 - (void)createUserIdIfNotExists;
-- (void)startLocationManager;
 
 @end
 
@@ -84,12 +83,14 @@
 - (void)inputSelectedWithDay:(NSInteger)numOfDays;
 {
     daysToRecord = numOfDays;
-    [self startLocationManager];
-}
-
-- (void)managerStarted
-{
-    [self switchStateToRecording:true];
+    
+    locationManager = [[MyLocationManager alloc] init];
+    [locationManager startManagerWithDelegate:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(managerDidStopUpdatingLocation)
+                                                 name:@"ManagerDidStopUpdatingLocation" 
+                                               object:locationManager];
     
     // Defining a Timer to stop recording after x seconds has passed.
     [NSTimer scheduledTimerWithTimeInterval:daysToRecord*3600*24
@@ -98,10 +99,11 @@
                                    userInfo:nil 
                                     repeats:NO];
     
+    [self switchStateToRecording:true];
     [[alertManager createSuccessfullStartAlert] show];
 }
 
-- (void)managerStopped
+- (void)managerDidStopUpdatingLocation
 {
     [self switchStateToRecording:false];
     [[alertManager createSuccessfullStopAlert] show];    
@@ -132,6 +134,9 @@
 {
     [self.appDelegate insertLocation:newLocation];
     [self.sendState locationManagerDidUpdateForController:self];
+    
+    manager.delegate = nil;
+    [manager stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
@@ -190,13 +195,6 @@
         self.stopButton.hidden = true;
         recordingLabel.hidden = true;
     }
-}
-
-- (void)startLocationManager
-{
-    locationManager = [[MyLocationManager alloc] init];
-    locationManager.observer = self;
-    [locationManager startManagerWithDelegate:self];
 }
 
 #pragma mark - View lifecycle
