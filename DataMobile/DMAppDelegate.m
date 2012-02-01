@@ -180,7 +180,7 @@ BOOL inBackground;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		while (inBackground == YES) {
             
-			[NSThread sleepForTimeInterval:(10)];
+			[NSThread sleepForTimeInterval:(120)];
             
             [locationManager update];
 
