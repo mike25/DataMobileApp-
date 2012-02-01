@@ -37,7 +37,6 @@
 @synthesize sendState;
 
 @synthesize appDelegate;
-@synthesize locationManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,6 +57,16 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (IBAction)stopRecording:(id)sender 
+{
+    [[alertManager createConfirmStopAlert] show];
+}
+
+- (void)stopRecordingConfirmed
+{
+    [appDelegate stopUpdatingLocations];
+}
+
 - (IBAction)startRecording:(id)sender 
 {
     alertManager = [[AlertViewManager alloc] init];
@@ -70,43 +79,35 @@
     [self presentModalViewController:picker animated:YES];
 }
 
-- (IBAction)stopRecording:(id)sender 
-{
-    [[alertManager createConfirmStopAlert] show];
-}
-
-- (void)stopRecordingConfirmed
-{
-    [locationManager stopManager];
-}
-
 - (void)inputSelectedWithDay:(NSInteger)numOfDays;
 {
-    daysToRecord = numOfDays;
+    [appDelegate startUpdatingLocationsForDays:numOfDays];
     
-    /* start Recording */
-    locationManager = [[MyLocationManager alloc] init];
-    [locationManager startManagerWithDelegate:self];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(managerDidStopUpdatingLocation)
                                                  name:@"ManagerDidStopUpdatingLocation" 
-                                               object:locationManager];
-    
-    // Defining a Timer to stop recording after x seconds has passed.
-    [NSTimer scheduledTimerWithTimeInterval:daysToRecord*3600*24
-                                     target:self.locationManager
-                                   selector:@selector(stopManager) 
-                                   userInfo:nil 
-                                    repeats:NO];
+                                               object:appDelegate.locationManager];
 
     [self switchStateToRecording:true];
     [[alertManager createSuccessfullStartAlert] show];    
+    [self.sendState locationManagerDidUpdateForController:self];
 }
 
 - (void)managerDidStopUpdatingLocation
 {
     [self switchStateToRecording:false];
     [[alertManager createSuccessfullStopAlert] show];
+}
+
+- (void)managerDidFailWithError:(NSNotification *)notification
+{
+    NSError* error = (NSError*)[notification userInfo];
+    [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
+}
+
+- (void)managerDidUpdate
+{
+    [sendState locationManagerDidUpdateForController:self];
 }
 
 - (IBAction)sendData:(id)sender 
@@ -119,46 +120,22 @@
     NSString* user_id = [[[appDelegate fetchAllObjects:@"User"] objectAtIndex:0] valueForKey:@"id"];    
     
     NSDictionary* postData = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                    string_objects, @"text",
-                                                    user_id, @"id", nil];
-
+                              string_objects, @"text",
+                              user_id, @"id", nil];
+    
     FileSender* fileSender = [[FileSender alloc] init];
     [fileSender sendRequestWithPostData:postData
-                       ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]
-                WithDelegate:self];
+                                  ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]
+                           WithDelegate:self];
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation 
-           fromLocation:(CLLocation *)oldLocation
-{
-    [self.appDelegate insertLocation:newLocation];
-    [self.sendState locationManagerDidUpdateForController:self];
-    
-    [manager stopUpdatingLocation];
-    NSLog(@"didupdatecalled");
-}
-
-- (void)locationManager:(CLLocationManager *)manager 
-       didFailWithError:(NSError *)error
-{
-    if ([error domain] == kCLErrorDomain && [error code] == 0) 
-    {
-        [manager startUpdatingLocation];
-    }
-    else
-    {
-        [locationManager stopManager];
-        [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
-    }
-}
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     NSString* data_response = [NSString stringWithUTF8String:[data bytes]];
     if (![FileSender errorMessageReceivedFromServer:data_response])
     {
-        [self.appDelegate deleteAllLocations];
+        [appDelegate deleteAllLocations];
         [[alertManager createSuccessfullSentAlert] show];
         [sendState connectionDidReceiveDataWithoutErrorForController:self];
     }
@@ -215,6 +192,17 @@
     self.sendState = [SendState determineInitialStateForController:self];
     
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ManagerDidFailWithError)
+                                                 name:@"ManagerDidFailWithError" 
+                                               object:appDelegate];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(managerDidUpdate)
+                                                 name:@"ManagerDidUpdateLocation" 
+                                               object:appDelegate];
+    
     [self createUserIdIfNotExists];
 }
 

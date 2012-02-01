@@ -16,6 +16,7 @@
 @synthesize repeatingTimer;
 
 - (void)startManagerWithDelegate:(id)delegate
+           stopUpdatingAfterDays:(NSInteger)numOfDays
 {
     manager = [[CLLocationManager alloc] init];
     [manager setDesiredAccuracy:[[Config instance] integerValueForKey:@"Accuracy"]];
@@ -23,23 +24,31 @@
     manager.purpose = @"Do you want me to record your GPS Location ?" ;    
     manager.delegate = delegate;
     
-    [manager startUpdatingLocation];
-    /*repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:5
+    repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:20
                                      target:manager
                                    selector:@selector(startUpdatingLocation) 
                                    userInfo:nil
-                                    repeats:YES];*/
+                                    repeats:YES];
+    
+    // Defining a Timer to stop recording after x seconds has passed.
+    [NSTimer scheduledTimerWithTimeInterval:numOfDays*3600*24
+                                     target:self
+                                   selector:@selector(stopManager) 
+                                   userInfo:nil 
+                                    repeats:NO];
+    
+    [manager startUpdatingLocation];
 }
 
 - (void)stopManager
 {
 
     [repeatingTimer invalidate];
-    manager.delegate = nil;
-    [manager stopUpdatingLocation];
-        
-    self.manager = nil;
     repeatingTimer = nil;
+    
+    manager.delegate = nil;
+    [manager stopUpdatingLocation];        
+    manager = nil;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidStopUpdatingLocation" 
                                                         object:self];

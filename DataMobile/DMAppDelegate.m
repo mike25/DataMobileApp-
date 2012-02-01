@@ -7,7 +7,6 @@
 //
 
 #import "DMAppDelegate.h"
-
 #import "MyLocationManager.h"
 
 @implementation DMAppDelegate
@@ -16,6 +15,48 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
+
+@synthesize locationManager;
+
+- (void)startUpdatingLocationsForDays:(NSInteger)numOfDays
+{
+    locationManager = [[MyLocationManager alloc] init];
+    [locationManager startManagerWithDelegate:self 
+                        stopUpdatingAfterDays:numOfDays];
+}
+
+- (void)stopUpdatingLocations
+{
+    [locationManager stopManager];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation
+{
+    [self insertLocation:newLocation];
+    [manager stopUpdatingLocation];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation" 
+                                                        object:self];    
+}
+
+- (void)locationManager:(CLLocationManager *)manager 
+       didFailWithError:(NSError *)error
+{
+    if ([error domain] == kCLErrorDomain && [error code] == 0) 
+    {
+        [manager startUpdatingLocation];
+    }
+    else
+    {        
+        [locationManager stopManager];
+        NSDictionary* dico = [[NSDictionary alloc] initWithObjectsAndKeys:@"error", error, nil];        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidFailWithError" 
+                                                            object:self
+                                                          userInfo:dico];
+    }
+}
 
 - (void)insertLocation:(CLLocation*)newLocation
 {
