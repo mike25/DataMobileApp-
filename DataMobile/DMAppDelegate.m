@@ -11,6 +11,9 @@
 
 @implementation DMAppDelegate
 
+UIBackgroundTaskIdentifier bgTask;
+BOOL inBackground;
+
 @synthesize window = _window;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
@@ -34,11 +37,22 @@
     didUpdateToLocation:(CLLocation *)newLocation 
            fromLocation:(CLLocation *)oldLocation
 {
-    [self insertLocation:newLocation];
-    [manager stopUpdatingLocation];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation" 
-                                                        object:self];    
+    if (locationManager.significant) 
+    {
+        
+    }
+    else
+    {
+        [self insertLocation:newLocation];
+        
+        [manager stopUpdatingLocation];
+        
+        locationManager.significant = YES;
+        [manager startMonitoringSignificantLocationChanges];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation" 
+                                                            object:self];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
@@ -153,6 +167,29 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    
+    inBackground=YES;
+	UIApplication*    app = [UIApplication sharedApplication];
+	
+    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+        [app endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+	
+    // Start the long-running task and return immediately.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		while (inBackground == YES) {
+            
+			[NSThread sleepForTimeInterval:(10)];
+            
+            [locationManager update];
+
+		}
+		
+        
+        [app endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    });
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -160,6 +197,7 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    inBackground = NO;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

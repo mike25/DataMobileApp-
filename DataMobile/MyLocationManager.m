@@ -15,6 +15,8 @@
 @synthesize myDelegate;
 @synthesize repeatingTimer;
 
+@synthesize significant;
+
 - (void)startManagerWithDelegate:(id)delegate
            stopUpdatingAfterDays:(NSInteger)numOfDays
 {
@@ -28,7 +30,8 @@
                                      target:manager
                                    selector:@selector(startUpdatingLocation) 
                                    userInfo:nil
-                                    repeats:YES];
+                                    repeats:YES];    
+
     
     // Defining a Timer to stop recording after x seconds has passed.
     [NSTimer scheduledTimerWithTimeInterval:numOfDays*3600*24
@@ -37,6 +40,7 @@
                                    userInfo:nil 
                                     repeats:NO];
     
+    significant = NO;
     [manager startUpdatingLocation];
 }
 
@@ -47,11 +51,28 @@
     repeatingTimer = nil;
     
     manager.delegate = nil;
-    [manager stopUpdatingLocation];        
+   [manager stopMonitoringSignificantLocationChanges];
+   [manager stopUpdatingLocation];
+
     manager = nil;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidStopUpdatingLocation" 
                                                         object:self];
+}
+
+- (void)update
+{
+    [manager stopMonitoringSignificantLocationChanges];
+    significant = NO;
+    [manager startUpdatingLocation];
+    
+    NSLog(@"update called");
+
+}
+
+-(void)print
+{
+    NSLog(@"print");
 }
 
 @end

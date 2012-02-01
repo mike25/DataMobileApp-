@@ -14,9 +14,13 @@
 
 @property (strong,  nonatomic) CLLocationManager* manager;
 @property (strong, nonatomic) NSTimer* repeatingTimer;
+@property (nonatomic) BOOL significant;
 
 - (void)startManagerWithDelegate:(id)delegate 
            stopUpdatingAfterDays:(NSInteger)numOfDays;
+
 - (void)stopManager;
+- (void)update;
+- (void)print;
 
 @end
