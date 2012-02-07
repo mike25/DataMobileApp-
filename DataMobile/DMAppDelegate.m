@@ -37,22 +37,12 @@ BOOL inBackground;
     didUpdateToLocation:(CLLocation *)newLocation 
            fromLocation:(CLLocation *)oldLocation
 {
-    if (locationManager.significant) 
-    {
-        
-    }
-    else
-    {
-        [self insertLocation:newLocation];
-        
-        [manager stopUpdatingLocation];
-        
-        locationManager.significant = YES;
-        [manager startMonitoringSignificantLocationChanges];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation" 
+    [self insertLocation:newLocation];        
+    NSLog(@"did UPdate");
+    
+    [manager stopUpdatingLocation];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation" 
                                                             object:self];
-    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
@@ -64,7 +54,6 @@ BOOL inBackground;
     }
     else
     {        
-        [locationManager stopManager];
         NSDictionary* dico = [[NSDictionary alloc] initWithObjectsAndKeys:@"error", error, nil];        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidFailWithError" 
                                                             object:self
@@ -169,7 +158,7 @@ BOOL inBackground;
      */
     
     inBackground=YES;
-	UIApplication*    app = [UIApplication sharedApplication];
+	UIApplication* app = [UIApplication sharedApplication];
 	
     bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
         [app endBackgroundTask:bgTask];
@@ -181,11 +170,10 @@ BOOL inBackground;
 		while (inBackground == YES) {
             
 			[NSThread sleepForTimeInterval:(120)];
-            
-            [locationManager update];
+            [locationManager.manager stopUpdatingLocation];
+            [locationManager.manager startUpdatingLocation];
 
-		}
-		
+		}		
         
         [app endBackgroundTask:bgTask];
         bgTask = UIBackgroundTaskInvalid;

@@ -8,19 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MyLocationManager : NSObject
+@interface MyLocationManager : NSObject <CLLocationManagerDelegate>
 
-@property (weak, nonatomic) id myDelegate;
-
+@property (weak, nonatomic) id<CLLocationManagerDelegate> myDelegate;
 @property (strong,  nonatomic) CLLocationManager* manager;
-@property (strong, nonatomic) NSTimer* repeatingTimer;
-@property (nonatomic) BOOL significant;
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation;
+
+- (void)locationManager:(CLLocationManager *)manager 
+       didFailWithError:(NSError *)error;
 
 - (void)startManagerWithDelegate:(id)delegate 
            stopUpdatingAfterDays:(NSInteger)numOfDays;
 
 - (void)stopManager;
-- (void)update;
-- (void)print;
-
 @end

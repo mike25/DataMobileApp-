@@ -13,9 +13,6 @@
 
 @synthesize manager;
 @synthesize myDelegate;
-@synthesize repeatingTimer;
-
-@synthesize significant;
 
 - (void)startManagerWithDelegate:(id)delegate
            stopUpdatingAfterDays:(NSInteger)numOfDays
@@ -25,33 +22,14 @@
     manager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
     manager.purpose = @"Do you want me to record your GPS Location ?" ;    
     manager.delegate = delegate;
-    
-    repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:20
-                                     target:manager
-                                   selector:@selector(startUpdatingLocation) 
-                                   userInfo:nil
-                                    repeats:YES];    
-
-    
-    // Defining a Timer to stop recording after x seconds has passed.
-    [NSTimer scheduledTimerWithTimeInterval:numOfDays*3600*24
-                                     target:self
-                                   selector:@selector(stopManager) 
-                                   userInfo:nil 
-                                    repeats:NO];
-    
-    significant = NO;
+    //myDelegate  = delegate ;
+            
     [manager startUpdatingLocation];
 }
 
 - (void)stopManager
-{
-
-    [repeatingTimer invalidate];
-    repeatingTimer = nil;
-    
+{    
     manager.delegate = nil;
-   [manager stopMonitoringSignificantLocationChanges];
    [manager stopUpdatingLocation];
 
     manager = nil;
@@ -60,19 +38,30 @@
                                                         object:self];
 }
 
-- (void)update
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation
 {
-    [manager stopMonitoringSignificantLocationChanges];
-    significant = NO;
-    [manager startUpdatingLocation];
-    
-    NSLog(@"update called");
-
+    [myDelegate locationManager:manager 
+            didUpdateToLocation:newLocation 
+                   fromLocation:oldLocation];
+    [self.manager stopUpdatingLocation];
 }
 
--(void)print
+- (void)locationManager:(CLLocationManager *)manager 
+       didFailWithError:(NSError *)error
 {
-    NSLog(@"print");
+    if ([error domain] == kCLErrorDomain && [error code] == 0) 
+    {
+        [manager startUpdatingLocation];
+    }
+    else
+    {        
+        [myDelegate locationManager:manager 
+                   didFailWithError:error];
+    }
+
+    
 }
 
 @end
