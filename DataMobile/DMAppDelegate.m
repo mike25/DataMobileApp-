@@ -169,7 +169,7 @@ BOOL inBackground;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		while (inBackground == YES) {
             
-			[NSThread sleepForTimeInterval:(120)];
+			[NSThread sleepForTimeInterval:(POLLINTERVALSECONDS)];
             [locationManager.manager stopUpdatingLocation];
             [locationManager.manager startUpdatingLocation];
 

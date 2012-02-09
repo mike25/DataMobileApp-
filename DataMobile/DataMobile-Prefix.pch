@@ -14,3 +14,7 @@
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
 #endif
+
+#ifndef POLLINTERVALSECONDS
+#define POLLINTERVALSECONDS 60
+#endif
