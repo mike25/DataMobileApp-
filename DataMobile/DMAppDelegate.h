@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MyLocationManager;
+@class LocationManagerHandler;
 @class CLLocation;
 
 @interface DMAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
@@ -19,7 +19,8 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (strong, nonatomic) MyLocationManager* locationManager;
+@property (strong, nonatomic) LocationManagerHandler* managerHandler;
+@property (strong, nonatomic) CLLocationManager* myManager;
 
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays;
 - (void)stopUpdatingLocations;

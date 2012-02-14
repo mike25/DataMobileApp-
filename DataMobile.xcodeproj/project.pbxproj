@@ -15,7 +15,7 @@
 		A101D9AD14A2ADAE00DFC446 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
 		A14AC87C1494383300C36EB6 /* FileSenderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A14AC87B1494383300C36EB6 /* FileSenderTest.m */; };
 		A169767C14873199006E8AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
-		A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* MyLocationManager.m */; };
+		A16AEBD31483F0480079A0AA /* LocationManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */; };
 		A16AEBD7148432CD0079A0AA /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
 		A16E8C00148075B800F66E96 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFF148075B800F66E96 /* Foundation.framework */; };
 		A16E8C04148075B800F66E96 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C03148075B800F66E96 /* CoreData.framework */; };
@@ -67,8 +67,8 @@
 		A16979B4148739C3006E8AB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A16979B6148739C9006E8AB7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A16979B8148739D4006E8AB7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A16AEBD11483F0480079A0AA /* MyLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocationManager.h; sourceTree = "<group>"; };
-		A16AEBD21483F0480079A0AA /* MyLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocationManager.m; sourceTree = "<group>"; };
+		A16AEBD11483F0480079A0AA /* LocationManagerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManagerHandler.h; sourceTree = "<group>"; };
+		A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManagerHandler.m; sourceTree = "<group>"; };
 		A16AEBD5148432CD0079A0AA /* DatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerController.h; sourceTree = "<group>"; };
 		A16AEBD6148432CD0079A0AA /* DatePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerController.m; sourceTree = "<group>"; };
 		A16E8BF9148075B800F66E96 /* DataMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,8 +276,8 @@
 		A1FBE3681486F3D900BB3D5F /* MyLocationManager */ = {
 			isa = PBXGroup;
 			children = (
-				A16AEBD11483F0480079A0AA /* MyLocationManager.h */,
-				A16AEBD21483F0480079A0AA /* MyLocationManager.m */,
+				A16AEBD11483F0480079A0AA /* LocationManagerHandler.h */,
+				A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */,
 			);
 			name = MyLocationManager;
 			sourceTree = "<group>";
@@ -401,7 +401,7 @@
 				A196CDEC1480785C00F61C06 /* AlertViewManager.m in Sources */,
 				A196CDF11480790700F61C06 /* MainViewController.m in Sources */,
 				A18F3290148309CA0029B2BF /* FileSender.m in Sources */,
-				A16AEBD31483F0480079A0AA /* MyLocationManager.m in Sources */,
+				A16AEBD31483F0480079A0AA /* LocationManagerHandler.m in Sources */,
 				A16AEBD7148432CD0079A0AA /* DatePickerController.m in Sources */,
 				A1FA278E149C22D4009745EB /* Config.m in Sources */,
 				3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */,

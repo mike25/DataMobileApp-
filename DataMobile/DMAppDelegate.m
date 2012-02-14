@@ -7,7 +7,7 @@
 //
 
 #import "DMAppDelegate.h"
-#import "MyLocationManager.h"
+#import "LocationManagerHandler.h"
 
 @implementation DMAppDelegate
 
@@ -19,46 +19,37 @@ BOOL inBackground;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
-@synthesize locationManager;
+@synthesize managerHandler;
+@synthesize myManager;
 
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays
 {
-    locationManager = [[MyLocationManager alloc] init];
-    [locationManager startManagerWithDelegate:self 
-                        stopUpdatingAfterDays:numOfDays];
+    managerHandler = [[LocationManagerHandler alloc] init];
+    myManager = [[CLLocationManager alloc] init];
+    
+    [managerHandler startManager:myManager 
+                    WithDelegate:self 
+           stopUpdatingAfterDays:numOfDays];    
 }
 
 - (void)stopUpdatingLocations
 {
-    [locationManager stopManager];
+    [managerHandler stopManager];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation 
            fromLocation:(CLLocation *)oldLocation
 {
-    [self insertLocation:newLocation];        
-    NSLog(@"did UPdate");
-    
-    [manager stopUpdatingLocation];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation" 
-                                                            object:self];
+    [self insertLocation:newLocation];
+    [managerHandler managerDidUpdate];
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
        didFailWithError:(NSError *)error
 {
-    if ([error domain] == kCLErrorDomain && [error code] == 0) 
-    {
-        [manager startUpdatingLocation];
-    }
-    else
-    {        
-        NSDictionary* dico = [[NSDictionary alloc] initWithObjectsAndKeys:@"error", error, nil];        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidFailWithError" 
-                                                            object:self
-                                                          userInfo:dico];
-    }
+    [managerHandler locationManager:manager 
+                    didFailWithError:error];
 }
 
 - (void)insertLocation:(CLLocation*)newLocation
@@ -167,12 +158,10 @@ BOOL inBackground;
 	
     // Start the long-running task and return immediately.
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		while (inBackground == YES) {
-            
-			[NSThread sleepForTimeInterval:(POLLINTERVALSECONDS)];
-            [locationManager.manager stopUpdatingLocation];
-            [locationManager.manager startUpdatingLocation];
-
+		while (inBackground == YES) 
+        {            
+            [NSThread sleepForTimeInterval:(POLLINTERVALSECONDS)];
+            [managerHandler applicationDidEnterBackground];
 		}		
         
         [app endBackgroundTask:bgTask];

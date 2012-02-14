@@ -11,7 +11,7 @@
 #import "AlertObserver.h"
 #import "PickerObserver.h"
 
-@class MyLocationManager;
+@class LocationManagerHandler;
 @class DMAppDelegate;
 @class AlertViewManager;
 @class SendState;

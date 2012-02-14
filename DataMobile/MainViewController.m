@@ -14,7 +14,7 @@
 #import "DatePickerController.h"
 #import "FileSender.h"
 #import "Config.h"
-#import "MyLocationManager.h"
+#import "LocationManagerHandler.h"
 #import "SendState.h"
 
 @interface MainViewController () 
@@ -86,7 +86,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(managerDidStopUpdatingLocation)
                                                  name:@"ManagerDidStopUpdatingLocation" 
-                                               object:appDelegate.locationManager];
+                                               object:appDelegate.managerHandler];
 
     [self switchStateToRecording:true];
     [[alertManager createSuccessfullStartAlert] show];    
@@ -196,12 +196,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(ManagerDidFailWithError)
                                                  name:@"ManagerDidFailWithError" 
-                                               object:appDelegate];
+                                               object:appDelegate.managerHandler];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(managerDidUpdate)
                                                  name:@"ManagerDidUpdateLocation" 
-                                               object:appDelegate];
+                                               object:appDelegate.managerHandler];
     
     [self createUserIdIfNotExists];
 }
