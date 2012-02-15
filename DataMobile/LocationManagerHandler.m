@@ -30,11 +30,6 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
     locationManager.purpose = @"Do you want me to record your GPS Location ?" ;
     locationManager.delegate = delegate;
     //myDelegate  = delegate ;
-            
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(managerDidUpdate)
-                                                 name:@"ManagerDidUpdateLocation" 
-                                               object:delegate];
     
     [locationManager startUpdatingLocation];
 }
@@ -48,7 +43,9 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
 
 - (void)managerDidUpdate
 {
-    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopUpdatingLocation];    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation" 
+                                                        object:self];
 }
 
 - (void)applicationDidEnterBackground
