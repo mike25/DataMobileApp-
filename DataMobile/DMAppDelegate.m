@@ -20,16 +20,16 @@ BOOL inBackground;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
 @synthesize managerHandler;
-@synthesize myManager;
+@synthesize locationManager;
 
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays
 {
     managerHandler = [[LocationManagerHandler alloc] init];
-    myManager = [[CLLocationManager alloc] init];
+    locationManager = [[CLLocationManager alloc] init];
     
-    [managerHandler startManager:myManager 
+    [managerHandler startManager:locationManager 
                     WithDelegate:self 
-           stopUpdatingAfterDays:numOfDays];    
+           stopUpdatingAfterDays:numOfDays];
 }
 
 - (void)stopUpdatingLocations
@@ -72,13 +72,22 @@ BOOL inBackground;
     
 }
 
-- (void)insertUserWithId:(NSString*)uuid
+- (void)insertNewUserIfNotExists
 {
-    NSManagedObject* newUser = [NSEntityDescription insertNewObjectForEntityForName:@"User"
-                                                             inManagedObjectContext:self.managedObjectContext];
-
-    [newUser setValue:uuid forKey:@"id"];
-
+    if([[self fetchAllObjects:@"User"] count] == 0)
+    {
+        // Generate new User Id
+        CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
+        CFStringRef UUIDSRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
+        
+        NSManagedObject* newUser = [NSEntityDescription insertNewObjectForEntityForName:@"User"
+                                                                 inManagedObjectContext:self.managedObjectContext];
+        
+        [newUser setValue:[NSString stringWithFormat:@"%@", UUIDSRef] 
+                   forKey:@"id"];
+        
+        [self saveContext];
+    }
 }
 
 - (NSArray*)fetchAllLocations
@@ -129,7 +138,8 @@ BOOL inBackground;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    [self insertNewUserIfNotExists];
+    
     return YES;
 }
 

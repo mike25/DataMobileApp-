@@ -20,7 +20,7 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (strong, nonatomic) LocationManagerHandler* managerHandler;
-@property (strong, nonatomic) CLLocationManager* myManager;
+@property (strong, nonatomic) CLLocationManager* locationManager;
 
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays;
 - (void)stopUpdatingLocations;
@@ -33,7 +33,7 @@
        didFailWithError:(NSError *)error;
 
 - (void)insertLocation:(CLLocation*)newLocation;
-- (void)insertUserWithId:(NSString*)uuid;
+- (void)insertNewUserIfNotExists;
 
 - (NSArray*)fetchAllLocations;
 - (void) deleteAllLocations;

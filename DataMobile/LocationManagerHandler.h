@@ -13,6 +13,8 @@
 @property (weak, nonatomic) id myDelegate;
 @property (weak,  nonatomic) CLLocationManager* locationManager;
 
+@property (strong, nonatomic) NSDate* stopDate;
+
 - (void)locationManager:(CLLocationManager *)manager 
        didFailWithError:(NSError *)error;
 
@@ -20,9 +22,9 @@
 
 - (void)applicationDidEnterBackground;
 
-- (void)startManager:(CLLocationManager*)NewManager
+- (void)startManager:(CLLocationManager*)manager
         WithDelegate:(id)delegate 
-           stopUpdatingAfterDays:(NSInteger)numOfDays;
+    stopUpdatingAfterDays:(NSInteger)numOfDays;
 
 - (void)stopManager;
 

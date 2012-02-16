@@ -19,12 +19,14 @@
 
 @synthesize locationManager;
 @synthesize myDelegate;
+@synthesize stopDate;
 
-- (void)startManager:(CLLocationManager*)NewManager
+- (void)startManager:(CLLocationManager*)manager
         WithDelegate:(id)delegate 
 stopUpdatingAfterDays:(NSInteger)numOfDays
-{
-    locationManager = NewManager ;
+{    
+    // Configuring Manager    
+    locationManager = manager;
     [locationManager setDesiredAccuracy:[[Config instance] integerValueForKey:@"Accuracy"]];
     locationManager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
     locationManager.purpose = @"Do you want me to record your GPS Location ?" ;
@@ -32,6 +34,8 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
     //myDelegate  = delegate ;
     
     [locationManager startUpdatingLocation];
+    
+    stopDate = [[NSDate alloc] initWithTimeIntervalSinceNow:numOfDays*3600*24];
 }
 
 - (void)stopManager
@@ -43,9 +47,17 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
 
 - (void)managerDidUpdate
 {
-    [self.locationManager stopUpdatingLocation];    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation" 
-                                                        object:self];
+    [self.locationManager stopUpdatingLocation];
+
+    if ([stopDate timeIntervalSinceNow] <= 0)
+    {
+        [self stopManager];
+    }
+    else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation" 
+                                                            object:self];
+    }
 }
 
 - (void)applicationDidEnterBackground
@@ -75,6 +87,7 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
 {
     locationManager.delegate = nil;
     [locationManager stopUpdatingLocation];
+    stopDate = nil ;
     locationManager = nil;    
 }
 

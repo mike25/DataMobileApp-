@@ -20,7 +20,6 @@
 @interface MainViewController () 
 
 - (void)switchStateToRecording:(BOOL)recording;
-- (void)createUserIdIfNotExists;
 
 @end
 
@@ -129,7 +128,6 @@
                            WithDelegate:self];
 }
 
-
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     NSString* data_response = [NSString stringWithUTF8String:[data bytes]];
@@ -151,18 +149,6 @@
 {    
     [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
     [sendState connectionDidFailForController:self];
-}
-
-- (void)createUserIdIfNotExists
-{
-    if([[appDelegate fetchAllObjects:@"User"] count] == 0)
-    {
-        CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
-        CFStringRef UUIDSRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
-        
-        [appDelegate insertUserWithId:[NSString stringWithFormat:@"%@", UUIDSRef]];
-        [appDelegate saveContext];
-    }
 }
 
 - (void)switchStateToRecording:(BOOL)recording
@@ -202,8 +188,6 @@
                                              selector:@selector(managerDidUpdate)
                                                  name:@"ManagerDidUpdateLocation" 
                                                object:appDelegate.managerHandler];
-    
-    [self createUserIdIfNotExists];
 }
 
 - (void)viewDidUnload
