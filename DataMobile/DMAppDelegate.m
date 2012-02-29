@@ -7,15 +7,50 @@
 //
 
 #import "DMAppDelegate.h"
-
-#import "MyLocationManager.h"
+#import "LocationManagerHandler.h"
 
 @implementation DMAppDelegate
+
+UIBackgroundTaskIdentifier bgTask;
+BOOL inBackground;
 
 @synthesize window = _window;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
+
+@synthesize managerHandler;
+@synthesize locationManager;
+
+- (void)startUpdatingLocationsForDays:(NSInteger)numOfDays
+{
+    managerHandler = [[LocationManagerHandler alloc] init];
+    locationManager = [[CLLocationManager alloc] init];
+    
+    [managerHandler startManager:locationManager 
+                    WithDelegate:self 
+           stopUpdatingAfterDays:numOfDays];
+}
+
+- (void)stopUpdatingLocations
+{
+    [managerHandler stopManager];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation
+{
+    [self insertLocation:newLocation];
+    [managerHandler managerDidUpdate];
+}
+
+- (void)locationManager:(CLLocationManager *)manager 
+       didFailWithError:(NSError *)error
+{
+    [managerHandler locationManager:manager 
+                    didFailWithError:error];
+}
 
 - (void)insertLocation:(CLLocation*)newLocation
 {
@@ -37,13 +72,22 @@
     
 }
 
-- (void)insertUserWithId:(NSString*)uuid
+- (void)insertNewUserIfNotExists
 {
-    NSManagedObject* newUser = [NSEntityDescription insertNewObjectForEntityForName:@"User"
-                                                             inManagedObjectContext:self.managedObjectContext];
-
-    [newUser setValue:uuid forKey:@"id"];
-
+    if([[self fetchAllObjects:@"User"] count] == 0)
+    {
+        // Generate new User Id
+        CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
+        CFStringRef UUIDSRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
+        
+        NSManagedObject* newUser = [NSEntityDescription insertNewObjectForEntityForName:@"User"
+                                                                 inManagedObjectContext:self.managedObjectContext];
+        
+        [newUser setValue:[NSString stringWithFormat:@"%@", UUIDSRef] 
+                   forKey:@"id"];
+        
+        [self saveContext];
+    }
 }
 
 - (NSArray*)fetchAllLocations
@@ -94,7 +138,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    [self insertNewUserIfNotExists];
+    
     return YES;
 }
 
@@ -112,6 +157,26 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    
+    inBackground=YES;
+	UIApplication* app = [UIApplication sharedApplication];
+	
+    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+        [app endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+	
+    // Start the long-running task and return immediately.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		while (inBackground == YES) 
+        {            
+            [NSThread sleepForTimeInterval:(POLLINTERVALSECONDS)];
+            [managerHandler applicationDidEnterBackground];
+		}		
+        
+        [app endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    });
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -119,6 +184,7 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    inBackground = NO;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

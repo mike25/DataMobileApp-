@@ -11,12 +11,12 @@
 #import "AlertObserver.h"
 #import "PickerObserver.h"
 
-@class MyLocationManager;
+@class LocationManagerHandler;
 @class DMAppDelegate;
 @class AlertViewManager;
 @class SendState;
 
-@interface MainViewController : UIViewController <AlertObserver, CLLocationManagerDelegate, PickerObserver, NSURLConnectionDataDelegate>
+@interface MainViewController : UIViewController <AlertObserver, PickerObserver, NSURLConnectionDataDelegate>
 {
     @private int daysToRecord;
 }
@@ -29,7 +29,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *sendingLabel;
 
 @property (strong, nonatomic) AlertViewManager* alertManager;
-@property (strong, nonatomic) MyLocationManager* locationManager;
 @property (strong, nonatomic) SendState* sendState;
 
 @property (weak, nonatomic) DMAppDelegate* appDelegate;
@@ -38,17 +37,12 @@
 - (IBAction)stopRecording:(id)sender;
 - (IBAction)sendData:(id)sender;
 
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation 
-           fromLocation:(CLLocation *)oldLocation;
-
-- (void)locationManager:(CLLocationManager *)manager 
-       didFailWithError:(NSError *)error;
+- (void)managerDidStopUpdatingLocation;
+- (void)managerDidUpdate;
+- (void)managerDidFailWithError:(NSNotification *)notification;
 
 - (void)inputSelectedWithDay:(NSInteger)numOfDays;
 - (void)stopRecordingConfirmed;
-
-- (void)managerDidStopUpdatingLocation;
 
 //- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;

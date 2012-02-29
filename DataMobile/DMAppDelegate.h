@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class MyLocationManager;
+@class LocationManagerHandler;
 @class CLLocation;
 
-@interface DMAppDelegate : UIResponder <UIApplicationDelegate>
+@interface DMAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -19,8 +19,21 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+@property (strong, nonatomic) LocationManagerHandler* managerHandler;
+@property (strong, nonatomic) CLLocationManager* locationManager;
+
+- (void)startUpdatingLocationsForDays:(NSInteger)numOfDays;
+- (void)stopUpdatingLocations;
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation;
+
+- (void)locationManager:(CLLocationManager *)manager 
+       didFailWithError:(NSError *)error;
+
 - (void)insertLocation:(CLLocation*)newLocation;
-- (void)insertUserWithId:(NSString*)uuid;
+- (void)insertNewUserIfNotExists;
 
 - (NSArray*)fetchAllLocations;
 - (void) deleteAllLocations;

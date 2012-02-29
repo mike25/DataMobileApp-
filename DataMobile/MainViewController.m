@@ -14,13 +14,12 @@
 #import "DatePickerController.h"
 #import "FileSender.h"
 #import "Config.h"
-#import "MyLocationManager.h"
+#import "LocationManagerHandler.h"
 #import "SendState.h"
 
 @interface MainViewController () 
 
 - (void)switchStateToRecording:(BOOL)recording;
-- (void)createUserIdIfNotExists;
 
 @end
 
@@ -37,8 +36,6 @@
 @synthesize sendState;
 
 @synthesize appDelegate;
-@synthesize locationManager;
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,10 +49,21 @@
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+    
     [self.appDelegate saveContext];
+    [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (IBAction)stopRecording:(id)sender 
+{
+    [[alertManager createConfirmStopAlert] show];
+}
+
+- (void)stopRecordingConfirmed
+{
+    [appDelegate stopUpdatingLocations];
 }
 
 - (IBAction)startRecording:(id)sender 
@@ -70,43 +78,35 @@
     [self presentModalViewController:picker animated:YES];
 }
 
-- (IBAction)stopRecording:(id)sender 
-{
-    [[alertManager createConfirmStopAlert] show];
-}
-
-- (void)stopRecordingConfirmed
-{
-    [locationManager stopManager];
-}
-
 - (void)inputSelectedWithDay:(NSInteger)numOfDays;
 {
-    daysToRecord = numOfDays;
-    
-    locationManager = [[MyLocationManager alloc] init];
-    [locationManager startManagerWithDelegate:self];
+    [appDelegate startUpdatingLocationsForDays:numOfDays];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(managerDidStopUpdatingLocation)
                                                  name:@"ManagerDidStopUpdatingLocation" 
-                                               object:locationManager];
-    
-    // Defining a Timer to stop recording after x seconds has passed.
-    [NSTimer scheduledTimerWithTimeInterval:daysToRecord*3600*24
-                                     target:self.locationManager
-                                   selector:@selector(stopManager) 
-                                   userInfo:nil 
-                                    repeats:NO];
-    
+                                               object:appDelegate.managerHandler];
+
     [self switchStateToRecording:true];
-    [[alertManager createSuccessfullStartAlert] show];
+    [[alertManager createSuccessfullStartAlert] show];    
+    [self.sendState locationManagerDidUpdateForController:self];
 }
 
 - (void)managerDidStopUpdatingLocation
 {
     [self switchStateToRecording:false];
-    [[alertManager createSuccessfullStopAlert] show];    
+    [[alertManager createSuccessfullStopAlert] show];
+}
+
+- (void)managerDidFailWithError:(NSNotification *)notification
+{
+    NSError* error = (NSError*)[notification userInfo];
+    [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
+}
+
+- (void)managerDidUpdate
+{
+    [sendState locationManagerDidUpdateForController:self];
 }
 
 - (IBAction)sendData:(id)sender 
@@ -119,31 +119,13 @@
     NSString* user_id = [[[appDelegate fetchAllObjects:@"User"] objectAtIndex:0] valueForKey:@"id"];    
     
     NSDictionary* postData = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                    string_objects, @"text",
-                                                    user_id, @"id", nil];
-
+                              string_objects, @"text",
+                              user_id, @"id", nil];
+    
     FileSender* fileSender = [[FileSender alloc] init];
     [fileSender sendRequestWithPostData:postData
-                       ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]
-                WithDelegate:self];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation 
-           fromLocation:(CLLocation *)oldLocation
-{
-    [self.appDelegate insertLocation:newLocation];
-    [self.sendState locationManagerDidUpdateForController:self];
-    
-    manager.delegate = nil;
-    [manager stopUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager 
-       didFailWithError:(NSError *)error
-{
-    [locationManager stopManager];
-    [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
+                                  ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]
+                           WithDelegate:self];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -151,7 +133,7 @@
     NSString* data_response = [NSString stringWithUTF8String:[data bytes]];
     if (![FileSender errorMessageReceivedFromServer:data_response])
     {
-        [self.appDelegate deleteAllLocations];
+        [appDelegate deleteAllLocations];
         [[alertManager createSuccessfullSentAlert] show];
         [sendState connectionDidReceiveDataWithoutErrorForController:self];
     }
@@ -167,18 +149,6 @@
 {    
     [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
     [sendState connectionDidFailForController:self];
-}
-
-- (void)createUserIdIfNotExists
-{
-    if([[appDelegate fetchAllObjects:@"User"] count] == 0)
-    {
-        CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
-        CFStringRef UUIDSRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
-        
-        [appDelegate insertUserWithId:[NSString stringWithFormat:@"%@", UUIDSRef]];
-        [appDelegate saveContext];
-    }
 }
 
 - (void)switchStateToRecording:(BOOL)recording
@@ -208,8 +178,16 @@
     self.sendState = [SendState determineInitialStateForController:self];
     
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
-    [self createUserIdIfNotExists];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ManagerDidFailWithError)
+                                                 name:@"ManagerDidFailWithError" 
+                                               object:appDelegate.managerHandler];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(managerDidUpdate)
+                                                 name:@"ManagerDidUpdateLocation" 
+                                               object:appDelegate.managerHandler];
 }
 
 - (void)viewDidUnload
