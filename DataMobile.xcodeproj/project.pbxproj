@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CE0128E14FECDB4001D565A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
+		3CE0129514FECF3B001D565A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
 		3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
 		3CE9FED714C650D800CC79C9 /* NoSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED614C650D800CC79C9 /* NoSendState.m */; };
 		3CE9FEDA14C650FE00CC79C9 /* SendingSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED914C650FE00CC79C9 /* SendingSendState.m */; };
@@ -51,6 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3CE0128B14FECDAB001D565A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3CE0129314FECF3B001D565A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		3CE0129414FECF3B001D565A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		3CE9FECC14C6472000CC79C9 /* SendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendState.h; path = State/SendState.h; sourceTree = "<group>"; };
 		3CE9FED114C64D9E00CC79C9 /* SendState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendState.m; sourceTree = "<group>"; };
 		3CE9FED514C650D800CC79C9 /* NoSendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSendState.h; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CE0128E14FECDB4001D565A /* MapKit.framework in Frameworks */,
 				A169767C14873199006E8AB7 /* UIKit.framework in Frameworks */,
 				A16E8C221480760300F66E96 /* CoreLocation.framework in Frameworks */,
 				A16E8C00148075B800F66E96 /* Foundation.framework in Frameworks */,
@@ -170,6 +176,7 @@
 		A16E8BFC148075B800F66E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3CE0128B14FECDAB001D565A /* MapKit.framework */,
 				A16979B2148739B1006E8AB7 /* libz.dylib */,
 				A16979B01487399F006E8AB7 /* CFNetwork.framework */,
 				A16979B8148739D4006E8AB7 /* SystemConfiguration.framework */,
@@ -188,13 +195,11 @@
 			isa = PBXGroup;
 			children = (
 				A196CDED148078CD00F61C06 /* Storyboard.storyboard */,
-				A196CDEF1480790600F61C06 /* MainViewController.h */,
-				A196CDF01480790700F61C06 /* MainViewController.m */,
+				A1FBE3631486F18400BB3D5F /* Controllers */,
 				A16E8C0E148075B800F66E96 /* DMAppDelegate.h */,
 				A16E8C0F148075B800F66E96 /* DMAppDelegate.m */,
 				3CE9FED414C6509500CC79C9 /* SendStates */,
 				A1FBE3651486F2E700BB3D5F /* AlertManager */,
-				A1FBE3631486F18400BB3D5F /* DatePicker */,
 				A1FBE3681486F3D900BB3D5F /* MyLocationManager */,
 				A1FA278F149C2310009745EB /* Utilities */,
 				A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */,
@@ -253,14 +258,18 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		A1FBE3631486F18400BB3D5F /* DatePicker */ = {
+		A1FBE3631486F18400BB3D5F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A196CDEF1480790600F61C06 /* MainViewController.h */,
+				A196CDF01480790700F61C06 /* MainViewController.m */,
 				A1FBE3611486E81200BB3D5F /* PickerObserver.h */,
 				A16AEBD5148432CD0079A0AA /* DatePickerController.h */,
 				A16AEBD6148432CD0079A0AA /* DatePickerController.m */,
+				3CE0129314FECF3B001D565A /* MapViewController.h */,
+				3CE0129414FECF3B001D565A /* MapViewController.m */,
 			);
-			name = DatePicker;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		A1FBE3651486F2E700BB3D5F /* AlertManager */ = {
@@ -408,6 +417,7 @@
 				3CE9FED714C650D800CC79C9 /* NoSendState.m in Sources */,
 				3CE9FEDA14C650FE00CC79C9 /* SendingSendState.m in Sources */,
 				3CE9FEDD14C6511B00CC79C9 /* SendableSendState.m in Sources */,
+				3CE0129514FECF3B001D565A /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

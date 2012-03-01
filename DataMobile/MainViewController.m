@@ -16,6 +16,7 @@
 #import "Config.h"
 #import "LocationManagerHandler.h"
 #import "SendState.h"
+#import "MapViewController.h"
 
 @interface MainViewController () 
 
@@ -28,9 +29,9 @@
 @synthesize startButton;
 @synthesize stopButton;
 @synthesize recordingLabel;
-@synthesize dataLabel;
 @synthesize dataButton;
 @synthesize sendingLabel;
+@synthesize mapButton;
 
 @synthesize alertManager;
 @synthesize sendState;
@@ -92,6 +93,12 @@
     [self.sendState locationManagerDidUpdateForController:self];
 }
 
+- (IBAction)viewMap:(id)sender 
+{
+    MapViewController* map = [self.storyboard instantiateViewControllerWithIdentifier:@"map"];
+    [self presentModalViewController:map animated:YES];
+}
+
 - (void)managerDidStopUpdatingLocation
 {
     [self switchStateToRecording:false];
@@ -127,6 +134,8 @@
                                   ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]
                            WithDelegate:self];
 }
+
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
@@ -193,15 +202,14 @@
 - (void)viewDidUnload
 {
     [self setStartButton:nil];
-    [self setDataLabel:nil];
     [self setDataButton:nil];
     
     [self setAlertManager:nil];
-    
     [self setStopButton:nil];
     [self setRecordingLabel:nil];
     [self setSendingLabel:nil];
     
+    [self setMapButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -13,7 +13,6 @@
 
 - (void)executeForController:(MainViewController*)controller
 {
-    controller.dataLabel.hidden = true;
     controller.dataButton.hidden = true;
     controller.sendingLabel.hidden = false; 
 }
