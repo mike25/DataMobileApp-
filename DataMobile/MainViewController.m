@@ -96,7 +96,8 @@
 - (IBAction)viewMap:(id)sender 
 {
     MapViewController* map = [self.storyboard instantiateViewControllerWithIdentifier:@"map"];
-    [self presentModalViewController:map animated:YES];
+    [self.navigationController pushViewController:map 
+                                         animated:YES];
 }
 
 - (void)managerDidStopUpdatingLocation

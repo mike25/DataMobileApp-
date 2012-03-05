@@ -91,7 +91,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="viewMap:" destination="NdM-nc-t1B" eventType="touchUpInside" id="GWi-j7-3e0"/>
+                                    <segue destination="hWT-vn-zjs" kind="modal" id="782-9Y-3Nu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -107,7 +107,21 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="119" y="67"/>
+            <point key="canvasLocation" x="-175" y="67"/>
+        </scene>
+        <scene sceneID="Lyo-Dt-zdd">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zH4-3n-f3C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="hWT-vn-zjs" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="fTy-GC-er4">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AKl-fU-LZS" kind="relationship" relationship="rootViewController" id="VPk-Qu-C8Q"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="213" y="67"/>
         </scene>
         <scene sceneID="Vxr-jk-pEj">
             <objects>
@@ -169,23 +183,24 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="457" y="67"/>
+            <point key="canvasLocation" x="-175" y="645"/>
         </scene>
         <scene sceneID="Tqs-tF-GWZ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5t-fd-tSl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="map" title="Map" id="AKl-fU-LZS" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NBj-A6-eW7">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="wD6-SZ-kWy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JYG-uq-hS5"/>
                     <connections>
                         <outlet property="map" destination="wD6-SZ-kWy" id="yDv-lE-OuU"/>
                     </connections>
@@ -210,7 +225,6 @@
                 <relationship kind="action" name="sendData:"/>
                 <relationship kind="action" name="startRecording:"/>
                 <relationship kind="action" name="stopRecording:"/>
-                <relationship kind="action" name="viewMap:"/>
                 <relationship kind="outlet" name="dataButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="recordingLabel" candidateClass="UILabel"/>
