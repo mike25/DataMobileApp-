@@ -36,13 +36,14 @@
 - (IBAction)startRecording:(id)sender;
 - (IBAction)stopRecording:(id)sender;
 - (IBAction)sendData:(id)sender;
+- (IBAction)viewMap:(id)sender;
 
 
 - (void)managerDidStopUpdatingLocation;
 - (void)managerDidUpdate;
 - (void)managerDidFailWithError:(NSNotification *)notification;
 
-- (void)inputSelectedWithDay:(NSInteger)numOfDays;
+- (void)inputSelected:(NSNotification*)notification;
 - (void)stopRecordingConfirmed;
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;

@@ -75,13 +75,20 @@
     alertManager.observer = self;
     
     DatePickerController* picker = [self.storyboard instantiateViewControllerWithIdentifier:@"DatePicker"];
-    picker.observer = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(inputSelected:)
+                                                 name:@"NumberOfDaysInputSelected"
+                                               object:picker];
+    
     [self presentModalViewController:picker animated:YES];
+
 }
 
-- (void)inputSelectedWithDay:(NSInteger)numOfDays;
+- (void)inputSelected:(NSNotification*)notification
 {
-    [appDelegate startUpdatingLocationsForDays:numOfDays];
+    NSNumber* numOfDays = (NSNumber*)[[notification userInfo] objectForKey:@"numOfDays"];
+    
+    [appDelegate startUpdatingLocationsForDays:[numOfDays integerValue]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(managerDidStopUpdatingLocation)
@@ -197,7 +204,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(managerDidUpdate)
                                                  name:@"ManagerDidUpdateLocation" 
-                                               object:appDelegate.managerHandler];
+                                               object:appDelegate.managerHandler];        
 }
 
 - (void)viewDidUnload

@@ -31,7 +31,6 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
     locationManager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
     locationManager.purpose = @"Do you want me to record your GPS Location ?" ;
     locationManager.delegate = delegate;
-    //myDelegate  = delegate ;
     
     [locationManager startUpdatingLocation];
     
