@@ -197,7 +197,6 @@
 				A1FBE3631486F18400BB3D5F /* Controllers */,
 				A16E8C0E148075B800F66E96 /* DMAppDelegate.h */,
 				A16E8C0F148075B800F66E96 /* DMAppDelegate.m */,
-				3CE9FED414C6509500CC79C9 /* SendStates */,
 				A1FBE3651486F2E700BB3D5F /* AlertManager */,
 				A1FBE3681486F3D900BB3D5F /* MyLocationManager */,
 				A1FA278F149C2310009745EB /* Utilities */,
@@ -260,6 +259,7 @@
 		A1FBE3631486F18400BB3D5F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3CE9FED414C6509500CC79C9 /* SendStates */,
 				A196CDEF1480790600F61C06 /* MainViewController.h */,
 				A196CDF01480790700F61C06 /* MainViewController.m */,
 				A16AEBD5148432CD0079A0AA /* DatePickerController.h */,

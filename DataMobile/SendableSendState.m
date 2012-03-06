@@ -14,7 +14,8 @@
 - (void)executeForController:(MainViewController*)controller
 {
     controller.dataButton.hidden = false;
-    controller.sendingLabel.hidden = true; 
+    controller.sendingLabel.hidden = true;
+    controller.mapButton.hidden = false;
 }
 
 - (void)didSendDataForController:(MainViewController*)controller
