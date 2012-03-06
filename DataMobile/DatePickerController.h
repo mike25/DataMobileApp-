@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PickerObserver.h"
 
 @interface DatePickerController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 {
     @private NSInteger selectedNumOfDays;
 }
 
-@property (weak, nonatomic) id<PickerObserver> observer ;
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) IBOutlet UILabel *pickerTitleLabel;
 

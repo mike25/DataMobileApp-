@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #import "AlertObserver.h"
-#import "PickerObserver.h"
 
 @class LocationManagerHandler;
 @class DMAppDelegate;
 @class AlertViewManager;
 @class SendState;
 
-@interface MainViewController : UIViewController <AlertObserver, PickerObserver, NSURLConnectionDataDelegate>
+@interface MainViewController : UIViewController <AlertObserver, NSURLConnectionDataDelegate>
 {
     @private int daysToRecord;
 }

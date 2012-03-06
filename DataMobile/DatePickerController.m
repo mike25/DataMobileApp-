@@ -11,7 +11,6 @@
 
 @implementation DatePickerController 
 
-@synthesize observer;
 @synthesize picker;
 @synthesize pickerTitleLabel;
 @synthesize days;
