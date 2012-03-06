@@ -40,14 +40,9 @@ numberOfRowsInComponent:(NSInteger)component
     selectedNumOfDays = [[days objectAtIndex:row] intValue];
 }
 
-- (IBAction)cancel:(id)sender 
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)numberOfDaysSelected:(id)sender 
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     NSDictionary* dico = [[NSDictionary alloc] initWithObjectsAndKeys: [[NSNumber alloc] initWithInteger:selectedNumOfDays],
                                                                         @"numOfDays", nil];    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NumberOfDaysInputSelected" 

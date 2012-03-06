@@ -32,11 +32,8 @@
 
 @property (weak, nonatomic) DMAppDelegate* appDelegate;
 
-- (IBAction)startRecording:(id)sender;
 - (IBAction)stopRecording:(id)sender;
 - (IBAction)sendData:(id)sender;
-- (IBAction)viewMap:(id)sender;
-
 
 - (void)managerDidStopUpdatingLocation;
 - (void)managerDidUpdate;

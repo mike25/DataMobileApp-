@@ -31,7 +31,6 @@ numberOfRowsInComponent:(NSInteger)component;
      didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component;
 
-- (IBAction)cancel:(id)sender;
 - (IBAction)numberOfDaysSelected:(id)sender;
 
 @end

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "AlertObserver.h"
-#import "PickerObserver.h"
 
 @interface AlertViewManager : NSObject <UIAlertViewDelegate> 
 

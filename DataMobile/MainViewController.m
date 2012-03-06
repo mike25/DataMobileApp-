@@ -67,23 +67,6 @@
     [appDelegate stopUpdatingLocations];
 }
 
-- (IBAction)startRecording:(id)sender 
-{
-    alertManager = [[AlertViewManager alloc] init];
-    
-    // For being alerted when the user uses "No"
-    alertManager.observer = self;
-    
-    DatePickerController* picker = [self.storyboard instantiateViewControllerWithIdentifier:@"DatePicker"];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(inputSelected:)
-                                                 name:@"NumberOfDaysInputSelected"
-                                               object:picker];
-    
-    [self presentModalViewController:picker animated:YES];
-
-}
-
 - (void)inputSelected:(NSNotification*)notification
 {
     NSNumber* numOfDays = (NSNumber*)[[notification userInfo] objectForKey:@"numOfDays"];
@@ -98,13 +81,6 @@
     [self switchStateToRecording:true];
     [[alertManager createSuccessfullStartAlert] show];    
     [self.sendState locationManagerDidUpdateForController:self];
-}
-
-- (IBAction)viewMap:(id)sender 
-{
-    MapViewController* map = [self.storyboard instantiateViewControllerWithIdentifier:@"map"];
-    [self.navigationController pushViewController:map 
-                                         animated:YES];
 }
 
 - (void)managerDidStopUpdatingLocation
@@ -142,8 +118,6 @@
                                   ToURL:[[Config instance] stringValueForKey:@"insertLocationUrl"]
                            WithDelegate:self];
 }
-
-
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
@@ -191,6 +165,10 @@
 {
     [super viewDidLoad];    
     [Config loadForFileName:@"config"];
+    alertManager = [[AlertViewManager alloc] init];
+    
+    // For being alerted when the user uses "No"
+    alertManager.observer = self;
     
     self.sendState = [SendState determineInitialStateForController:self];
     
@@ -204,7 +182,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(managerDidUpdate)
                                                  name:@"ManagerDidUpdateLocation" 
-                                               object:appDelegate.managerHandler];        
+                                               object:appDelegate.managerHandler];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(inputSelected:)
+                                                 name:@"NumberOfDaysInputSelected"
+                                               object:nil];
 }
 
 - (void)viewDidUnload

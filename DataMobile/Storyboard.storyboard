@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="NdM-nc-t1B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="hWT-vn-zjs">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -8,20 +8,13 @@
         <scene sceneID="Idb-k6-Q4z">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xGR-8y-0er" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="Main" id="NdM-nc-t1B" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" id="NdM-nc-t1B" customClass="MainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wur-8f-gpf">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to DataMobile" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="8Bk-kg-17z">
-                                <rect key="frame" x="81" y="20" width="158" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jqD-BN-Tg1">
-                                <rect key="frame" x="117" y="211" width="87" height="37"/>
+                                <rect key="frame" x="117" y="189" width="87" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Start">
@@ -32,11 +25,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startRecording:" destination="NdM-nc-t1B" eventType="touchUpInside" id="d35-X4-4E8"/>
+                                    <segue destination="2wr-cc-gaZ" kind="push" id="0xO-J3-xrH"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oaT-w0-i7x">
-                                <rect key="frame" x="20" y="403" width="87" height="37"/>
+                                <rect key="frame" x="20" y="359" width="87" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Send">
@@ -51,7 +44,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zvl-fT-RZK">
-                                <rect key="frame" x="117" y="211" width="87" height="37"/>
+                                <rect key="frame" x="117" y="189" width="87" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Stop">
@@ -66,21 +59,21 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Recording..." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="yvz-gL-dhB">
-                                <rect key="frame" x="117" y="182" width="87" height="21"/>
+                                <rect key="frame" x="117" y="160" width="87" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sending..." lineBreakMode="tailTruncation" minimumFontSize="10" id="Bup-y1-Fc9">
-                                <rect key="frame" x="123" y="398" width="75" height="42"/>
+                                <rect key="frame" x="123" y="357" width="75" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T5e-W6-nEL">
-                                <rect key="frame" x="228" y="403" width="72" height="37"/>
+                                <rect key="frame" x="228" y="359" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Map">
@@ -90,13 +83,11 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="hWT-vn-zjs" kind="modal" id="782-9Y-3Nu"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Welcome To DataMobile" id="z42-lu-5gS"/>
                     <connections>
                         <outlet property="dataButton" destination="oaT-w0-i7x" id="gQx-xb-ddO"/>
                         <outlet property="mapButton" destination="T5e-W6-nEL" id="A02-TY-8pz"/>
@@ -107,7 +98,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-175" y="67"/>
+            <point key="canvasLocation" x="246" y="77"/>
         </scene>
         <scene sceneID="Lyo-Dt-zdd">
             <objects>
@@ -117,22 +108,22 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="AKl-fU-LZS" kind="relationship" relationship="rootViewController" id="VPk-Qu-C8Q"/>
+                        <segue destination="NdM-nc-t1B" kind="relationship" relationship="rootViewController" id="UxZ-B9-GDh"/>
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="213" y="67"/>
+            <point key="canvasLocation" x="-175" y="67"/>
         </scene>
         <scene sceneID="Vxr-jk-pEj">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EQq-d6-A7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DatePicker" id="2wr-cc-gaZ" customClass="DatePickerController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UnW-SH-154">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" id="f0F-1m-YFv">
-                                <rect key="frame" x="0.0" y="122" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="100" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="g71-NM-UKl">
@@ -143,7 +134,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5OQ-yf-e9a">
-                                <rect key="frame" x="20" y="346" width="72" height="37"/>
+                                <rect key="frame" x="124" y="359" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -158,43 +149,28 @@
                                     <action selector="numberOfDaysSelected:" destination="2wr-cc-gaZ" eventType="touchUpInside" id="mtC-RC-EeO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1td-Fx-Wmy">
-                                <rect key="frame" x="228" y="346" width="72" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancel:" destination="2wr-cc-gaZ" eventType="touchUpInside" id="NdO-1a-lpe"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="iDp-xH-Hr7"/>
                     <connections>
                         <outlet property="picker" destination="f0F-1m-YFv" id="TP4-gV-7UO"/>
                         <outlet property="pickerTitleLabel" destination="g71-NM-UKl" id="18C-56-Qgm"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-175" y="645"/>
+            <point key="canvasLocation" x="809" y="647"/>
         </scene>
         <scene sceneID="Tqs-tF-GWZ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5t-fd-tSl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="map" title="Map" id="AKl-fU-LZS" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NBj-A6-eW7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="wD6-SZ-kWy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
@@ -213,7 +189,6 @@
         <class className="DatePickerController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DatePickerController.h"/>
             <relationships>
-                <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="numberOfDaysSelected:"/>
                 <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="pickerTitleLabel" candidateClass="UILabel"/>
@@ -225,6 +200,7 @@
                 <relationship kind="action" name="sendData:"/>
                 <relationship kind="action" name="startRecording:"/>
                 <relationship kind="action" name="stopRecording:"/>
+                <relationship kind="action" name="viewMap:"/>
                 <relationship kind="outlet" name="dataButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="recordingLabel" candidateClass="UILabel"/>

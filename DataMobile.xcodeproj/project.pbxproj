@@ -109,7 +109,6 @@
 		A1FA278D149C22D4009745EB /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		A1FA2790149C2C2F009745EB /* ConfigTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigTest.h; sourceTree = "<group>"; };
 		A1FA2791149C2C2F009745EB /* ConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
-		A1FBE3611486E81200BB3D5F /* PickerObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerObserver.h; sourceTree = "<group>"; };
 		A1FBE3641486F1C200BB3D5F /* AlertObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertObserver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,7 +262,6 @@
 			children = (
 				A196CDEF1480790600F61C06 /* MainViewController.h */,
 				A196CDF01480790700F61C06 /* MainViewController.m */,
-				A1FBE3611486E81200BB3D5F /* PickerObserver.h */,
 				A16AEBD5148432CD0079A0AA /* DatePickerController.h */,
 				A16AEBD6148432CD0079A0AA /* DatePickerController.m */,
 				3CE0129314FECF3B001D565A /* MapViewController.h */,
