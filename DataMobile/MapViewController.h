@@ -10,6 +10,9 @@
 #import <MapKit/MapKit.h>
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
+
 @property (strong, nonatomic) IBOutlet MKMapView *map;
+
+- (void)drawAllLocations;
 
 @end

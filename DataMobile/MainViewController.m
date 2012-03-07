@@ -169,13 +169,13 @@
     
     // For being alerted when the user uses "No"
     alertManager.observer = self;
-    
+        
     self.sendState = [SendState determineInitialStateForController:self];
-    
+
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(ManagerDidFailWithError)
+                                             selector:@selector(ManagerDidFailWithError:)
                                                  name:@"ManagerDidFailWithError" 
                                                object:appDelegate.managerHandler];
     
