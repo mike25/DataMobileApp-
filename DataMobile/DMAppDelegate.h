@@ -35,10 +35,15 @@
 - (void)insertLocation:(CLLocation*)newLocation;
 - (void)insertNewUserIfNotExists;
 
+/**
+ * Returns All Location in TimeStamp Ascending order
+ */
 - (NSArray*)fetchAllLocations;
 - (void) deleteAllLocations;
 
-- (NSArray*)fetchAllObjects:(NSString *)entityName;
+- (NSArray*)fetchAllUsers;
+
+- (NSFetchRequest*)fetchAllObjects:(NSString *)entityName;
 - (void) deleteAllObjects:(NSString *) entityName;
 
 - (void)saveContext;        

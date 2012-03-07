@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+@class DMAppDelegate;
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
+@property (weak, nonatomic) DMAppDelegate* appDelegate;
 @property (strong, nonatomic) IBOutlet MKMapView *map;
+@property (strong, nonatomic) NSArray* locations;
 
 - (void)drawAllLocations;
+- (CLLocationCoordinate2D)getFirstLocation;
 
 @end

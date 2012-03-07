@@ -11,15 +11,15 @@
 
 @implementation MapViewController
 
+@synthesize appDelegate;
 @synthesize map;
+@synthesize locations;
 
 - (void)drawAllLocations
 {
-    DMAppDelegate* app = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSArray* locations = [app fetchAllLocations];
     CLLocationCoordinate2D* coordinates ;
     
-    for (NSManagedObject* location in [app fetchAllLocations]) 
+    for (NSManagedObject* location in locations) 
     {
         coordinates[0].latitude = 39.281516 ;
         coordinates[0].longitude = -76.580806;
@@ -29,6 +29,12 @@
                                                          count:[locations count]];
     [map addOverlay:polyLine];
 }
+
+/*- (CLLocationCoordinate2D)getFirstLocation
+{
+    return nil;
+}*/
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,7 +66,7 @@
         
     CLLocationCoordinate2D coordinates[3];
         
-    coordinates[0].latitude = 39.281516 ;
+    coordinates[0].latitude = 39.281516;
     coordinates[0].longitude = -76.580806;
 
     coordinates[1].latitude = 40.281516 ;
@@ -99,8 +105,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.locations = [appDelegate fetchAllLocations];
     
-    self.map.delegate = self;
+    self.map.delegate = self;    
 }
 
 

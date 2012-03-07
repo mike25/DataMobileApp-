@@ -107,7 +107,7 @@
     NSArray *objects = [self.appDelegate fetchAllLocations];
     
     NSString* string_objects = [CSVExporter exportObjects:objects toLocation:@"locations.csv"];    
-    NSString* user_id = [[[appDelegate fetchAllObjects:@"User"] objectAtIndex:0] valueForKey:@"id"];    
+    NSString* user_id = [[[appDelegate fetchAllUsers] objectAtIndex:0] valueForKey:@"id"];    
     
     NSDictionary* postData = [[NSDictionary alloc] initWithObjectsAndKeys:
                               string_objects, @"text",

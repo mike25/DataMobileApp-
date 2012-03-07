@@ -73,8 +73,8 @@ BOOL inBackground;
 }
 
 - (void)insertNewUserIfNotExists
-{
-    if([[self fetchAllObjects:@"User"] count] == 0)
+{        
+    if([[self fetchAllUsers] count] == 0)
     {
         // Generate new User Id
         CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
@@ -92,7 +92,15 @@ BOOL inBackground;
 
 - (NSArray*)fetchAllLocations
 {
-    return [self fetchAllObjects:@"Location"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"timestamp" ascending:YES];
+    
+    NSFetchRequest *request = [self fetchAllObjects:@"Location"];
+    request.sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+        
+    NSError *error;    
+    return  [self.managedObjectContext executeFetchRequest:request
+                                                     error:&error];
 }
  
 - (void)deleteAllLocations
@@ -100,7 +108,14 @@ BOOL inBackground;
     [self deleteAllObjects:@"Location"];
 }
 
-- (NSArray*)fetchAllObjects:(NSString *)entityName
+- (NSArray*)fetchAllUsers
+{
+    NSError* error;    
+    return [self.managedObjectContext executeFetchRequest:[self fetchAllObjects:@"User"] 
+                                                    error:&error];
+}
+
+- (NSFetchRequest*)fetchAllObjects:(NSString *)entityName
 {
     [self saveContext];
     NSEntityDescription *eDescription = [NSEntityDescription
@@ -109,9 +124,8 @@ BOOL inBackground;
     
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     request.entity = eDescription;
-    NSError *error;
-    
-    return  [self.managedObjectContext executeFetchRequest:request error:&error];
+
+    return request;
 }
 
 - (void) deleteAllObjects: (NSString*)entityName  
