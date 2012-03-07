@@ -23,4 +23,6 @@
  */
 - (CLLocationCoordinate2D)getLastCoordinate;
 
++ (CLLocationCoordinate2D)LocationToCoordinate:(NSManagedObject*)location;
+
 @end

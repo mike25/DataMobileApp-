@@ -17,17 +17,17 @@
 
 - (void)drawAllLocations
 {
-    CLLocationCoordinate2D* coordinates ;
+    CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[locations count]);
     
-    for (NSManagedObject* location in locations) 
+    for (int i = 0; i < [locations count]; i++)
     {
-        coordinates[0].latitude = 39.281516 ;
-        coordinates[0].longitude = -76.580806;
+        coordinates[i] = [MapViewController LocationToCoordinate:[locations objectAtIndex:i]];
     }
-    
+        
     MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates 
                                                          count:[locations count]];
     [map addOverlay:polyLine];
+    free(coordinates);
 }
 
 - (CLLocationCoordinate2D)getLastCoordinate
@@ -35,10 +35,14 @@
     // The locations are sorted in timestamp ascending order.
     NSManagedObject *lastLocation = [self.locations objectAtIndex:0];
 
-    return CLLocationCoordinate2DMake([[lastLocation valueForKey:@"latitude"] doubleValue], 
-                                      [[lastLocation valueForKey:@"longitude"] doubleValue]);
+    return [MapViewController LocationToCoordinate:lastLocation];
 }
 
++ (CLLocationCoordinate2D)LocationToCoordinate:(NSManagedObject*)location 
+{
+    return CLLocationCoordinate2DMake([[location valueForKey:@"latitude"] doubleValue], 
+                                      [[location valueForKey:@"longitude"] doubleValue]);    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,20 +69,7 @@
     MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];                
     [self.map setRegion:adjustedRegion animated:YES];
         
-    CLLocationCoordinate2D coordinates[3];
-        
-    coordinates[0].latitude = 39.281516;
-    coordinates[0].longitude = -76.580806;
-
-    coordinates[1].latitude = 40.281516 ;
-    coordinates[1].longitude = -76.580806;    
-    
-    coordinates[2].latitude = 41.281516 ;
-    coordinates[2].longitude = -76.580806;
-    
-    MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates 
-                                                         count:3];
-    [map addOverlay:polyLine];
+    [self drawAllLocations];
 }
 
 -(MKOverlayView*)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
@@ -106,10 +97,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.locations = [appDelegate fetchAllLocations];
+    self.appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];    
+    self.map.delegate = self;
     
-    self.map.delegate = self;    
+    self.locations = [appDelegate fetchLocationsFromPosition:0 
+                                                       limit:15];
 }
 
 
