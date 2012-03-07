@@ -39,6 +39,13 @@
  * Returns All Location in TimeStamp Ascending order
  */
 - (NSArray*)fetchAllLocations;
+
+/**
+ * Returns *count* Locations from position no *numberOfLocations*
+ */
+- (NSArray*)fetchLocationsFromPosition:(NSInteger)offset 
+                                 limit:(NSInteger)limit;
+
 - (void) deleteAllLocations;
 
 - (NSArray*)fetchAllUsers;

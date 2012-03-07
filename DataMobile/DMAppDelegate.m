@@ -9,6 +9,17 @@
 #import "DMAppDelegate.h"
 #import "LocationManagerHandler.h"
 
+@interface DMAppDelegate()
+
+- (NSFetchRequest*)getAllLocationsRequest;
+
+/**
+ * Fetches the passed request, ignoring the error.
+ */
+- (NSArray*)fetchRequest:(NSFetchRequest*)request;
+
+@end
+
 @implementation DMAppDelegate
 
 UIBackgroundTaskIdentifier bgTask;
@@ -90,17 +101,39 @@ BOOL inBackground;
     }
 }
 
-- (NSArray*)fetchAllLocations
+- (NSFetchRequest*)getAllLocationsRequest
 {
+    NSFetchRequest *request = [self fetchAllObjects:@"Location"];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:@"timestamp" ascending:YES];
     
-    NSFetchRequest *request = [self fetchAllObjects:@"Location"];
     request.sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-        
+    
+    return request;
+}
+
+- (NSArray*)fetchRequest:(NSFetchRequest*)request
+{
     NSError *error;    
     return  [self.managedObjectContext executeFetchRequest:request
                                                      error:&error];
+}
+
+- (NSArray*)fetchAllLocations
+{
+    NSFetchRequest *request = [self getAllLocationsRequest];
+    return [self fetchRequest:request];
+}
+
+- (NSArray*)fetchLocationsFromPosition:(NSInteger)offset 
+                                 limit:(NSInteger)limit
+{
+    NSFetchRequest *request = [self getAllLocationsRequest];
+    
+    request.fetchOffset = offset;
+    request.fetchLimit = limit;    
+        
+    return [self fetchRequest:request];
 }
  
 - (void)deleteAllLocations
