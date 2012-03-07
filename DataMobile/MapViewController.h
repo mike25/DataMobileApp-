@@ -17,6 +17,10 @@
 @property (strong, nonatomic) NSArray* locations;
 
 - (void)drawAllLocations;
-- (CLLocationCoordinate2D)getFirstLocation;
+
+/**
+ *  Returns the last coordinate recorded on the database
+ */
+- (CLLocationCoordinate2D)getLastCoordinate;
 
 @end

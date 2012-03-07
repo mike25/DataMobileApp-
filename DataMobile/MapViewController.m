@@ -30,10 +30,14 @@
     [map addOverlay:polyLine];
 }
 
-/*- (CLLocationCoordinate2D)getFirstLocation
+- (CLLocationCoordinate2D)getLastCoordinate
 {
-    return nil;
-}*/
+    // The locations are sorted in timestamp ascending order.
+    NSManagedObject *lastLocation = [self.locations objectAtIndex:0];
+
+    return CLLocationCoordinate2DMake([[lastLocation valueForKey:@"latitude"] doubleValue], 
+                                      [[lastLocation valueForKey:@"longitude"] doubleValue]);
+}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,10 +61,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = 39.281516;
-    zoomLocation.longitude = -76.580806;    
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*1609, 0.5*1609);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([self getLastCoordinate], 0.5*1609, 0.5*1609);
     MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];                
     [self.map setRegion:adjustedRegion animated:YES];
         
