@@ -181,9 +181,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="JYG-uq-hS5">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="3Fr-Qp-LYV"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Map" id="JYG-uq-hS5"/>
                     <connections>
                         <outlet property="map" destination="wD6-SZ-kWy" id="yDv-lE-OuU"/>
                     </connections>

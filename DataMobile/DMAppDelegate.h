@@ -25,13 +25,6 @@
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays;
 - (void)stopUpdatingLocations;
 
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation 
-           fromLocation:(CLLocation *)oldLocation;
-
-- (void)locationManager:(CLLocationManager *)manager 
-       didFailWithError:(NSError *)error;
-
 - (void)insertLocation:(CLLocation*)newLocation;
 - (void)insertNewUserIfNotExists;
 

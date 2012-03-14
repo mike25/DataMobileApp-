@@ -18,7 +18,6 @@
 - (void)drawAllLocations
 {
     CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[locations count]);
-    
     for (int i = 0; i < [locations count]; i++)
     {
         coordinates[i] = [MapViewController LocationToCoordinate:[locations objectAtIndex:i]];

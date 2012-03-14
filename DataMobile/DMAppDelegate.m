@@ -40,12 +40,13 @@ BOOL inBackground;
     
     [managerHandler startManager:locationManager 
                     WithDelegate:self 
-           stopUpdatingAfterDays:numOfDays];
+           stopUpdatingAfterDays:numOfDays];    
 }
 
 - (void)stopUpdatingLocations
 {
     [managerHandler stopManager];
+    [self saveContext];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -182,7 +183,6 @@ BOOL inBackground;
     [self saveContext];
 }
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self insertNewUserIfNotExists];
@@ -204,26 +204,7 @@ BOOL inBackground;
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
-    
-    inBackground=YES;
-	UIApplication* app = [UIApplication sharedApplication];
-	
-    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
-        [app endBackgroundTask:bgTask];
-        bgTask = UIBackgroundTaskInvalid;
-    }];
-	
-    // Start the long-running task and return immediately.
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		while (inBackground == YES) 
-        {            
-            [NSThread sleepForTimeInterval:(POLLINTERVALSECONDS)];
-            [managerHandler applicationDidEnterBackground];
-		}		
-        
-        [app endBackgroundTask:bgTask];
-        bgTask = UIBackgroundTaskInvalid;
-    });
+    [managerHandler applicationDidEnterBackground];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -231,7 +212,7 @@ BOOL inBackground;
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
-    inBackground = NO;
+    [managerHandler applicationWillEnterForeground];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
