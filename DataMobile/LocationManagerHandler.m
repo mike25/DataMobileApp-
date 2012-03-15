@@ -23,7 +23,17 @@
 @synthesize locationManager;
 @synthesize myDelegate;
 @synthesize stopDate;
+@synthesize threadDispatched;
 @synthesize inBackground;
+
+-(id)init
+{
+    if (self = [super init]) 
+    {
+        self.threadDispatched = NO;
+    }
+    return self;
+}
 
 - (void)startManager:(CLLocationManager*)manager
         WithDelegate:(id)delegate 
@@ -35,8 +45,6 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
     locationManager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
     locationManager.purpose = @"Do you want me to record your GPS Location ?" ;
     locationManager.delegate = delegate;
-    
-    [locationManager startUpdatingLocation];
     
     stopDate = [[NSDate alloc] initWithTimeIntervalSinceNow:numOfDays*3600*24];
 }
@@ -64,32 +72,35 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
 }
 
 - (void)applicationDidEnterBackground
-{    
+{
     inBackground = YES;
-	UIApplication* app = [UIApplication sharedApplication];
-	
-    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
-        [app endBackgroundTask:bgTask];
-        bgTask = UIBackgroundTaskInvalid;
-    }];
-	
-    // Start the long-running task and return immediately.
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		while ([stopDate timeIntervalSinceNow] > 0) 
-        {            
-            [NSThread sleepForTimeInterval:(POLLINTERVALSECONDS)];
-            [locationManager stopUpdatingLocation];
-            [locationManager startUpdatingLocation];
-		}		
+    if (!threadDispatched && self.locationManager != nil)
+    {
+        threadDispatched = YES;
         
-        [app endBackgroundTask:bgTask];
-        bgTask = UIBackgroundTaskInvalid;
-    });
+        /* Dispatch new recording thread */
+        UIApplication* app = [UIApplication sharedApplication];	
+        bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+            [app endBackgroundTask:bgTask];
+            bgTask = UIBackgroundTaskInvalid;
+        }];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            while (threadDispatched && inBackground) 
+            {            
+                [NSThread sleepForTimeInterval:(POLLINTERVALSECONDS)];
+                [locationManager stopUpdatingLocation];
+                [locationManager startUpdatingLocation];
+            }		
+        
+            [app endBackgroundTask:bgTask];
+            bgTask = UIBackgroundTaskInvalid;
+        });
+    }
 }
 
 - (void)applicationWillEnterForeground
 {
-    inBackground = NO;  
+    inBackground = NO;
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
@@ -114,7 +125,8 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
     locationManager.delegate = nil;
     [locationManager stopUpdatingLocation];
     stopDate = nil ;
-    locationManager = nil;    
+    locationManager = nil;
+    threadDispatched = NO;
 }
 
 @end
