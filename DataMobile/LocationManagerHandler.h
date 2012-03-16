@@ -8,25 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LocationManagerHandler : NSObject
+@interface LocationManagerHandler : NSObject <CLLocationManagerDelegate>
 
-@property (weak, nonatomic) id myDelegate;
+@property (weak, nonatomic) id<CLLocationManagerDelegate> myDelegate;
 @property (weak,  nonatomic) CLLocationManager* locationManager;
 
 @property (strong, nonatomic) NSDate* stopDate;
 @property (nonatomic) BOOL threadDispatched;
 @property (nonatomic) BOOL inBackground;
 
-- (void)locationManager:(CLLocationManager *)manager 
-       didFailWithError:(NSError *)error;
-
-- (void)managerDidUpdate;
-
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
 
 - (void)startManager:(CLLocationManager*)manager
-        WithDelegate:(id)delegate 
+        WithDelegate:(id<CLLocationManagerDelegate>)delegate 
     stopUpdatingAfterDays:(NSInteger)numOfDays;
 
 - (void)stopManager;

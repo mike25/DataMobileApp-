@@ -54,14 +54,6 @@ BOOL inBackground;
            fromLocation:(CLLocation *)oldLocation
 {
     [self insertLocation:newLocation];
-    [managerHandler managerDidUpdate];
-}
-
-- (void)locationManager:(CLLocationManager *)manager 
-       didFailWithError:(NSError *)error
-{
-    [managerHandler locationManager:manager 
-                    didFailWithError:error];
 }
 
 - (void)insertLocation:(CLLocation*)newLocation
@@ -204,7 +196,7 @@ BOOL inBackground;
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
-    [managerHandler applicationDidEnterBackground];
+//    [managerHandler applicationDidEnterBackground];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -212,7 +204,7 @@ BOOL inBackground;
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
-    [managerHandler applicationWillEnterForeground];
+//    [managerHandler applicationWillEnterForeground];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
