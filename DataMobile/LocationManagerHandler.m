@@ -35,12 +35,11 @@
     return self;
 }
 
-- (void)startManager:(CLLocationManager*)manager
-        WithDelegate:(id<CLLocationManagerDelegate>)delegate 
+- (void)startWithDelegate:(id<CLLocationManagerDelegate>)delegate 
 stopUpdatingAfterDays:(NSInteger)numOfDays
 {    
     // Configuring Manager    
-    locationManager = manager;
+    locationManager = [[CLLocationManager alloc] init];
     [locationManager setDesiredAccuracy:[[Config instance] integerValueForKey:@"Accuracy"]];
     locationManager.distanceFilter = [[Config instance] integerValueForKey:@"distanceFilter"];
     locationManager.purpose = @"Do you want me to record your GPS Location ?" ;    

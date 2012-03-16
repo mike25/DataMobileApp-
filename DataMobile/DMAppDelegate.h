@@ -20,7 +20,6 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (strong, nonatomic) LocationManagerHandler* managerHandler;
-@property (strong, nonatomic) CLLocationManager* locationManager;
 
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays;
 - (void)stopUpdatingLocations;

@@ -31,16 +31,13 @@ BOOL inBackground;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
 @synthesize managerHandler;
-@synthesize locationManager;
 
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays
 {
     managerHandler = [[LocationManagerHandler alloc] init];
-    locationManager = [[CLLocationManager alloc] init];
     
-    [managerHandler startManager:locationManager 
-                    WithDelegate:self 
-           stopUpdatingAfterDays:numOfDays];    
+    [managerHandler startWithDelegate:self 
+                stopUpdatingAfterDays:numOfDays];
 }
 
 - (void)stopUpdatingLocations
@@ -196,7 +193,6 @@ BOOL inBackground;
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
-//    [managerHandler applicationDidEnterBackground];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -204,7 +200,6 @@ BOOL inBackground;
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
-//    [managerHandler applicationWillEnterForeground];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

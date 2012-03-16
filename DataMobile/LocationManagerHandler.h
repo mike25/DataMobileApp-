@@ -11,7 +11,7 @@
 @interface LocationManagerHandler : NSObject <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) id<CLLocationManagerDelegate> myDelegate;
-@property (weak,  nonatomic) CLLocationManager* locationManager;
+@property (strong, nonatomic) CLLocationManager* locationManager;
 
 @property (strong, nonatomic) NSDate* stopDate;
 @property (nonatomic) BOOL threadDispatched;
@@ -20,9 +20,8 @@
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
 
-- (void)startManager:(CLLocationManager*)manager
-        WithDelegate:(id<CLLocationManagerDelegate>)delegate 
-    stopUpdatingAfterDays:(NSInteger)numOfDays;
+- (void)startWithDelegate:(id<CLLocationManagerDelegate>)delegate 
+stopUpdatingAfterDays:(NSInteger)numOfDays;
 
 - (void)stopManager;
 
