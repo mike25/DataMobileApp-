@@ -125,7 +125,19 @@ BOOL inBackground;
         
     return [self fetchRequest:request];
 }
- 
+
+- (NSArray*)fetchLocationsFromDate:(NSDate*)startDate 
+                            ToDate:(NSDate*)endDate
+{
+    NSFetchRequest *request = [self getAllLocationsRequest];
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"(timestamp > %@) AND (timestamp < %@)", 
+                                                              startDate, endDate];    
+    [request setPredicate:predicate];
+    
+    return [self fetchRequest:request];
+}
+
 - (void)deleteAllLocations
 {
     [self deleteAllObjects:@"Location"];
@@ -151,7 +163,7 @@ BOOL inBackground;
     return request;
 }
 
-- (void) deleteAllObjects: (NSString*)entityName  
+- (void)deleteAllObjects: (NSString*)entityName  
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:__managedObjectContext];

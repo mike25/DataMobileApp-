@@ -38,6 +38,9 @@
 - (NSArray*)fetchLocationsFromPosition:(NSInteger)offset 
                                  limit:(NSInteger)limit;
 
+- (NSArray*)fetchLocationsFromDate:(NSDate*)startDate 
+                            ToDate:(NSDate*)endDate;
+
 - (void) deleteAllLocations;
 
 - (NSArray*)fetchAllUsers;

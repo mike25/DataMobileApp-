@@ -96,11 +96,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];    
+    
+    UIApplication* app = [UIApplication sharedApplication];
+    
+    self.appDelegate = (DMAppDelegate*)[app delegate];
     self.map.delegate = self;
     
-    self.locations = [appDelegate fetchLocationsFromPosition:0 
-                                                       limit:15];
+    NSDate* today = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+    NSDate* yersterday = [[NSDate alloc] initWithTimeInterval:-1*3600*24
+                                                    sinceDate:today];
+    self.locations = [appDelegate fetchLocationsFromDate:yersterday
+                                                  ToDate:today];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(drawAllLocations) 
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:app];
 }
 
 
