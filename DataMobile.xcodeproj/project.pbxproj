@@ -14,6 +14,38 @@
 		3C369F3915140C80002840E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C369F3815140C80002840E8 /* main.m */; };
 		3C369F5215140E12002840E8 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */; };
 		3C369F5515140FE2002840E8 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C369F5415140FE2002840E8 /* Test.m */; };
+		3C369F5D15141204002840E8 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C369F5C15141204002840E8 /* libOCMock.a */; };
+		3C369F6015141A01002840E8 /* AlertObserver.h in Sources */ = {isa = PBXBuildFile; fileRef = A1FBE3641486F1C200BB3D5F /* AlertObserver.h */; };
+		3C369F6115141A01002840E8 /* AlertViewManager.h in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEA1480785C00F61C06 /* AlertViewManager.h */; };
+		3C369F6215141A01002840E8 /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEB1480785C00F61C06 /* AlertViewManager.m */; };
+		3C369F6315141A01002840E8 /* SendState.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FECC14C6472000CC79C9 /* SendState.h */; };
+		3C369F6415141A01002840E8 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
+		3C369F6515141A01002840E8 /* NoSendState.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED514C650D800CC79C9 /* NoSendState.h */; };
+		3C369F6615141A01002840E8 /* NoSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED614C650D800CC79C9 /* NoSendState.m */; };
+		3C369F6715141A01002840E8 /* SendingSendState.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED814C650FE00CC79C9 /* SendingSendState.h */; };
+		3C369F6815141A01002840E8 /* SendingSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED914C650FE00CC79C9 /* SendingSendState.m */; };
+		3C369F6915141A01002840E8 /* SendableSendState.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDB14C6511A00CC79C9 /* SendableSendState.h */; };
+		3C369F6A15141A01002840E8 /* SendableSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */; };
+		3C369F6B15141A01002840E8 /* MainViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEF1480790600F61C06 /* MainViewController.h */; };
+		3C369F6C15141A01002840E8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDF01480790700F61C06 /* MainViewController.m */; };
+		3C369F6D15141A01002840E8 /* DatePickerController.h in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD5148432CD0079A0AA /* DatePickerController.h */; };
+		3C369F6E15141A01002840E8 /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
+		3C369F6F15141A01002840E8 /* MapViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129314FECF3B001D565A /* MapViewController.h */; };
+		3C369F7015141A01002840E8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
+		3C369F7115141A01002840E8 /* DMAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0E148075B800F66E96 /* DMAppDelegate.h */; };
+		3C369F7215141A01002840E8 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
+		3C369F7315141A01002840E8 /* DataMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
+		3C369F7415141A01002840E8 /* LocationManagerHandler.h in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD11483F0480079A0AA /* LocationManagerHandler.h */; };
+		3C369F7515141A01002840E8 /* LocationManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */; };
+		3C369F7615141A01002840E8 /* CSVExporter.h in Sources */ = {isa = PBXBuildFile; fileRef = A196CDE61480784600F61C06 /* CSVExporter.h */; };
+		3C369F7715141A01002840E8 /* CSVExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDE71480784600F61C06 /* CSVExporter.m */; };
+		3C369F7815141A01002840E8 /* FileSender.h in Sources */ = {isa = PBXBuildFile; fileRef = A18F328E148309CA0029B2BF /* FileSender.h */; };
+		3C369F7915141A01002840E8 /* FileSender.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F328F148309CA0029B2BF /* FileSender.m */; };
+		3C369F7A15141A01002840E8 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = A1FA278C149C22D4009745EB /* Config.h */; };
+		3C369F7B15141A01002840E8 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA278D149C22D4009745EB /* Config.m */; };
+		3C369F7C15141C07002840E8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C03148075B800F66E96 /* CoreData.framework */; };
+		3C369F7D15141C1E002840E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C211480760300F66E96 /* CoreLocation.framework */; };
+		3C57278315141E860092A47D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3CE0128E14FECDB4001D565A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3CE0129514FECF3B001D565A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
 		3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
@@ -50,6 +82,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3C369F5E1514152E002840E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A16E8BF0148075B800F66E96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A16E8BF8148075B800F66E96;
+			remoteInfo = DataMobile;
+		};
 		A18CD06E1491672A000CC7E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A16E8BF0148075B800F66E96 /* Project object */;
@@ -67,6 +106,7 @@
 		3C369F3A15140C80002840E8 /* GHDataMobileTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GHDataMobileTests-Prefix.pch"; sourceTree = "<group>"; };
 		3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = usr/frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		3C369F5415140FE2002840E8 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		3C369F5C15141204002840E8 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/libs/libOCMock.a; sourceTree = "<group>"; };
 		3CE0128B14FECDAB001D565A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3CE0129314FECF3B001D565A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		3CE0129414FECF3B001D565A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -131,6 +171,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C57278315141E860092A47D /* MapKit.framework in Frameworks */,
+				3C369F7D15141C1E002840E8 /* CoreLocation.framework in Frameworks */,
+				3C369F7C15141C07002840E8 /* CoreData.framework in Frameworks */,
+				3C369F5D15141204002840E8 /* libOCMock.a in Frameworks */,
 				3C369F5215140E12002840E8 /* GHUnitIOS.framework in Frameworks */,
 				3C369F2F15140C80002840E8 /* UIKit.framework in Frameworks */,
 				3C369F3015140C80002840E8 /* Foundation.framework in Frameworks */,
@@ -206,6 +250,7 @@
 				3C369F3215140C80002840E8 /* GHDataMobileTests */,
 				A16E8BFC148075B800F66E96 /* Frameworks */,
 				A16E8BFA148075B800F66E96 /* Products */,
+				3C369F5C15141204002840E8 /* libOCMock.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -351,6 +396,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3C369F5F1514152E002840E8 /* PBXTargetDependency */,
 			);
 			name = GHDataMobileTests;
 			productName = GHDataMobileTests;
@@ -475,6 +521,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C369F6015141A01002840E8 /* AlertObserver.h in Sources */,
+				3C369F6115141A01002840E8 /* AlertViewManager.h in Sources */,
+				3C369F6215141A01002840E8 /* AlertViewManager.m in Sources */,
+				3C369F6315141A01002840E8 /* SendState.h in Sources */,
+				3C369F6415141A01002840E8 /* SendState.m in Sources */,
+				3C369F6515141A01002840E8 /* NoSendState.h in Sources */,
+				3C369F6615141A01002840E8 /* NoSendState.m in Sources */,
+				3C369F6715141A01002840E8 /* SendingSendState.h in Sources */,
+				3C369F6815141A01002840E8 /* SendingSendState.m in Sources */,
+				3C369F6915141A01002840E8 /* SendableSendState.h in Sources */,
+				3C369F6A15141A01002840E8 /* SendableSendState.m in Sources */,
+				3C369F6B15141A01002840E8 /* MainViewController.h in Sources */,
+				3C369F6C15141A01002840E8 /* MainViewController.m in Sources */,
+				3C369F6D15141A01002840E8 /* DatePickerController.h in Sources */,
+				3C369F6E15141A01002840E8 /* DatePickerController.m in Sources */,
+				3C369F6F15141A01002840E8 /* MapViewController.h in Sources */,
+				3C369F7015141A01002840E8 /* MapViewController.m in Sources */,
+				3C369F7115141A01002840E8 /* DMAppDelegate.h in Sources */,
+				3C369F7215141A01002840E8 /* DMAppDelegate.m in Sources */,
+				3C369F7315141A01002840E8 /* DataMobile.xcdatamodeld in Sources */,
+				3C369F7415141A01002840E8 /* LocationManagerHandler.h in Sources */,
+				3C369F7515141A01002840E8 /* LocationManagerHandler.m in Sources */,
+				3C369F7615141A01002840E8 /* CSVExporter.h in Sources */,
+				3C369F7715141A01002840E8 /* CSVExporter.m in Sources */,
+				3C369F7815141A01002840E8 /* FileSender.h in Sources */,
+				3C369F7915141A01002840E8 /* FileSender.m in Sources */,
+				3C369F7A15141A01002840E8 /* Config.h in Sources */,
+				3C369F7B15141A01002840E8 /* Config.m in Sources */,
 				3C369F3915140C80002840E8 /* main.m in Sources */,
 				3C369F5515140FE2002840E8 /* Test.m in Sources */,
 			);
@@ -515,6 +589,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3C369F5F1514152E002840E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A16E8BF8148075B800F66E96 /* DataMobile */;
+			targetProxy = 3C369F5E1514152E002840E8 /* PBXContainerItemProxy */;
+		};
 		A18CD06F1491672A000CC7E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A16E8BF8148075B800F66E96 /* DataMobile */;
@@ -553,6 +632,7 @@
 		3C369F4715140C80002840E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -560,13 +640,19 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GHDataMobileTests/GHDataMobileTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/usr/include\"";
 				INFOPLIST_FILE = "GHDataMobileTests/GHDataMobileTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/usr/libs\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -574,6 +660,7 @@
 		3C369F4815140C80002840E8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -581,13 +668,19 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GHDataMobileTests/GHDataMobileTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/usr/include\"";
 				INFOPLIST_FILE = "GHDataMobileTests/GHDataMobileTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/usr/libs\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -603,6 +696,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -626,6 +720,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -711,6 +806,7 @@
 				3C369F4815140C80002840E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A16E8BF3148075B800F66E96 /* Build configuration list for PBXProject "DataMobile" */ = {
 			isa = XCConfigurationList;
