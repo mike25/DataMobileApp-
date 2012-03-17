@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C369F2F15140C80002840E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
+		3C369F3015140C80002840E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFF148075B800F66E96 /* Foundation.framework */; };
+		3C369F3115140C80002840E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16979B4148739C3006E8AB7 /* CoreGraphics.framework */; };
+		3C369F3715140C80002840E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C369F3515140C80002840E8 /* InfoPlist.strings */; };
+		3C369F3915140C80002840E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C369F3815140C80002840E8 /* main.m */; };
+		3C369F5215140E12002840E8 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */; };
+		3C369F5515140FE2002840E8 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C369F5415140FE2002840E8 /* Test.m */; };
 		3CE0128E14FECDB4001D565A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3CE0129514FECF3B001D565A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
 		3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
@@ -53,6 +60,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C369F2D15140C80002840E8 /* GHDataMobileTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHDataMobileTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C369F3415140C80002840E8 /* GHDataMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GHDataMobileTests-Info.plist"; sourceTree = "<group>"; };
+		3C369F3615140C80002840E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3C369F3815140C80002840E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3C369F3A15140C80002840E8 /* GHDataMobileTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GHDataMobileTests-Prefix.pch"; sourceTree = "<group>"; };
+		3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = usr/frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		3C369F5415140FE2002840E8 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		3CE0128B14FECDAB001D565A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3CE0129314FECF3B001D565A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		3CE0129414FECF3B001D565A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -113,6 +127,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3C369F2A15140C80002840E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C369F5215140E12002840E8 /* GHUnitIOS.framework in Frameworks */,
+				3C369F2F15140C80002840E8 /* UIKit.framework in Frameworks */,
+				3C369F3015140C80002840E8 /* Foundation.framework in Frameworks */,
+				3C369F3115140C80002840E8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A16E8BF6148075B800F66E96 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,6 +163,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C369F3215140C80002840E8 /* GHDataMobileTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C369F3315140C80002840E8 /* Supporting Files */,
+				3C369F5415140FE2002840E8 /* Test.m */,
+			);
+			path = GHDataMobileTests;
+			sourceTree = "<group>";
+		};
+		3C369F3315140C80002840E8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C369F3415140C80002840E8 /* GHDataMobileTests-Info.plist */,
+				3C369F3515140C80002840E8 /* InfoPlist.strings */,
+				3C369F3815140C80002840E8 /* main.m */,
+				3C369F3A15140C80002840E8 /* GHDataMobileTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		3CE9FED414C6509500CC79C9 /* SendStates */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +203,7 @@
 			children = (
 				A16E8C05148075B800F66E96 /* DataMobile */,
 				A18CD06014916716000CC7E7 /* DataMobileTest */,
+				3C369F3215140C80002840E8 /* GHDataMobileTests */,
 				A16E8BFC148075B800F66E96 /* Frameworks */,
 				A16E8BFA148075B800F66E96 /* Products */,
 			);
@@ -168,6 +214,7 @@
 			children = (
 				A16E8BF9148075B800F66E96 /* DataMobile.app */,
 				A18CD05B14916716000CC7E7 /* DataMobileTest.octest */,
+				3C369F2D15140C80002840E8 /* GHDataMobileTests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,6 +222,7 @@
 		A16E8BFC148075B800F66E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */,
 				3CE0128B14FECDAB001D565A /* MapKit.framework */,
 				A16979B2148739B1006E8AB7 /* libz.dylib */,
 				A16979B01487399F006E8AB7 /* CFNetwork.framework */,
@@ -197,10 +245,8 @@
 				A1FBE3631486F18400BB3D5F /* Controllers */,
 				A16E8C0E148075B800F66E96 /* DMAppDelegate.h */,
 				A16E8C0F148075B800F66E96 /* DMAppDelegate.m */,
-				A1FBE3651486F2E700BB3D5F /* AlertManager */,
-				A1FBE3681486F3D900BB3D5F /* MyLocationManager */,
-				A1FA278F149C2310009745EB /* Utilities */,
 				A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */,
+				A1FA278F149C2310009745EB /* Utilities */,
 				A16E8C06148075B800F66E96 /* Supporting Files */,
 			);
 			path = DataMobile;
@@ -246,6 +292,7 @@
 		A1FA278F149C2310009745EB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A1FBE3681486F3D900BB3D5F /* MyLocationManager */,
 				A196CDE61480784600F61C06 /* CSVExporter.h */,
 				A196CDE71480784600F61C06 /* CSVExporter.m */,
 				A18F328E148309CA0029B2BF /* FileSender.h */,
@@ -259,6 +306,7 @@
 		A1FBE3631486F18400BB3D5F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A1FBE3651486F2E700BB3D5F /* AlertManager */,
 				3CE9FED414C6509500CC79C9 /* SendStates */,
 				A196CDEF1480790600F61C06 /* MainViewController.h */,
 				A196CDF01480790700F61C06 /* MainViewController.m */,
@@ -292,6 +340,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3C369F2C15140C80002840E8 /* GHDataMobileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C369F4915140C80002840E8 /* Build configuration list for PBXNativeTarget "GHDataMobileTests" */;
+			buildPhases = (
+				3C369F2915140C80002840E8 /* Sources */,
+				3C369F2A15140C80002840E8 /* Frameworks */,
+				3C369F2B15140C80002840E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GHDataMobileTests;
+			productName = GHDataMobileTests;
+			productReference = 3C369F2D15140C80002840E8 /* GHDataMobileTests.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A16E8BF8148075B800F66E96 /* DataMobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A16E8C16148075B800F66E96 /* Build configuration list for PBXNativeTarget "DataMobile" */;
@@ -352,11 +417,20 @@
 			targets = (
 				A16E8BF8148075B800F66E96 /* DataMobile */,
 				A18CD05A14916716000CC7E7 /* DataMobileTest */,
+				3C369F2C15140C80002840E8 /* GHDataMobileTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3C369F2B15140C80002840E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C369F3715140C80002840E8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A16E8BF7148075B800F66E96 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -397,6 +471,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3C369F2915140C80002840E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C369F3915140C80002840E8 /* main.m in Sources */,
+				3C369F5515140FE2002840E8 /* Test.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A16E8BF5148075B800F66E96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -440,6 +523,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3C369F3515140C80002840E8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C369F3615140C80002840E8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		A16E8C08148075B800F66E96 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -459,6 +550,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3C369F4715140C80002840E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/usr/frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GHDataMobileTests/GHDataMobileTests-Prefix.pch";
+				INFOPLIST_FILE = "GHDataMobileTests/GHDataMobileTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3C369F4815140C80002840E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/usr/frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GHDataMobileTests/GHDataMobileTests-Prefix.pch";
+				INFOPLIST_FILE = "GHDataMobileTests/GHDataMobileTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		A16E8C14148075B800F66E96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -571,6 +704,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3C369F4915140C80002840E8 /* Build configuration list for PBXNativeTarget "GHDataMobileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C369F4715140C80002840E8 /* Debug */,
+				3C369F4815140C80002840E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A16E8BF3148075B800F66E96 /* Build configuration list for PBXProject "DataMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
