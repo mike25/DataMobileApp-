@@ -46,6 +46,10 @@
 		3C369F7C15141C07002840E8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C03148075B800F66E96 /* CoreData.framework */; };
 		3C369F7D15141C1E002840E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C211480760300F66E96 /* CoreLocation.framework */; };
 		3C57278315141E860092A47D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
+		3C57278715141F880092A47D /* FileSenderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C57278615141F880092A47D /* FileSenderTest.m */; };
+		3C57278A15141FF00092A47D /* ConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C57278915141FF00092A47D /* ConfigTest.m */; };
+		3C57278B151420570092A47D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18CD05C14916716000CC7E7 /* SenTestingKit.framework */; };
+		3C57278D151421220092A47D /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C57278C151421220092A47D /* config.plist */; };
 		3CE0128E14FECDB4001D565A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3CE0129514FECF3B001D565A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
 		3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
@@ -54,7 +58,6 @@
 		3CE9FEDD14C6511B00CC79C9 /* SendableSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */; };
 		A101D9AC14A2ACE900DFC446 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
 		A101D9AD14A2ADAE00DFC446 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
-		A14AC87C1494383300C36EB6 /* FileSenderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A14AC87B1494383300C36EB6 /* FileSenderTest.m */; };
 		A169767C14873199006E8AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
 		A16AEBD31483F0480079A0AA /* LocationManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */; };
 		A16AEBD7148432CD0079A0AA /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
@@ -107,6 +110,10 @@
 		3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = usr/frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		3C369F5415140FE2002840E8 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		3C369F5C15141204002840E8 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/libs/libOCMock.a; sourceTree = "<group>"; };
+		3C57278615141F880092A47D /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
+		3C57278815141FF00092A47D /* ConfigTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigTest.h; sourceTree = "<group>"; };
+		3C57278915141FF00092A47D /* ConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
+		3C57278C151421220092A47D /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		3CE0128B14FECDAB001D565A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3CE0129314FECF3B001D565A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		3CE0129414FECF3B001D565A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -119,7 +126,6 @@
 		3CE9FEDB14C6511A00CC79C9 /* SendableSendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendableSendState.h; sourceTree = "<group>"; };
 		3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendableSendState.m; sourceTree = "<group>"; };
 		A101D9AB14A2ACE900DFC446 /* config-test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "config-test.plist"; path = "DataMobileTest/DataMobileTests/DataMobileTests/config-test.plist"; sourceTree = SOURCE_ROOT; };
-		A14AC87B1494383300C36EB6 /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
 		A169767B14873199006E8AB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A16979B01487399F006E8AB7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A16979B2148739B1006E8AB7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -171,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C57278B151420570092A47D /* SenTestingKit.framework in Frameworks */,
 				3C57278315141E860092A47D /* MapKit.framework in Frameworks */,
 				3C369F7D15141C1E002840E8 /* CoreLocation.framework in Frameworks */,
 				3C369F7C15141C07002840E8 /* CoreData.framework in Frameworks */,
@@ -212,6 +219,9 @@
 			children = (
 				3C369F3315140C80002840E8 /* Supporting Files */,
 				3C369F5415140FE2002840E8 /* Test.m */,
+				3C57278615141F880092A47D /* FileSenderTest.m */,
+				3C57278815141FF00092A47D /* ConfigTest.h */,
+				3C57278915141FF00092A47D /* ConfigTest.m */,
 			);
 			path = GHDataMobileTests;
 			sourceTree = "<group>";
@@ -219,12 +229,21 @@
 		3C369F3315140C80002840E8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3C57278C151421220092A47D /* config.plist */,
 				3C369F3415140C80002840E8 /* GHDataMobileTests-Info.plist */,
 				3C369F3515140C80002840E8 /* InfoPlist.strings */,
 				3C369F3815140C80002840E8 /* main.m */,
 				3C369F3A15140C80002840E8 /* GHDataMobileTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C57278E151422FE0092A47D /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3C369F5C15141204002840E8 /* libOCMock.a */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 		3CE9FED414C6509500CC79C9 /* SendStates */ = {
@@ -248,9 +267,9 @@
 				A16E8C05148075B800F66E96 /* DataMobile */,
 				A18CD06014916716000CC7E7 /* DataMobileTest */,
 				3C369F3215140C80002840E8 /* GHDataMobileTests */,
+				3C57278E151422FE0092A47D /* Libraries */,
 				A16E8BFC148075B800F66E96 /* Frameworks */,
 				A16E8BFA148075B800F66E96 /* Products */,
-				3C369F5C15141204002840E8 /* libOCMock.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -317,7 +336,6 @@
 				A18CD07014916949000CC7E7 /* TestTest.h */,
 				A18CD07114916949000CC7E7 /* TestTest.m */,
 				A18CD073149169E9000CC7E7 /* Location.gpx */,
-				A14AC87B1494383300C36EB6 /* FileSenderTest.m */,
 				A1FA2790149C2C2F009745EB /* ConfigTest.h */,
 				A1FA2791149C2C2F009745EB /* ConfigTest.m */,
 			);
@@ -474,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C369F3715140C80002840E8 /* InfoPlist.strings in Resources */,
+				3C57278D151421220092A47D /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +570,8 @@
 				3C369F7B15141A01002840E8 /* Config.m in Sources */,
 				3C369F3915140C80002840E8 /* main.m in Sources */,
 				3C369F5515140FE2002840E8 /* Test.m in Sources */,
+				3C57278715141F880092A47D /* FileSenderTest.m in Sources */,
+				3C57278A15141FF00092A47D /* ConfigTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,7 +602,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A18CD07214916949000CC7E7 /* TestTest.m in Sources */,
-				A14AC87C1494383300C36EB6 /* FileSenderTest.m in Sources */,
 				A1FA2792149C2C2F009745EB /* ConfigTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +657,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/usr/frameworks\"",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GHDataMobileTests/GHDataMobileTests-Prefix.pch";
@@ -665,6 +686,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/usr/frameworks\"",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GHDataMobileTests/GHDataMobileTests-Prefix.pch";

@@ -24,9 +24,9 @@
 
 @interface FileSenderTest : SenTestCase <NSURLConnectionDataDelegate>
 {
-    @private FileSender* sender;
-    @private NSDictionary* postDico;
-    @private SenderDelegate* delegate;
+@private FileSender* sender;
+@private NSDictionary* postDico;
+@private SenderDelegate* delegate;
 }
 
 @end
@@ -65,10 +65,10 @@
 - (void)setUp 
 {
     // Run before each test method
-    [Config loadForFileName:@"config-test"];
+    [Config loadForFileName:@"config"];
     sender = [[FileSender alloc] init];
     postDico = [[NSDictionary alloc] initWithObjectsAndKeys:@"FAKE-ID-999", @"id",
-                                                           @"FAKE-TEXT-999", @"text" , nil];
+                @"FAKE-TEXT-999", @"text" , nil];
     delegate = [[SenderDelegate alloc] init];
     delegate.didReceiveData = NO;
     delegate.didReceiveError = NO;
@@ -105,12 +105,12 @@
     
     STAssertFalse(delegate.didReceiveError, @"An Error occured : %@", [delegate.error description]);
     STAssertTrue(delegate.didReceiveData, @"The connection callback method has not been called.");
-
+    
     NSString* data_response = [NSString stringWithUTF8String:[delegate.data bytes]];
     
     STAssertNotNil(data_response, @"server did not send a response");
     STAssertEqualObjects(data_response, @"Array\n(\n    [id] => FAKE-ID-999\n    [text] => FAKE-TEXT-999\n)"
-                                      , @"response returned by the server");
+                         , @"response returned by the server");
 }
 
 - (void)testSendPostDataWithBadPostBody
@@ -138,7 +138,7 @@
                                                     options:0
                                                       range:NSMakeRange(0, [data_response length])];
     STAssertTrue(match, @"received server response did not match expected server response.");
-
+    
 }
 
 @end
