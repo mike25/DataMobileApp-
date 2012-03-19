@@ -118,6 +118,8 @@
 - (void)viewDidUnload
 {
     [self setMap:nil];
+    [self setLocations:nil];
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

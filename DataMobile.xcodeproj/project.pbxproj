@@ -32,8 +32,6 @@
 		3C369F6E15141A01002840E8 /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
 		3C369F6F15141A01002840E8 /* MapViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129314FECF3B001D565A /* MapViewController.h */; };
 		3C369F7015141A01002840E8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
-		3C369F7115141A01002840E8 /* DMAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0E148075B800F66E96 /* DMAppDelegate.h */; };
-		3C369F7215141A01002840E8 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
 		3C369F7315141A01002840E8 /* DataMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
 		3C369F7415141A01002840E8 /* LocationManagerHandler.h in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD11483F0480079A0AA /* LocationManagerHandler.h */; };
 		3C369F7515141A01002840E8 /* LocationManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */; };
@@ -52,6 +50,11 @@
 		3C57278D151421220092A47D /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C57278C151421220092A47D /* config.plist */; };
 		3CE0128E14FECDB4001D565A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3CE0129514FECF3B001D565A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
+		3CE0B6771517DACA0071E189 /* DataMobile.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
+		3CE0B67B1517DB600071E189 /* DMAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67A1517DB600071E189 /* DMAppDelegateTest.m */; };
+		3CE0B67E1517DDEE0071E189 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67D1517DDEE0071E189 /* CoreDataHelper.m */; };
+		3CE0B67F1517E5D80071E189 /* CoreDataHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67C1517DDEE0071E189 /* CoreDataHelper.h */; };
+		3CE0B6801517E5D80071E189 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67D1517DDEE0071E189 /* CoreDataHelper.m */; };
 		3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
 		3CE9FED714C650D800CC79C9 /* NoSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED614C650D800CC79C9 /* NoSendState.m */; };
 		3CE9FEDA14C650FE00CC79C9 /* SendingSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED914C650FE00CC79C9 /* SendingSendState.m */; };
@@ -102,6 +105,9 @@
 		3CE0128B14FECDAB001D565A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3CE0129314FECF3B001D565A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		3CE0129414FECF3B001D565A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		3CE0B67A1517DB600071E189 /* DMAppDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAppDelegateTest.m; sourceTree = "<group>"; };
+		3CE0B67C1517DDEE0071E189 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		3CE0B67D1517DDEE0071E189 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		3CE9FECC14C6472000CC79C9 /* SendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendState.h; path = State/SendState.h; sourceTree = "<group>"; };
 		3CE9FED114C64D9E00CC79C9 /* SendState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendState.m; sourceTree = "<group>"; };
 		3CE9FED514C650D800CC79C9 /* NoSendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSendState.h; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 				3C57278815141FF00092A47D /* ConfigTest.h */,
 				3C57278915141FF00092A47D /* ConfigTest.m */,
 				3C369F3315140C80002840E8 /* Supporting Files */,
+				3CE0B67A1517DB600071E189 /* DMAppDelegateTest.m */,
 			);
 			path = GHDataMobileTests;
 			sourceTree = "<group>";
@@ -206,6 +213,42 @@
 				3C369F5C15141204002840E8 /* libOCMock.a */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		3CE0B6811517E68A0071E189 /* CoreDataHelper */ = {
+			isa = PBXGroup;
+			children = (
+				3CE0B67C1517DDEE0071E189 /* CoreDataHelper.h */,
+				3CE0B67D1517DDEE0071E189 /* CoreDataHelper.m */,
+			);
+			name = CoreDataHelper;
+			sourceTree = "<group>";
+		};
+		3CE0B6821517E6AC0071E189 /* CSVExporter */ = {
+			isa = PBXGroup;
+			children = (
+				A196CDE61480784600F61C06 /* CSVExporter.h */,
+				A196CDE71480784600F61C06 /* CSVExporter.m */,
+			);
+			name = CSVExporter;
+			sourceTree = "<group>";
+		};
+		3CE0B6831517E6CA0071E189 /* FileSender */ = {
+			isa = PBXGroup;
+			children = (
+				A18F328E148309CA0029B2BF /* FileSender.h */,
+				A18F328F148309CA0029B2BF /* FileSender.m */,
+			);
+			name = FileSender;
+			sourceTree = "<group>";
+		};
+		3CE0B6841517E6D70071E189 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				A1FA278C149C22D4009745EB /* Config.h */,
+				A1FA278D149C22D4009745EB /* Config.m */,
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 		3CE9FED414C6509500CC79C9 /* SendStates */ = {
@@ -288,13 +331,11 @@
 		A1FA278F149C2310009745EB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3CE0B6811517E68A0071E189 /* CoreDataHelper */,
 				A1FBE3681486F3D900BB3D5F /* MyLocationManager */,
-				A196CDE61480784600F61C06 /* CSVExporter.h */,
-				A196CDE71480784600F61C06 /* CSVExporter.m */,
-				A18F328E148309CA0029B2BF /* FileSender.h */,
-				A18F328F148309CA0029B2BF /* FileSender.m */,
-				A1FA278C149C22D4009745EB /* Config.h */,
-				A1FA278D149C22D4009745EB /* Config.m */,
+				3CE0B6821517E6AC0071E189 /* CSVExporter */,
+				3CE0B6831517E6CA0071E189 /* FileSender */,
+				3CE0B6841517E6D70071E189 /* Config */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -404,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CE0B6771517DACA0071E189 /* DataMobile.xcdatamodeld in Resources */,
 				3C369F3715140C80002840E8 /* InfoPlist.strings in Resources */,
 				3C57278D151421220092A47D /* config.plist in Resources */,
 			);
@@ -427,6 +469,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CE0B67F1517E5D80071E189 /* CoreDataHelper.h in Sources */,
+				3CE0B6801517E5D80071E189 /* CoreDataHelper.m in Sources */,
 				3C369F6015141A01002840E8 /* AlertObserver.h in Sources */,
 				3C369F6115141A01002840E8 /* AlertViewManager.h in Sources */,
 				3C369F6215141A01002840E8 /* AlertViewManager.m in Sources */,
@@ -444,8 +488,6 @@
 				3C369F6E15141A01002840E8 /* DatePickerController.m in Sources */,
 				3C369F6F15141A01002840E8 /* MapViewController.h in Sources */,
 				3C369F7015141A01002840E8 /* MapViewController.m in Sources */,
-				3C369F7115141A01002840E8 /* DMAppDelegate.h in Sources */,
-				3C369F7215141A01002840E8 /* DMAppDelegate.m in Sources */,
 				3C369F7315141A01002840E8 /* DataMobile.xcdatamodeld in Sources */,
 				3C369F7415141A01002840E8 /* LocationManagerHandler.h in Sources */,
 				3C369F7515141A01002840E8 /* LocationManagerHandler.m in Sources */,
@@ -459,6 +501,7 @@
 				3C369F5515140FE2002840E8 /* Test.m in Sources */,
 				3C57278715141F880092A47D /* FileSenderTest.m in Sources */,
 				3C57278A15141FF00092A47D /* ConfigTest.m in Sources */,
+				3CE0B67B1517DB600071E189 /* DMAppDelegateTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +524,7 @@
 				3CE9FEDA14C650FE00CC79C9 /* SendingSendState.m in Sources */,
 				3CE9FEDD14C6511B00CC79C9 /* SendableSendState.m in Sources */,
 				3CE0129514FECF3B001D565A /* MapViewController.m in Sources */,
+				3CE0B67E1517DDEE0071E189 /* CoreDataHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

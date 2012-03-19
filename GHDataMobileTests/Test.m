@@ -8,7 +8,6 @@
 
 #import <GHUnitIOS/GHUnit.h> 
 #import <OCMock/OCMock.h>
-#import "DMAppDelegate.h"
 
 @interface Test : NSObject
 @end
@@ -64,7 +63,7 @@
     
     [tableViewMock verify];*/
     
-    id appDelegateMock = [OCMockObject mockForClass:[DMAppDelegate class]];
+    //id appDelegateMock = [OCMockObject mockForClass:[DMAppDelegate class]];
 }
 
 @end
