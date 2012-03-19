@@ -8,10 +8,11 @@
 
 #import "MapViewController.h"
 #import "DMAppDelegate.h"
+#import "CoreDataHelper.h"
 
 @implementation MapViewController
 
-@synthesize appDelegate;
+@synthesize cdHelper;
 @synthesize map;
 @synthesize locations;
 
@@ -97,16 +98,17 @@
 {
     [super viewDidLoad];
     
-    UIApplication* app = [UIApplication sharedApplication];
-    
-    self.appDelegate = (DMAppDelegate*)[app delegate];
     self.map.delegate = self;
     
+    UIApplication* app = [UIApplication sharedApplication];  
+    
+    DMAppDelegate* delegate = (DMAppDelegate*)[app delegate];    
+    self.cdHelper = delegate.cdataHelper;    
     NSDate* today = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
     NSDate* yersterday = [[NSDate alloc] initWithTimeInterval:-1*3600*24
                                                     sinceDate:today];
-    self.locations = [appDelegate fetchLocationsFromDate:yersterday
-                                                  ToDate:today];
+    self.locations = [cdHelper fetchLocationsFromDate:yersterday
+                                               ToDate:today];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(drawAllLocations) 

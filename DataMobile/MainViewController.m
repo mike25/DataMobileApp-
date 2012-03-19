@@ -10,6 +10,7 @@
 
 #import "CSVExporter.h"
 #import "DMAppDelegate.h"
+#import "CoreDataHelper.h"
 #import "AlertViewManager.h"
 #import "DatePickerController.h"
 #import "FileSender.h"
@@ -51,7 +52,7 @@
 {
     // Releases the view if it doesn't have a superview.
     
-    [self.appDelegate saveContext];
+    [self.appDelegate.cdataHelper saveContext];
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
@@ -104,10 +105,10 @@
 {    
     [sendState didSendDataForController:self];
     
-    NSArray *objects = [self.appDelegate fetchAllLocations];
+    NSArray *objects = [self.appDelegate.cdataHelper fetchAllLocations];
     
     NSString* string_objects = [CSVExporter exportObjects:objects toLocation:@"locations.csv"];    
-    NSString* user_id = [[[appDelegate fetchAllUsers] objectAtIndex:0] valueForKey:@"id"];    
+    NSString* user_id = [[[appDelegate.cdataHelper fetchAllUsers] objectAtIndex:0] valueForKey:@"id"];    
     
     NSDictionary* postData = [[NSDictionary alloc] initWithObjectsAndKeys:
                               string_objects, @"text",
@@ -124,7 +125,7 @@
     NSString* data_response = [NSString stringWithUTF8String:[data bytes]];
     if (![FileSender errorMessageReceivedFromServer:data_response])
     {
-        [appDelegate deleteAllLocations];
+        [appDelegate.cdataHelper deleteAllLocations];
         [[alertManager createSuccessfullSentAlert] show];
         [sendState connectionDidReceiveDataWithoutErrorForController:self];
     }
@@ -165,13 +166,11 @@
 {
     [super viewDidLoad];    
     [Config loadForFileName:@"config"];
-    alertManager = [[AlertViewManager alloc] init];
-    
-    // For being alerted when the user uses "No"
+
+    // For being alerted when the user uses "No"    
+    alertManager = [[AlertViewManager alloc] init];    
     alertManager.observer = self;
         
-    self.sendState = [SendState determineInitialStateForController:self];
-
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -188,6 +187,9 @@
                                              selector:@selector(inputSelected:)
                                                  name:@"NumberOfDaysInputSelected"
                                                object:nil];
+    
+    self.sendState = [SendState determineInitialStateForController:self];
+    [sendState executeForController:self];
 }
 
 - (void)viewDidUnload

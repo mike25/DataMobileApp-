@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-@class DMAppDelegate;
+@class CoreDataHelper;
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
-@property (weak, nonatomic) DMAppDelegate* appDelegate;
+@property (weak, nonatomic) CoreDataHelper* cdHelper;
 @property (strong, nonatomic) IBOutlet MKMapView *map;
 @property (strong, nonatomic) NSArray* locations;
 

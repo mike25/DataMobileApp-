@@ -8,6 +8,7 @@
 
 #import "SendState.h"
 #import "DMAppDelegate.h"
+#import "CoreDataHelper.h"
 #import "MainViewController.h"
 
 @implementation SendState
@@ -18,7 +19,11 @@
  */
 +(SendState*)determineInitialStateForController:(MainViewController*)controller
 {
-    NSString* classString = [[controller.appDelegate fetchAllLocations] count] != 0 ?  @"SendableState" : @"NoSendState" ;
+    // Checking if there is any data to send
+    NSArray* locations = [controller.appDelegate.cdataHelper fetchLocationsFromPosition:0
+                                                                                  limit:1 ];
+    
+    NSString* classString = ([locations count] > 0) ?  @"SendableSendState" : @"NoSendState" ;
     return [SendState instanceOfState:classString];
 }
 

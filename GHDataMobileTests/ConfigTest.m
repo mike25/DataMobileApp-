@@ -1,8 +1,12 @@
 
-#import "ConfigTest.h"
+#import <UIKit/UIKit.h>
+#import <SenTestingKit/SenTestingKit.h>
 #import "Config.h"
 
-#import <UIKit/UIKit.h>
+@interface ConfigTest : SenTestCase
+
+@end
+
 
 @implementation ConfigTest
 
