@@ -21,31 +21,6 @@
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays;
 - (void)stopUpdatingLocations;
 
-- (void)insertLocation:(CLLocation*)newLocation;
-- (void)insertNewUserIfNotExists;
-
-/**
- * Returns All Location in TimeStamp Ascending order
- */
-- (NSArray*)fetchAllLocations;
-
-/**
- * Returns *count* Locations from position no *numberOfLocations*
- */
-- (NSArray*)fetchLocationsFromPosition:(NSInteger)offset 
-                                 limit:(NSInteger)limit;
-
-- (NSArray*)fetchLocationsFromDate:(NSDate*)startDate 
-                            ToDate:(NSDate*)endDate;
-
-- (void) deleteAllLocations;
-
-- (NSArray*)fetchAllUsers;
-
-- (NSFetchRequest*)fetchAllObjects:(NSString *)entityName;
-- (void) deleteAllObjects:(NSString *) entityName;
-
-- (void)saveContext;        
 - (NSURL *)applicationDocumentsDirectory;
 
 

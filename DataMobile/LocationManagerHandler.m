@@ -15,29 +15,23 @@
 }
 
 - (void)haltManager;
+- (void)dispatchRecordingThread;
+- (BOOL)dateExpired;
 
 @end
 
 @implementation LocationManagerHandler
 
+static int currentTask = 0 ;
+
 @synthesize locationManager;
 @synthesize myDelegate;
 @synthesize stopDate;
-@synthesize threadDispatched;
-@synthesize inBackground;
-
--(id)init
-{
-    if (self = [super init]) 
-    {
-        self.threadDispatched = NO;
-    }
-    return self;
-}
+@synthesize recording;
 
 - (void)startWithDelegate:(id<CLLocationManagerDelegate>)delegate 
-stopUpdatingAfterDays:(NSInteger)numOfDays
-{    
+    stopUpdatingAfterDays:(NSInteger)numOfDays
+{        
     // Configuring Manager    
     locationManager = [[CLLocationManager alloc] init];
     [locationManager setDesiredAccuracy:[[Config instance] integerValueForKey:@"Accuracy"]];
@@ -57,32 +51,42 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
                                              selector:@selector(applicationDidEnterBackground) 
                                                  name:UIApplicationDidEnterBackgroundNotification
                                                object:app];
+    
+    [self dispatchRecordingThread];
+}
+
+- (void)haltManager
+{
+    locationManager.delegate = nil;
+    [locationManager stopUpdatingLocation];
+    locationManager = nil;
 }
 
 - (void)stopManager
 {    
-    [self haltManager];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidStopUpdatingLocation" 
-                                                        object:self];
+    if (bgTask) 
+    {
+        UIApplication* app = [UIApplication sharedApplication];
+        [app endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;        
+        
+        [self haltManager];
+        currentTask++;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidStopUpdatingLocation"
+                                                            object:self];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
     didUpdateToLocation:(CLLocation *)newLocation 
            fromLocation:(CLLocation *)oldLocation
 {
-    if ([stopDate timeIntervalSinceNow] <= 0)
-    {
-        [self stopManager];
-    }
-    else
-    {
-        [self.myDelegate locationManager:manager 
-                     didUpdateToLocation:newLocation 
-                            fromLocation:oldLocation];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation"
-                                                            object:self];
-        [self.locationManager stopUpdatingLocation];
-    }
+    [self.myDelegate locationManager:manager 
+                 didUpdateToLocation:newLocation 
+                        fromLocation:oldLocation];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidUpdateLocation"
+                                                        object:self];
+    [manager stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager 
@@ -104,47 +108,55 @@ stopUpdatingAfterDays:(NSInteger)numOfDays
 
 - (void)applicationDidEnterBackground
 {
-    inBackground = YES;
-    if (!threadDispatched && self.locationManager != nil)
-    {
-        threadDispatched = YES;
-        
-        /* Dispatch new recording thread */
-        UIApplication* app = [UIApplication sharedApplication];	
-        bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
-            [app endBackgroundTask:bgTask];
-            bgTask = UIBackgroundTaskInvalid;
-        }];
-
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            while (threadDispatched && inBackground) 
-            {            
-                [NSThread sleepForTimeInterval:(POLLINTERVALSECONDS)];
-                    
-                if (myDelegate != nil)
-                {
-                    [locationManager startUpdatingLocation];
-                }
-            }		
-            
-            [app endBackgroundTask:bgTask];
-            bgTask = UIBackgroundTaskInvalid;
-        });        
-    }
 }
 
 - (void)applicationWillEnterForeground
 {
-    inBackground = NO;
+
 }
 
-- (void)haltManager
+- (void)dispatchRecordingThread
 {
-    locationManager.delegate = nil;
-    [locationManager stopUpdatingLocation];
-    stopDate = nil ;
-    locationManager = nil;
-    threadDispatched = NO;
+    
+    /* Dispatch new recording thread */
+    UIApplication* app = [UIApplication sharedApplication];
+	
+    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+        
+        // TODO : implement expiration handler.
+        
+        [app endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+ 
+        int taskID = currentTask ;
+        
+        while (![self dateExpired] && taskID == currentTask)
+        {
+            if (myDelegate != nil)
+            {
+                [locationManager startUpdatingLocation];
+            }            
+            [NSThread sleepForTimeInterval:(POLLINTERVALSECONDS)];
+        }		        
+        
+        if ([self dateExpired])
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ManagerDidStopUpdatingLocation"
+                                                                object:self];
+            currentTask++;
+        }
+        
+        [app endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    });
+}
+
+- (BOOL)dateExpired
+{
+    return [stopDate timeIntervalSinceNow] <= 0 ;
 }
 
 @end

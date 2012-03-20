@@ -23,17 +23,6 @@ BOOL inBackground;
 
 @synthesize managerHandler;
 
-- (id)init
-{
-    if (self = [super init]) 
-    {
-        cdataHelper = [[CoreDataHelper alloc] 
-                         initWithURL:[[self applicationDocumentsDirectory] 
-                                    URLByAppendingPathComponent:@"DataMobile.sqlite"]];
-    }
-    return self;
-}
-
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays
 {
     managerHandler = [[LocationManagerHandler alloc] init];
@@ -45,70 +34,22 @@ BOOL inBackground;
 - (void)stopUpdatingLocations
 {
     [managerHandler stopManager];
-    [self saveContext];
+    [cdataHelper saveContext];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation 
            fromLocation:(CLLocation *)oldLocation
 {
-    [self insertLocation:newLocation];
-}
-
-- (void)insertLocation:(CLLocation*)newLocation
-{
     [cdataHelper insertLocation:newLocation];
 }
 
-- (void)insertNewUserIfNotExists
-{        
-    [cdataHelper insertNewUserIfNotExists];
-}
-
-- (NSArray*)fetchAllLocations
-{
-    return [cdataHelper fetchAllLocations];
-}
-
-- (NSArray*)fetchLocationsFromPosition:(NSInteger)offset 
-                                 limit:(NSInteger)limit
-{
-    return [cdataHelper fetchLocationsFromPosition:offset 
-                                             limit:limit];
-}
-
-- (NSArray*)fetchLocationsFromDate:(NSDate*)startDate 
-                            ToDate:(NSDate*)endDate
-{
-    return [cdataHelper fetchLocationsFromDate:startDate 
-                                        ToDate:endDate];
-}
-
-- (void)deleteAllLocations
-{
-    [cdataHelper deleteAllLocations];
-}
-
-- (NSArray*)fetchAllUsers
-{
-    return [cdataHelper fetchAllUsers];
-}
-
-- (NSFetchRequest*)fetchAllObjects:(NSString *)entityName
-{
-    return [cdataHelper fetchAllObjects:entityName];
-}
-
-- (void)deleteAllObjects:(NSString*)entityName  
-{
-    [cdataHelper deleteAllObjects:entityName];
-}
-
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self insertNewUserIfNotExists];    
+    [cdataHelper insertNewUserIfNotExists];
+    cdataHelper = [[CoreDataHelper alloc] 
+                   initWithURL:[[self applicationDocumentsDirectory] 
+                                URLByAppendingPathComponent:@"DataMobile.sqlite"]];
     return YES;
 }
 
@@ -132,7 +73,8 @@ BOOL inBackground;
 {
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-     */
+     */    
+    [cdataHelper saveContext];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -145,11 +87,6 @@ BOOL inBackground;
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
-}
-
-- (void)saveContext
-{
     [cdataHelper saveContext];
 }
 

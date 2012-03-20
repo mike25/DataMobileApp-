@@ -14,8 +14,7 @@
 @property (strong, nonatomic) CLLocationManager* locationManager;
 
 @property (strong, nonatomic) NSDate* stopDate;
-@property (nonatomic) BOOL threadDispatched;
-@property (nonatomic) BOOL inBackground;
+@property (nonatomic) BOOL recording;
 
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
