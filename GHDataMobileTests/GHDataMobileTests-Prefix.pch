@@ -13,6 +13,12 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import <CoreLocation/CoreLocation.h>
+    
+    #define HC_SHORTHAND
+    #import <GHUnitIOS/GHUnit.h>
+    #import <OCHamcrestIOS/OCHamcrestIOS.h>
+    #import <OCMock/OCMock.h>
+
 #endif
 
 #ifndef POLLINTERVALSECONDS

@@ -4,9 +4,7 @@
 //
 //  Copyright (c) 2012 MML-Concordia. All rights reserved.
 //
-
-#import <GHUnitIOS/GHUnit.h> 
-#import <OCMock/OCMock.h>
+ 
 #import "CoreDataHelper.h"
 
 @interface CoreDataHelperTest : GHTestCase { }

@@ -59,6 +59,11 @@
 		3CE9FED714C650D800CC79C9 /* NoSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED614C650D800CC79C9 /* NoSendState.m */; };
 		3CE9FEDA14C650FE00CC79C9 /* SendingSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED914C650FE00CC79C9 /* SendingSendState.m */; };
 		3CE9FEDD14C6511B00CC79C9 /* SendableSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */; };
+		3CF15B7915192AE8008868C5 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7815192AE8008868C5 /* MyMapAnnotation.m */; };
+		3CF15B7D151942FA008868C5 /* MyMapAnnotationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7C151942F9008868C5 /* MyMapAnnotationTest.m */; };
+		3CF15B7E15194323008868C5 /* MyMapAnnotation.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7715192AE8008868C5 /* MyMapAnnotation.h */; };
+		3CF15B7F15194323008868C5 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7815192AE8008868C5 /* MyMapAnnotation.m */; };
+		3CF15B8115195931008868C5 /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF15B8015195931008868C5 /* OCHamcrestIOS.framework */; };
 		A101D9AD14A2ADAE00DFC446 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
 		A169767C14873199006E8AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
 		A16AEBD31483F0480079A0AA /* LocationManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */; };
@@ -115,6 +120,10 @@
 		3CE9FED914C650FE00CC79C9 /* SendingSendState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingSendState.m; sourceTree = "<group>"; };
 		3CE9FEDB14C6511A00CC79C9 /* SendableSendState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendableSendState.h; sourceTree = "<group>"; };
 		3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendableSendState.m; sourceTree = "<group>"; };
+		3CF15B7715192AE8008868C5 /* MyMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMapAnnotation.h; sourceTree = "<group>"; };
+		3CF15B7815192AE8008868C5 /* MyMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapAnnotation.m; sourceTree = "<group>"; };
+		3CF15B7C151942F9008868C5 /* MyMapAnnotationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapAnnotationTest.m; sourceTree = "<group>"; };
+		3CF15B8015195931008868C5 /* OCHamcrestIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrestIOS.framework; path = usr/frameworks/OCHamcrestIOS.framework; sourceTree = "<group>"; };
 		A101D9AB14A2ACE900DFC446 /* config-test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "config-test.plist"; path = "DataMobileTest/DataMobileTests/DataMobileTests/config-test.plist"; sourceTree = SOURCE_ROOT; };
 		A169767B14873199006E8AB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A16979B4148739C3006E8AB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -154,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF15B8115195931008868C5 /* OCHamcrestIOS.framework in Frameworks */,
 				3C57278B151420570092A47D /* SenTestingKit.framework in Frameworks */,
 				3C57278315141E860092A47D /* MapKit.framework in Frameworks */,
 				3C369F7D15141C1E002840E8 /* CoreLocation.framework in Frameworks */,
@@ -184,10 +194,8 @@
 		3C369F3215140C80002840E8 /* GHDataMobileTests */ = {
 			isa = PBXGroup;
 			children = (
+				3CF15B7A151942CC008868C5 /* Utilities */,
 				3C369F5415140FE2002840E8 /* Test.m */,
-				3CE0B67A1517DB600071E189 /* CoreDataHelperTest.m */,
-				3C57278615141F880092A47D /* FileSenderTest.m */,
-				3C57278915141FF00092A47D /* ConfigTest.m */,
 				3C369F3315140C80002840E8 /* Supporting Files */,
 			);
 			path = GHDataMobileTests;
@@ -264,6 +272,26 @@
 			name = SendStates;
 			sourceTree = "<group>";
 		};
+		3CF15B7515192A98008868C5 /* MyMapAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				3CF15B7715192AE8008868C5 /* MyMapAnnotation.h */,
+				3CF15B7815192AE8008868C5 /* MyMapAnnotation.m */,
+			);
+			name = MyMapAnnotation;
+			sourceTree = "<group>";
+		};
+		3CF15B7A151942CC008868C5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3CE0B67A1517DB600071E189 /* CoreDataHelperTest.m */,
+				3C57278615141F880092A47D /* FileSenderTest.m */,
+				3C57278915141FF00092A47D /* ConfigTest.m */,
+				3CF15B7C151942F9008868C5 /* MyMapAnnotationTest.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		A16E8BEE148075B800F66E96 = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +315,7 @@
 		A16E8BFC148075B800F66E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3CF15B8015195931008868C5 /* OCHamcrestIOS.framework */,
 				3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */,
 				3CE0128B14FECDAB001D565A /* MapKit.framework */,
 				A16979B4148739C3006E8AB7 /* CoreGraphics.framework */,
@@ -329,6 +358,7 @@
 		A1FA278F149C2310009745EB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3CF15B7515192A98008868C5 /* MyMapAnnotation */,
 				3CE0B6811517E68A0071E189 /* CoreDataHelper */,
 				A1FBE3681486F3D900BB3D5F /* MyLocationManager */,
 				3CE0B6821517E6AC0071E189 /* CSVExporter */,
@@ -467,6 +497,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF15B7E15194323008868C5 /* MyMapAnnotation.h in Sources */,
+				3CF15B7F15194323008868C5 /* MyMapAnnotation.m in Sources */,
 				3CE0B6861517EE8B0071E189 /* CoreDataHelper.h in Sources */,
 				3CE0B6871517EE8B0071E189 /* CoreDataHelper.m in Sources */,
 				3CE0B6851517E9550071E189 /* DataMobile.xcdatamodeld in Sources */,
@@ -500,6 +532,7 @@
 				3C57278715141F880092A47D /* FileSenderTest.m in Sources */,
 				3C57278A15141FF00092A47D /* ConfigTest.m in Sources */,
 				3CE0B67B1517DB600071E189 /* CoreDataHelperTest.m in Sources */,
+				3CF15B7D151942FA008868C5 /* MyMapAnnotationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +556,7 @@
 				3CE9FEDD14C6511B00CC79C9 /* SendableSendState.m in Sources */,
 				3CE0129514FECF3B001D565A /* MapViewController.m in Sources */,
 				3CE0B67E1517DDEE0071E189 /* CoreDataHelper.m in Sources */,
+				3CF15B7915192AE8008868C5 /* MyMapAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +611,7 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"-lstdc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -606,6 +641,7 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"-lstdc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

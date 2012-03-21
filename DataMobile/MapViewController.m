@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 #import "DMAppDelegate.h"
 #import "CoreDataHelper.h"
+#import "MyMapAnnotation.h"
 
 @implementation MapViewController
 
@@ -21,21 +22,26 @@
     CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[locations count]);
     for (int i = 0; i < [locations count]; i++)
     {
-        coordinates[i] = [MapViewController LocationToCoordinate:[locations objectAtIndex:i]];
+        MyMapAnnotation* note = (MyMapAnnotation*)[locations objectAtIndex:i];
+        coordinates[i] = [note coordinate];
     }
-        
     MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates 
-                                                         count:[locations count]];
+                                                         count:[locations count]];        
     [map addOverlay:polyLine];
     free(coordinates);
+    
+    //Add start and end annotations
+    MyMapAnnotation* depart_notation = (MyMapAnnotation*)[locations objectAtIndex:[locations count]-1];
+    MyMapAnnotation* last_notation = (MyMapAnnotation*)[locations objectAtIndex:0];    
+    [self.map addAnnotation:depart_notation];
+    [self.map addAnnotation:last_notation];
 }
 
 - (CLLocationCoordinate2D)getLastCoordinate
 {
     // The locations are sorted in timestamp ascending order.
-    NSManagedObject *lastLocation = [self.locations objectAtIndex:0];
-
-    return [MapViewController LocationToCoordinate:lastLocation];
+    MyMapAnnotation *lastLocation = (MyMapAnnotation*)[self.locations objectAtIndex:0];
+    return [lastLocation coordinate];
 }
 
 + (CLLocationCoordinate2D)LocationToCoordinate:(NSManagedObject*)location 
@@ -99,17 +105,21 @@
     [super viewDidLoad];
     
     self.map.delegate = self;
+    self.map.showsUserLocation = YES;
     
     UIApplication* app = [UIApplication sharedApplication];  
     
     DMAppDelegate* delegate = (DMAppDelegate*)[app delegate];    
-    self.cdHelper = delegate.cdataHelper;    
+    self.cdHelper = delegate.cdataHelper;
+    
     NSDate* today = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
     NSDate* yersterday = [[NSDate alloc] initWithTimeInterval:-1*3600*24
                                                     sinceDate:today];
-    self.locations = [cdHelper fetchLocationsFromDate:yersterday
-                                               ToDate:today];
     
+    NSArray* objects = [cdHelper fetchLocationsFromDate:yersterday
+                                                 ToDate:today];    
+    self.locations = [MyMapAnnotation initFromArray:objects];
+        
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(drawAllLocations) 
                                                  name:UIApplicationWillEnterForegroundNotification
