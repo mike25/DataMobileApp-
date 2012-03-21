@@ -42,6 +42,9 @@
 		3C369F7B15141A01002840E8 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA278D149C22D4009745EB /* Config.m */; };
 		3C369F7C15141C07002840E8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C03148075B800F66E96 /* CoreData.framework */; };
 		3C369F7D15141C1E002840E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C211480760300F66E96 /* CoreLocation.framework */; };
+		3C4399C2151A65C800DEAE30 /* MainViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */; };
+		3C4399C3151A74D300DEAE30 /* DMAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0E148075B800F66E96 /* DMAppDelegate.h */; };
+		3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
 		3C57278315141E860092A47D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3C57278715141F880092A47D /* FileSenderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C57278615141F880092A47D /* FileSenderTest.m */; };
 		3C57278A15141FF00092A47D /* ConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C57278915141FF00092A47D /* ConfigTest.m */; };
@@ -103,6 +106,7 @@
 		3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = usr/frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		3C369F5415140FE2002840E8 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		3C369F5C15141204002840E8 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/libs/libOCMock.a; sourceTree = "<group>"; };
+		3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerTest.m; sourceTree = "<group>"; };
 		3C57278615141F880092A47D /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
 		3C57278915141FF00092A47D /* ConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
 		3C57278C151421220092A47D /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 		3C369F3215140C80002840E8 /* GHDataMobileTests */ = {
 			isa = PBXGroup;
 			children = (
+				3C4399BE151A659F00DEAE30 /* Controllers */,
 				3CF15B7A151942CC008868C5 /* Utilities */,
 				3C369F5415140FE2002840E8 /* Test.m */,
 				3C369F3315140C80002840E8 /* Supporting Files */,
@@ -211,6 +216,14 @@
 				3C369F3A15140C80002840E8 /* GHDataMobileTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C4399BE151A659F00DEAE30 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		3C57278E151422FE0092A47D /* Libraries */ = {
@@ -497,6 +510,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C4399C3151A74D300DEAE30 /* DMAppDelegate.h in Sources */,
+				3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */,
 				3CF15B7E15194323008868C5 /* MyMapAnnotation.h in Sources */,
 				3CF15B7F15194323008868C5 /* MyMapAnnotation.m in Sources */,
 				3CE0B6861517EE8B0071E189 /* CoreDataHelper.h in Sources */,
@@ -533,6 +548,7 @@
 				3C57278A15141FF00092A47D /* ConfigTest.m in Sources */,
 				3CE0B67B1517DB600071E189 /* CoreDataHelperTest.m in Sources */,
 				3CF15B7D151942FA008868C5 /* MyMapAnnotationTest.m in Sources */,
+				3C4399C2151A65C800DEAE30 /* MainViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
