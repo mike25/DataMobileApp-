@@ -11,19 +11,20 @@
 
 @class CoreDataHelper;
 
-@interface MapViewController : UIViewController <MKMapViewDelegate>
+@interface MapViewController : UIViewController <MKMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) CoreDataHelper* cdHelper;
 @property (strong, nonatomic) IBOutlet MKMapView *map;
-@property (strong, nonatomic) NSArray* locations;
+@property (strong, nonatomic) NSArray* annotations;
 
-- (void)drawAllLocations;
+/**
+ * Draws the passed array of MyMapAnnotation on the map
+ */
+- (void)drawLocations:(NSArray*)newLocations;
 
 /**
  *  Returns the last coordinate recorded on the database
  */
-- (CLLocationCoordinate2D)getLastCoordinate;
-
-+ (CLLocationCoordinate2D)LocationToCoordinate:(NSManagedObject*)location;
+- (CLLocationCoordinate2D)getLastCoordinate:(NSArray*)locations;
 
 @end

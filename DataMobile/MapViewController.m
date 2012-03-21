@@ -15,40 +15,52 @@
 
 @synthesize cdHelper;
 @synthesize map;
-@synthesize locations;
+@synthesize annotations;
 
-- (void)drawAllLocations
+- (void)drawLocations:(NSArray*)newLocations
 {
-    CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[locations count]);
-    for (int i = 0; i < [locations count]; i++)
+    CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[newLocations count]);
+    for (int i = 0; i < [newLocations count]; i++)
     {
-        MyMapAnnotation* note = (MyMapAnnotation*)[locations objectAtIndex:i];
+        MyMapAnnotation* note = (MyMapAnnotation*)[newLocations objectAtIndex:i];
         coordinates[i] = [note coordinate];
     }
     MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates 
-                                                         count:[locations count]];        
+                                                         count:[newLocations count]];        
     [map addOverlay:polyLine];
     free(coordinates);
     
     //Add start and end annotations
-    MyMapAnnotation* depart_notation = (MyMapAnnotation*)[locations objectAtIndex:[locations count]-1];
-    MyMapAnnotation* last_notation = (MyMapAnnotation*)[locations objectAtIndex:0];    
+    MyMapAnnotation* depart_notation = (MyMapAnnotation*)[newLocations objectAtIndex:[newLocations count]-1];
+    MyMapAnnotation* last_notation = (MyMapAnnotation*)[newLocations objectAtIndex:0];    
     [self.map addAnnotation:depart_notation];
     [self.map addAnnotation:last_notation];
+    
+    self.annotations = newLocations;
 }
 
-- (CLLocationCoordinate2D)getLastCoordinate
+- (CLLocationCoordinate2D)getLastCoordinate:(NSArray*)locations
 {
     // The locations are sorted in timestamp ascending order.
-    MyMapAnnotation *lastLocation = (MyMapAnnotation*)[self.locations objectAtIndex:0];
+    MyMapAnnotation *lastLocation = (MyMapAnnotation*)[locations objectAtIndex:0];
     return [lastLocation coordinate];
 }
 
-+ (CLLocationCoordinate2D)LocationToCoordinate:(NSManagedObject*)location 
+# pragma mark - MKMapViewDelegate
+
+-(MKOverlayView*)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
 {
-    return CLLocationCoordinate2DMake([[location valueForKey:@"latitude"] doubleValue], 
-                                      [[location valueForKey:@"longitude"] doubleValue]);    
+	if ([overlay isKindOfClass:[MKPolyline class]]) {
+		
+		MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
+		polylineView.strokeColor = [UIColor blueColor];
+		polylineView.lineWidth = 1.5;
+		return polylineView;
+	}
+	
+	return [[MKOverlayView alloc] initWithOverlay:overlay];
 }
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,24 +83,11 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([self getLastCoordinate], 0.5*1609, 0.5*1609);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([self getLastCoordinate:self.annotations], 0.5*1609, 0.5*1609);
     MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];                
     [self.map setRegion:adjustedRegion animated:YES];
         
-    [self drawAllLocations];
-}
-
--(MKOverlayView*)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
-{
-	if ([overlay isKindOfClass:[MKPolyline class]]) {
-		
-		MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
-		polylineView.strokeColor = [UIColor blueColor];
-		polylineView.lineWidth = 1.5;
-		return polylineView;
-	}
-	
-	return [[MKOverlayView alloc] initWithOverlay:overlay];
+    [self drawLocations:self.annotations];
 }
 
 /*
@@ -118,7 +117,7 @@
     
     NSArray* objects = [cdHelper fetchLocationsFromDate:yersterday
                                                  ToDate:today];    
-    self.locations = [MyMapAnnotation initFromArray:objects];
+    self.annotations = [MyMapAnnotation initFromArray:objects];
         
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(drawAllLocations) 
@@ -130,7 +129,7 @@
 - (void)viewDidUnload
 {
     [self setMap:nil];
-    [self setLocations:nil];
+    [self setAnnotations:nil];
     
     [super viewDidUnload];
     // Release any retained subviews of the main view.
