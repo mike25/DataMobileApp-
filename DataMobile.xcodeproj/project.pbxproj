@@ -42,6 +42,33 @@
 		3C369F7B15141A01002840E8 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA278D149C22D4009745EB /* Config.m */; };
 		3C369F7C15141C07002840E8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C03148075B800F66E96 /* CoreData.framework */; };
 		3C369F7D15141C1E002840E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C211480760300F66E96 /* CoreLocation.framework */; };
+		3C3861DD151A80DD00997CF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0B148075B800F66E96 /* main.m */; };
+		3C3861DE151A80DD00997CF6 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
+		3C3861DF151A80DD00997CF6 /* DataMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
+		3C3861E0151A80DD00997CF6 /* CSVExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDE71480784600F61C06 /* CSVExporter.m */; };
+		3C3861E1151A80DD00997CF6 /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEB1480785C00F61C06 /* AlertViewManager.m */; };
+		3C3861E2151A80DD00997CF6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDF01480790700F61C06 /* MainViewController.m */; };
+		3C3861E3151A80DD00997CF6 /* FileSender.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F328F148309CA0029B2BF /* FileSender.m */; };
+		3C3861E4151A80DD00997CF6 /* LocationManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */; };
+		3C3861E5151A80DD00997CF6 /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
+		3C3861E6151A80DD00997CF6 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA278D149C22D4009745EB /* Config.m */; };
+		3C3861E7151A80DD00997CF6 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
+		3C3861E8151A80DD00997CF6 /* NoSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED614C650D800CC79C9 /* NoSendState.m */; };
+		3C3861E9151A80DD00997CF6 /* SendingSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED914C650FE00CC79C9 /* SendingSendState.m */; };
+		3C3861EA151A80DD00997CF6 /* SendableSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */; };
+		3C3861EB151A80DD00997CF6 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
+		3C3861EC151A80DD00997CF6 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67D1517DDEE0071E189 /* CoreDataHelper.m */; };
+		3C3861ED151A80DD00997CF6 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7815192AE8008868C5 /* MyMapAnnotation.m */; };
+		3C3861EF151A80DD00997CF6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
+		3C3861F0151A80DD00997CF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
+		3C3861F1151A80DD00997CF6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C211480760300F66E96 /* CoreLocation.framework */; };
+		3C3861F2151A80DD00997CF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFF148075B800F66E96 /* Foundation.framework */; };
+		3C3861F3151A80DD00997CF6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C03148075B800F66E96 /* CoreData.framework */; };
+		3C3861F5151A80DD00997CF6 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
+		3C3861F6151A80DD00997CF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A16E8C08148075B800F66E96 /* InfoPlist.strings */; };
+		3C3861F7151A80DD00997CF6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A196CDED148078CD00F61C06 /* Storyboard.storyboard */; };
+		3C3861F8151A80DD00997CF6 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FA278A149C2220009745EB /* config.plist */; };
+		3C386201151A810200997CF6 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C386200151A810200997CF6 /* libKIF.a */; };
 		3C4399C2151A65C800DEAE30 /* MainViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */; };
 		3C4399C3151A74D300DEAE30 /* DMAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0E148075B800F66E96 /* DMAppDelegate.h */; };
 		3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
@@ -106,6 +133,9 @@
 		3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = usr/frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		3C369F5415140FE2002840E8 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		3C369F5C15141204002840E8 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/libs/libOCMock.a; sourceTree = "<group>"; };
+		3C3861FC151A80DD00997CF6 /* DataMobile copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DataMobile copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C3861FF151A80DE00997CF6 /* DataMobile copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DataMobile copy-Info.plist"; path = "/Users/zacharypatterson/projects/DataMobile-project/DataMobile copy-Info.plist"; sourceTree = "<absolute>"; };
+		3C386200151A810200997CF6 /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libKIF.a; path = "usr/include/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerTest.m; sourceTree = "<group>"; };
 		3C57278615141F880092A47D /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
 		3C57278915141FF00092A47D /* ConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
@@ -177,6 +207,19 @@
 				3C369F2F15140C80002840E8 /* UIKit.framework in Frameworks */,
 				3C369F3015140C80002840E8 /* Foundation.framework in Frameworks */,
 				3C369F3115140C80002840E8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C3861EE151A80DD00997CF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C386201151A810200997CF6 /* libKIF.a in Frameworks */,
+				3C3861EF151A80DD00997CF6 /* MapKit.framework in Frameworks */,
+				3C3861F0151A80DD00997CF6 /* UIKit.framework in Frameworks */,
+				3C3861F1151A80DD00997CF6 /* CoreLocation.framework in Frameworks */,
+				3C3861F2151A80DD00997CF6 /* Foundation.framework in Frameworks */,
+				3C3861F3151A80DD00997CF6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +356,8 @@
 				3C57278E151422FE0092A47D /* Libraries */,
 				A16E8BFC148075B800F66E96 /* Frameworks */,
 				A16E8BFA148075B800F66E96 /* Products */,
+				3C386200151A810200997CF6 /* libKIF.a */,
+				3C3861FF151A80DE00997CF6 /* DataMobile copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -321,6 +366,7 @@
 			children = (
 				A16E8BF9148075B800F66E96 /* DataMobile.app */,
 				3C369F2D15140C80002840E8 /* GHDataMobileTests.app */,
+				3C3861FC151A80DD00997CF6 /* DataMobile copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -436,6 +482,23 @@
 			productReference = 3C369F2D15140C80002840E8 /* GHDataMobileTests.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3C3861DB151A80DD00997CF6 /* KIFTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C3861F9151A80DD00997CF6 /* Build configuration list for PBXNativeTarget "KIFTests" */;
+			buildPhases = (
+				3C3861DC151A80DD00997CF6 /* Sources */,
+				3C3861EE151A80DD00997CF6 /* Frameworks */,
+				3C3861F4151A80DD00997CF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KIFTests;
+			productName = DataMobile;
+			productReference = 3C3861FC151A80DD00997CF6 /* DataMobile copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A16E8BF8148075B800F66E96 /* DataMobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A16E8C16148075B800F66E96 /* Build configuration list for PBXNativeTarget "DataMobile" */;
@@ -477,6 +540,7 @@
 			targets = (
 				A16E8BF8148075B800F66E96 /* DataMobile */,
 				3C369F2C15140C80002840E8 /* GHDataMobileTests */,
+				3C3861DB151A80DD00997CF6 /* KIFTests */,
 			);
 		};
 /* End PBXProject section */
@@ -489,6 +553,17 @@
 				3CE0B6771517DACA0071E189 /* DataMobile.xcdatamodeld in Resources */,
 				3C369F3715140C80002840E8 /* InfoPlist.strings in Resources */,
 				3C57278D151421220092A47D /* config.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C3861F4151A80DD00997CF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C3861F5151A80DD00997CF6 /* config-test.plist in Resources */,
+				3C3861F6151A80DD00997CF6 /* InfoPlist.strings in Resources */,
+				3C3861F7151A80DD00997CF6 /* Storyboard.storyboard in Resources */,
+				3C3861F8151A80DD00997CF6 /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +624,30 @@
 				3CE0B67B1517DB600071E189 /* CoreDataHelperTest.m in Sources */,
 				3CF15B7D151942FA008868C5 /* MyMapAnnotationTest.m in Sources */,
 				3C4399C2151A65C800DEAE30 /* MainViewControllerTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C3861DC151A80DD00997CF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C3861DD151A80DD00997CF6 /* main.m in Sources */,
+				3C3861DE151A80DD00997CF6 /* DMAppDelegate.m in Sources */,
+				3C3861DF151A80DD00997CF6 /* DataMobile.xcdatamodeld in Sources */,
+				3C3861E0151A80DD00997CF6 /* CSVExporter.m in Sources */,
+				3C3861E1151A80DD00997CF6 /* AlertViewManager.m in Sources */,
+				3C3861E2151A80DD00997CF6 /* MainViewController.m in Sources */,
+				3C3861E3151A80DD00997CF6 /* FileSender.m in Sources */,
+				3C3861E4151A80DD00997CF6 /* LocationManagerHandler.m in Sources */,
+				3C3861E5151A80DD00997CF6 /* DatePickerController.m in Sources */,
+				3C3861E6151A80DD00997CF6 /* Config.m in Sources */,
+				3C3861E7151A80DD00997CF6 /* SendState.m in Sources */,
+				3C3861E8151A80DD00997CF6 /* NoSendState.m in Sources */,
+				3C3861E9151A80DD00997CF6 /* SendingSendState.m in Sources */,
+				3C3861EA151A80DD00997CF6 /* SendableSendState.m in Sources */,
+				3C3861EB151A80DD00997CF6 /* MapViewController.m in Sources */,
+				3C3861EC151A80DD00997CF6 /* CoreDataHelper.m in Sources */,
+				3C3861ED151A80DD00997CF6 /* MyMapAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,6 +765,54 @@
 			};
 			name = Release;
 		};
+		3C3861FA151A80DD00997CF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DataMobile/DataMobile-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					RUN_KIF_TESTS,
+				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/usr/include/KIF";
+				INFOPLIST_FILE = "DataMobile copy-Info.plist";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "DataMobile copy";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/usr/include/KIF";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3C3861FB151A80DD00997CF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DataMobile/DataMobile-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					RUN_KIF_TESTS,
+				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/usr/include/KIF";
+				INFOPLIST_FILE = "DataMobile copy-Info.plist";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "DataMobile copy";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/usr/include/KIF";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		A16E8C14148075B800F66E96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -747,6 +894,15 @@
 			buildConfigurations = (
 				3C369F4715140C80002840E8 /* Debug */,
 				3C369F4815140C80002840E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C3861F9151A80DD00997CF6 /* Build configuration list for PBXNativeTarget "KIFTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C3861FA151A80DD00997CF6 /* Debug */,
+				3C3861FB151A80DD00997CF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
