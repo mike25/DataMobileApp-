@@ -22,8 +22,26 @@
 @synthesize startDate;
 @synthesize endDate;
 
+- (void)drawLocationsForStartDate:(NSDate*)start WithEndDate:(NSDate*)end
+{
+    NSArray* objects = [cdHelper fetchLocationsFromDate:start
+                                                 ToDate:end];    
+    [self drawLocations:[MyMapAnnotation initFromArray:objects]];    
+}
+
 - (void)drawLocations:(NSArray*)newLocations
 {
+    if ([newLocations count] == 0) 
+    {
+        NSLog(@"there is nothing to show.");       
+        return;
+    }
+    
+    /* deleting past Route */
+    [map removeAnnotations:map.annotations];
+    [map removeOverlays:map.overlays];
+    
+    /* drawing new Route */
     CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[newLocations count]);
     for (int i = 0; i < [newLocations count]; i++)
     {
@@ -37,18 +55,19 @@
     
     //Add start and end annotations
     MyMapAnnotation* depart_notation = (MyMapAnnotation*)[newLocations objectAtIndex:[newLocations count]-1];
-    MyMapAnnotation* last_notation = (MyMapAnnotation*)[newLocations objectAtIndex:0];    
+    MyMapAnnotation* last_notation = (MyMapAnnotation*)[newLocations objectAtIndex:0];
+    [depart_notation setName:@"Start Point"];
+    [last_notation setName:@"End Point"];
     [self.map addAnnotation:depart_notation];
     [self.map addAnnotation:last_notation];
+    [self.map selectAnnotation:depart_notation animated:YES];
+    
+    // Setting region to point to the start coordinate
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([depart_notation coordinate], 0.5*1609, 0.5*1609);
+    MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];                
+    [self.map setRegion:adjustedRegion animated:YES];
     
     self.annotations = newLocations;
-}
-
-- (void)drawLocationsForStartDate:(NSDate*)start WithEndDate:(NSDate*)end
-{
-    NSArray* objects = [cdHelper fetchLocationsFromDate:start
-                                                 ToDate:end];    
-    [self drawLocations:[MyMapAnnotation initFromArray:objects]];    
 }
 
 - (CLLocationCoordinate2D)getLastCoordinate:(NSArray*)locations
@@ -109,8 +128,35 @@
 - (IBAction)goButtonTouched:(id)sender 
 {
     self.datePicker.hidden = true;
+    
+    [self drawLocationsForStartDate:startDate 
+                        WithEndDate:endDate];
 }
 
+# pragma mark - Annotation
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {	
+	
+    if (annotation == mapView.userLocation) 
+    { 
+        //returning nil means 'use built in location view'
+		return nil;
+	}
+	
+	MKPinAnnotationView *pinAnnotation = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+    
+	if (pinAnnotation == nil) {
+		pinAnnotation = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+	} else {
+		pinAnnotation.annotation = annotation;
+	}
+	
+    pinAnnotation.canShowCallout = YES;
+	pinAnnotation.pinColor = MKPinAnnotationColorRed;
+	pinAnnotation.animatesDrop = YES;
+	
+	return pinAnnotation;
+}
 
 # pragma mark - MKMapViewDelegate
 
@@ -120,7 +166,7 @@
 		
 		MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
 		polylineView.strokeColor = [UIColor blueColor];
-		polylineView.lineWidth = 1.5;
+		polylineView.lineWidth = 2.0;
 		return polylineView;
 	}
 	
