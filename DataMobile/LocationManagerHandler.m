@@ -133,7 +133,7 @@ static int currentTask = 0 ;
  
         int taskID = currentTask ;
         
-        while (![self dateExpired] && taskID == currentTask)
+        while (taskID == currentTask && ![self dateExpired])
         {
             if (myDelegate != nil)
             {
