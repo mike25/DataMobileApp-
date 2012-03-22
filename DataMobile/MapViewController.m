@@ -11,6 +11,12 @@
 #import "CoreDataHelper.h"
 #import "MyMapAnnotation.h"
 
+@interface MapViewController ()
+
+- (void)UIApplicationWillEnterForeground;
+
+@end
+
 @implementation MapViewController
 
 @synthesize cdHelper;
@@ -37,7 +43,7 @@
         return;
     }
     
-    /* deleting past Route */
+    /* deleting past Routes */
     [map removeAnnotations:map.annotations];
     [map removeOverlays:map.overlays];
     
@@ -173,6 +179,10 @@
 	return [[MKOverlayView alloc] initWithOverlay:overlay];
 }
 
+- (void)UIApplicationWillEnterForeground
+{
+    [self drawLocations:self.annotations];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -230,9 +240,9 @@
     
     self.startDate = yersterday;
     self.endDate = today;
-        
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(drawAllLocations) 
+                                             selector:@selector(UIApplicationWillEnterForeground) 
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:app];
 }
