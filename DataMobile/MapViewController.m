@@ -16,6 +16,11 @@
 @synthesize cdHelper;
 @synthesize map;
 @synthesize annotations;
+@synthesize datePicker;
+@synthesize segmentControl;
+@synthesize goButton;
+@synthesize startDate;
+@synthesize endDate;
 
 - (void)drawLocations:(NSArray*)newLocations
 {
@@ -39,12 +44,73 @@
     self.annotations = newLocations;
 }
 
+- (void)drawLocationsForStartDate:(NSDate*)start WithEndDate:(NSDate*)end
+{
+    NSArray* objects = [cdHelper fetchLocationsFromDate:start
+                                                 ToDate:end];    
+    [self drawLocations:[MyMapAnnotation initFromArray:objects]];    
+}
+
 - (CLLocationCoordinate2D)getLastCoordinate:(NSArray*)locations
 {
     // The locations are sorted in timestamp ascending order.
     MyMapAnnotation *lastLocation = (MyMapAnnotation*)[locations objectAtIndex:0];
     return [lastLocation coordinate];
 }
+
+- (IBAction)startEndValueChanged:(id)sender 
+{
+    self.datePicker.hidden = NO;
+    
+    switch (self.segmentControl.selectedSegmentIndex) 
+    {
+        // case Start     
+        case 0:
+        {
+            [self.datePicker setDate:self.startDate animated:YES];
+        }            
+            break;
+
+        // case End     
+        case 1:
+        {
+            [self.datePicker setDate:self.endDate animated:YES];
+        }            
+            break;            
+            
+        default:
+            break;
+    }
+}
+
+- (IBAction)dateValueChanged:(id)sender 
+{
+    switch (self.segmentControl.selectedSegmentIndex) 
+    {
+            // case Start     
+        case 0:
+        {
+            self.startDate = [self.datePicker date];
+        }            
+            break;
+            
+            // case End     
+        case 1:
+        {
+            self.endDate = [self.datePicker date];
+        }            
+            break;            
+            
+        default:
+            break;
+    }
+}
+
+- (IBAction)goButtonTouched:(id)sender 
+{
+    self.datePicker.hidden = true;
+}
+
 
 # pragma mark - MKMapViewDelegate
 
@@ -83,11 +149,12 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self drawLocationsForStartDate:self.startDate 
+                        WithEndDate:self.endDate];
+    
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([self getLastCoordinate:self.annotations], 0.5*1609, 0.5*1609);
     MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];                
     [self.map setRegion:adjustedRegion animated:YES];
-        
-    [self drawLocations:self.annotations];
 }
 
 /*
@@ -115,9 +182,8 @@
     NSDate* yersterday = [[NSDate alloc] initWithTimeInterval:-1*3600*24
                                                     sinceDate:today];
     
-    NSArray* objects = [cdHelper fetchLocationsFromDate:yersterday
-                                                 ToDate:today];    
-    self.annotations = [MyMapAnnotation initFromArray:objects];
+    self.startDate = yersterday;
+    self.endDate = today;
         
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(drawAllLocations) 
@@ -125,12 +191,17 @@
                                                object:app];
 }
 
-
 - (void)viewDidUnload
 {
     [self setMap:nil];
     [self setAnnotations:nil];
     
+    [self setStartDate:nil];
+    [self setEndDate:nil];
+    
+    [self setDatePicker:nil];
+    [self setSegmentControl:nil];
+    [self setGoButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
