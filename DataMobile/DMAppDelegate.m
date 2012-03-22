@@ -46,10 +46,12 @@ BOOL inBackground;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [cdataHelper insertNewUserIfNotExists];
     cdataHelper = [[CoreDataHelper alloc] 
                    initWithURL:[[self applicationDocumentsDirectory] 
                                 URLByAppendingPathComponent:@"DataMobile.sqlite"]];
+ 
+    [cdataHelper insertNewUserIfNotExists];
+    
     return YES;
 }
 

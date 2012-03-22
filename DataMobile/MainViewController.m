@@ -174,7 +174,7 @@
     appDelegate = (DMAppDelegate*)[[UIApplication sharedApplication] delegate];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(ManagerDidFailWithError:)
+                                             selector:@selector(managerDidFailWithError:)
                                                  name:@"ManagerDidFailWithError" 
                                                object:appDelegate.managerHandler];
     
