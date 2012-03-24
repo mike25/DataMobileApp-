@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C3440AD151D5E5200D6A860 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3440AC151D5E5200D6A860 /* libKIF.a */; };
+		3C3440AE151D613E00D6A860 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16979B4148739C3006E8AB7 /* CoreGraphics.framework */; };
 		3C369F2F15140C80002840E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
 		3C369F3015140C80002840E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFF148075B800F66E96 /* Foundation.framework */; };
 		3C369F3115140C80002840E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16979B4148739C3006E8AB7 /* CoreGraphics.framework */; };
@@ -68,7 +70,6 @@
 		3C3861F6151A80DD00997CF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A16E8C08148075B800F66E96 /* InfoPlist.strings */; };
 		3C3861F7151A80DD00997CF6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A196CDED148078CD00F61C06 /* Storyboard.storyboard */; };
 		3C3861F8151A80DD00997CF6 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FA278A149C2220009745EB /* config.plist */; };
-		3C386201151A810200997CF6 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C386200151A810200997CF6 /* libKIF.a */; };
 		3C4399C2151A65C800DEAE30 /* MainViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */; };
 		3C4399C3151A74D300DEAE30 /* DMAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0E148075B800F66E96 /* DMAppDelegate.h */; };
 		3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
@@ -125,6 +126,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C3440AC151D5E5200D6A860 /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "../../Library/Developer/Xcode/DerivedData/DataMobile-chaipffgndwyxqfhrhjarfctyukn/Build/Products/Debug-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		3C369F2D15140C80002840E8 /* GHDataMobileTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHDataMobileTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C369F3415140C80002840E8 /* GHDataMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GHDataMobileTests-Info.plist"; sourceTree = "<group>"; };
 		3C369F3615140C80002840E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -133,9 +135,8 @@
 		3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = usr/frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		3C369F5415140FE2002840E8 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		3C369F5C15141204002840E8 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/libs/libOCMock.a; sourceTree = "<group>"; };
-		3C3861FC151A80DD00997CF6 /* DataMobile copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DataMobile copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C3861FC151A80DD00997CF6 /* DataMobile KIF tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DataMobile KIF tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3861FF151A80DE00997CF6 /* DataMobile copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DataMobile copy-Info.plist"; path = "/Users/zacharypatterson/projects/DataMobile-project/DataMobile copy-Info.plist"; sourceTree = "<absolute>"; };
-		3C386200151A810200997CF6 /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libKIF.a; path = "usr/include/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerTest.m; sourceTree = "<group>"; };
 		3C57278615141F880092A47D /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
 		3C57278915141FF00092A47D /* ConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
@@ -214,7 +215,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C386201151A810200997CF6 /* libKIF.a in Frameworks */,
+				3C3440AE151D613E00D6A860 /* CoreGraphics.framework in Frameworks */,
+				3C3440AD151D5E5200D6A860 /* libKIF.a in Frameworks */,
 				3C3861EF151A80DD00997CF6 /* MapKit.framework in Frameworks */,
 				3C3861F0151A80DD00997CF6 /* UIKit.framework in Frameworks */,
 				3C3861F1151A80DD00997CF6 /* CoreLocation.framework in Frameworks */,
@@ -272,6 +274,7 @@
 		3C57278E151422FE0092A47D /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3C3440AC151D5E5200D6A860 /* libKIF.a */,
 				3C369F5C15141204002840E8 /* libOCMock.a */,
 			);
 			name = Libraries;
@@ -356,7 +359,6 @@
 				3C57278E151422FE0092A47D /* Libraries */,
 				A16E8BFC148075B800F66E96 /* Frameworks */,
 				A16E8BFA148075B800F66E96 /* Products */,
-				3C386200151A810200997CF6 /* libKIF.a */,
 				3C3861FF151A80DE00997CF6 /* DataMobile copy-Info.plist */,
 			);
 			sourceTree = "<group>";
@@ -366,7 +368,7 @@
 			children = (
 				A16E8BF9148075B800F66E96 /* DataMobile.app */,
 				3C369F2D15140C80002840E8 /* GHDataMobileTests.app */,
-				3C3861FC151A80DD00997CF6 /* DataMobile copy.app */,
+				3C3861FC151A80DD00997CF6 /* DataMobile KIF tests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -496,7 +498,7 @@
 			);
 			name = KIFTests;
 			productName = DataMobile;
-			productReference = 3C3861FC151A80DD00997CF6 /* DataMobile copy.app */;
+			productReference = 3C3861FC151A80DD00997CF6 /* DataMobile KIF tests.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A16E8BF8148075B800F66E96 /* DataMobile */ = {
@@ -775,14 +777,21 @@
 					"$(inherited)",
 					RUN_KIF_TESTS,
 				);
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/usr/include/KIF";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/usr/include/KIF/**",
+				);
 				INFOPLIST_FILE = "DataMobile copy-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/DataMobile-chaipffgndwyxqfhrhjarfctyukn/Build/Products/Debug-iphoneos\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "DataMobile copy";
+				PRODUCT_NAME = "DataMobile KIF tests";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/usr/include/KIF";
 				WRAPPER_EXTENSION = app;
@@ -799,14 +808,21 @@
 					"$(inherited)",
 					RUN_KIF_TESTS,
 				);
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/usr/include/KIF";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/usr/include/KIF/**",
+				);
 				INFOPLIST_FILE = "DataMobile copy-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/DataMobile-chaipffgndwyxqfhrhjarfctyukn/Build/Products/Debug-iphoneos\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "DataMobile copy";
+				PRODUCT_NAME = "DataMobile KIF tests";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/usr/include/KIF";
 				WRAPPER_EXTENSION = app;
