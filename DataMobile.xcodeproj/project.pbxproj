@@ -78,9 +78,9 @@
 		3C57278A15141FF00092A47D /* ConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C57278915141FF00092A47D /* ConfigTest.m */; };
 		3C57278B151420570092A47D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18CD05C14916716000CC7E7 /* SenTestingKit.framework */; };
 		3C57278D151421220092A47D /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C57278C151421220092A47D /* config.plist */; };
-		3CDDE000151E87B30074242D /* DataMBTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDDFFF151E87B30074242D /* DataMBTestController.m */; };
-		3CDDE003151E88FE0074242D /* KIFTestScenario+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE002151E88FE0074242D /* KIFTestScenario+DataMBAdditions.m */; };
 		3CDDE007151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */; };
+		3CDDE01A151E96F30074242D /* DataMBTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE017151E96F30074242D /* DataMBTestController.m */; };
+		3CDDE01B151E96F30074242D /* KIFTestScenario+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE019151E96F30074242D /* KIFTestScenario+DataMBAdditions.m */; };
 		3CE0128E14FECDB4001D565A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3CE0129514FECF3B001D565A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
 		3CE0B6771517DACA0071E189 /* DataMobile.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
@@ -144,12 +144,12 @@
 		3C57278615141F880092A47D /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
 		3C57278915141FF00092A47D /* ConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
 		3C57278C151421220092A47D /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
-		3CDDDFFE151E87B30074242D /* DataMBTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataMBTestController.h; sourceTree = "<group>"; };
-		3CDDDFFF151E87B30074242D /* DataMBTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataMBTestController.m; sourceTree = "<group>"; };
-		3CDDE001151E88FE0074242D /* KIFTestScenario+DataMBAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestScenario+DataMBAdditions.h"; sourceTree = "<group>"; };
-		3CDDE002151E88FE0074242D /* KIFTestScenario+DataMBAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+DataMBAdditions.m"; sourceTree = "<group>"; };
 		3CDDE005151E8A9A0074242D /* KIFTestStep+DataMBAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+DataMBAdditions.h"; path = "KIFTests/KIFTestStep+DataMBAdditions.h"; sourceTree = "<group>"; };
 		3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+DataMBAdditions.m"; path = "KIFTests/KIFTestStep+DataMBAdditions.m"; sourceTree = "<group>"; };
+		3CDDE016151E96F30074242D /* DataMBTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataMBTestController.h; path = KIFTests/DataMBTestController.h; sourceTree = "<group>"; };
+		3CDDE017151E96F30074242D /* DataMBTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataMBTestController.m; path = KIFTests/DataMBTestController.m; sourceTree = "<group>"; };
+		3CDDE018151E96F30074242D /* KIFTestScenario+DataMBAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestScenario+DataMBAdditions.h"; path = "KIFTests/KIFTestScenario+DataMBAdditions.h"; sourceTree = "<group>"; };
+		3CDDE019151E96F30074242D /* KIFTestScenario+DataMBAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestScenario+DataMBAdditions.m"; path = "KIFTests/KIFTestScenario+DataMBAdditions.m"; sourceTree = "<group>"; };
 		3CE0128B14FECDAB001D565A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3CE0129314FECF3B001D565A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		3CE0129414FECF3B001D565A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -292,10 +292,10 @@
 		3CDDDFFC151E87630074242D /* KIFDataMobileTests */ = {
 			isa = PBXGroup;
 			children = (
-				3CDDDFFE151E87B30074242D /* DataMBTestController.h */,
-				3CDDDFFF151E87B30074242D /* DataMBTestController.m */,
-				3CDDE001151E88FE0074242D /* KIFTestScenario+DataMBAdditions.h */,
-				3CDDE002151E88FE0074242D /* KIFTestScenario+DataMBAdditions.m */,
+				3CDDE016151E96F30074242D /* DataMBTestController.h */,
+				3CDDE017151E96F30074242D /* DataMBTestController.m */,
+				3CDDE018151E96F30074242D /* KIFTestScenario+DataMBAdditions.h */,
+				3CDDE019151E96F30074242D /* KIFTestScenario+DataMBAdditions.m */,
 				3CDDE005151E8A9A0074242D /* KIFTestStep+DataMBAdditions.h */,
 				3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */,
 			);
@@ -673,9 +673,9 @@
 				3C3861EB151A80DD00997CF6 /* MapViewController.m in Sources */,
 				3C3861EC151A80DD00997CF6 /* CoreDataHelper.m in Sources */,
 				3C3861ED151A80DD00997CF6 /* MyMapAnnotation.m in Sources */,
-				3CDDE000151E87B30074242D /* DataMBTestController.m in Sources */,
-				3CDDE003151E88FE0074242D /* KIFTestScenario+DataMBAdditions.m in Sources */,
 				3CDDE007151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m in Sources */,
+				3CDDE01A151E96F30074242D /* DataMBTestController.m in Sources */,
+				3CDDE01B151E96F30074242D /* KIFTestScenario+DataMBAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
