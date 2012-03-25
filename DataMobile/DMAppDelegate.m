@@ -10,6 +10,10 @@
 #import "LocationManagerHandler.h"
 #import "CoreDataHelper.h"
 
+#if RUN_KIF_TESTS
+    #import "DataMBTestController.h"
+#endif
+
 @interface DMAppDelegate()
 @end
 
@@ -84,6 +88,13 @@ BOOL inBackground;
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+#if RUN_KIF_TESTS
+    [[DataMBTestController sharedInstance] startTestingWithCompletionBlock:^{
+        // Exit after the tests complete so that CI knows we're done
+        exit([[DataMBTestController sharedInstance] failureCount]);
+    }];
+#endif
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
