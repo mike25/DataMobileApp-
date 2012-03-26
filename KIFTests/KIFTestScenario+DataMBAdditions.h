@@ -12,5 +12,6 @@
 @interface KIFTestScenario (DataMBAdditions)
 
 + (id)scenarioToLogIn;
++ (id)scenarioToStart;
 
 @end

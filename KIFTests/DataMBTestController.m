@@ -14,6 +14,7 @@
 - (void)initializeScenarios
 {
     [self addScenario:[KIFTestScenario scenarioToLogIn]];
+    [self addScenario:[KIFTestScenario scenarioToStart]];
     // Add additional scenarios you want to test here
 }
 

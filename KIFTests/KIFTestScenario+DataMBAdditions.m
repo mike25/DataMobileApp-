@@ -15,13 +15,20 @@
 {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can successfully log in."];
     [scenario addStep:[KIFTestStep stepToReset]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToGoToLoginPage]];
-    [scenario addStep:[KIFTestStep stepToEnterText:@"user@example.com" intoViewWithAccessibilityLabel:@"Login User Name"]];
-    [scenario addStep:[KIFTestStep stepToEnterText:@"thisismypassword" intoViewWithAccessibilityLabel:@"Login Password"]];
-    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Log In"]];
+        
+    return scenario;
+}
+
++ (id)scenarioToStart
+{
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can start Recording."];
+    [scenario addStep:[KIFTestStep stepToReset]];
     
-    // Verify that the login succeeded
-    [scenario addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Welcome"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"start" traits:UIAccessibilityTraitButton]];
+    [scenario addStep:[KIFTestStep stepToSelectPickerViewRowWithTitle:@"2"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"select" traits:UIAccessibilityTraitButton]];
+    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Recording started"]];    
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK" traits:UIAccessibilityTraitButton]];
     
     return scenario;
 }

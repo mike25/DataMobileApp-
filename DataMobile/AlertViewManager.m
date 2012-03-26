@@ -82,6 +82,7 @@
                                               otherButtonTitles:@"Cancel", nil];
     
     [alertView setTag:tag];
+    [alertView setAccessibilityLabel:title];    
     return alertView;
 }
 
@@ -93,6 +94,7 @@
                                               cancelButtonTitle:@"OK" 
                                               otherButtonTitles:nil];
     [alertView setTag:tag];
+    [alertView setAccessibilityLabel:title];
     return alertView;
 }
 
