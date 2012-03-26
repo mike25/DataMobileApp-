@@ -27,15 +27,18 @@
 
 #pragma mark - Step Collections
 
-+ (NSArray *)stepsToGoToLoginPage;
+
++ (NSArray *)stepsToWaitForLocationNotifications:(NSInteger)numberOfNotifications
 {
     NSMutableArray *steps = [NSMutableArray array];
-    
-    // Dismiss the welcome message
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"That's awesome!"]];
-    
-    // Tap the "I already have an account" button
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"I already have an account."]];
+
+    for (int i = 0; i < numberOfNotifications ; i++) 
+    {
+        [steps addObject:[KIFTestStep stepToWaitForTimeInterval:POLLINTERVALSECONDS-1
+                                                   description:@"wait for the next location recording to come"]];
+        [steps addObject:[KIFTestStep stepToWaitForNotificationName:@"ManagerDidUpdateLocation" 
+                                                                                   object:nil]];
+    }
     
     return steps;
 }

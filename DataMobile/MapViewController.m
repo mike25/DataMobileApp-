@@ -60,16 +60,16 @@
     free(coordinates);
     
     //Add start and end annotations
-    MyMapAnnotation* depart_notation = (MyMapAnnotation*)[newLocations objectAtIndex:[newLocations count]-1];
+    MyMapAnnotation* first_notation = (MyMapAnnotation*)[newLocations objectAtIndex:[newLocations count]-1];
     MyMapAnnotation* last_notation = (MyMapAnnotation*)[newLocations objectAtIndex:0];
-    [depart_notation setName:@"Start Point"];
-    [last_notation setName:@"End Point"];
-    [self.map addAnnotation:depart_notation];
+    [first_notation setName:@"End Point"];
+    [last_notation setName:@"start Point"];
+    [self.map addAnnotation:first_notation];
     [self.map addAnnotation:last_notation];
-    [self.map selectAnnotation:depart_notation animated:YES];
+    [self.map selectAnnotation:first_notation animated:YES];
     
     // Setting region to point to the start coordinate
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([depart_notation coordinate], 0.5*1609, 0.5*1609);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([first_notation coordinate], 0.5*1609, 0.5*1609);
     MKCoordinateRegion adjustedRegion = [self.map regionThatFits:viewRegion];                
     [self.map setRegion:adjustedRegion animated:YES];
     

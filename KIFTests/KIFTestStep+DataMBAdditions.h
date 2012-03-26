@@ -13,8 +13,9 @@
 // Factory Steps
 + (id)stepToReset;
 
-// Assumes the application was reset and sitting at the welcome screen
-+ (NSArray *)stepsToGoToLoginPage;
-
+/**
+ *  Steps 
+ */
++ (NSArray *)stepsToWaitForLocationNotifications:(NSInteger)numberOfNotifications;
 
 @end

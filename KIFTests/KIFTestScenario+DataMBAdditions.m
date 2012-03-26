@@ -19,7 +19,7 @@
     return scenario;
 }
 
-+ (id)scenarioToStart
++ (id)scenarioToStartRecording
 {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can start Recording."];
     [scenario addStep:[KIFTestStep stepToReset]];
@@ -27,8 +27,11 @@
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"start" traits:UIAccessibilityTraitButton]];
     [scenario addStep:[KIFTestStep stepToSelectPickerViewRowWithTitle:@"2"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"select" traits:UIAccessibilityTraitButton]];
+    
     [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Recording started"]];    
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"OK" traits:UIAccessibilityTraitButton]];
+    
+    [scenario addStepsFromArray:[KIFTestStep stepsToWaitForLocationNotifications:5]];
     
     return scenario;
 }
