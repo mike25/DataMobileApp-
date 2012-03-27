@@ -92,7 +92,7 @@
 
 - (void)managerDidFailWithError:(NSNotification *)notification
 {
-    NSError* error = (NSError*)[notification userInfo];
+    NSError* error = (NSError*)[[notification userInfo] objectForKey:@"error"];
     [[alertManager createErrorAlertWithMessage:error.localizedDescription] show];
 }
 
