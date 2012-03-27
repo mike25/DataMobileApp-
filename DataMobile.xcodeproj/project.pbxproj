@@ -28,8 +28,6 @@
 		3C369F6815141A01002840E8 /* SendingSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED914C650FE00CC79C9 /* SendingSendState.m */; };
 		3C369F6915141A01002840E8 /* SendableSendState.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDB14C6511A00CC79C9 /* SendableSendState.h */; };
 		3C369F6A15141A01002840E8 /* SendableSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */; };
-		3C369F6B15141A01002840E8 /* MainViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEF1480790600F61C06 /* MainViewController.h */; };
-		3C369F6C15141A01002840E8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDF01480790700F61C06 /* MainViewController.m */; };
 		3C369F6D15141A01002840E8 /* DatePickerController.h in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD5148432CD0079A0AA /* DatePickerController.h */; };
 		3C369F6E15141A01002840E8 /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
 		3C369F6F15141A01002840E8 /* MapViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129314FECF3B001D565A /* MapViewController.h */; };
@@ -70,7 +68,6 @@
 		3C3861F6151A80DD00997CF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A16E8C08148075B800F66E96 /* InfoPlist.strings */; };
 		3C3861F7151A80DD00997CF6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A196CDED148078CD00F61C06 /* Storyboard.storyboard */; };
 		3C3861F8151A80DD00997CF6 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FA278A149C2220009745EB /* config.plist */; };
-		3C4399C2151A65C800DEAE30 /* MainViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */; };
 		3C4399C3151A74D300DEAE30 /* DMAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0E148075B800F66E96 /* DMAppDelegate.h */; };
 		3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
 		3C57278315141E860092A47D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
@@ -78,6 +75,11 @@
 		3C57278A15141FF00092A47D /* ConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C57278915141FF00092A47D /* ConfigTest.m */; };
 		3C57278B151420570092A47D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18CD05C14916716000CC7E7 /* SenTestingKit.framework */; };
 		3C57278D151421220092A47D /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C57278C151421220092A47D /* config.plist */; };
+		3C58B0C31520FCD200546369 /* DMAppDelegateStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C21520FCD200546369 /* DMAppDelegateStub.m */; };
+		3C58B0C815212F4A00546369 /* MainViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C715212F4A00546369 /* MainViewControllerTest.m */; };
+		3C5FC3A61521354E001A594F /* MainViewControllerTest.h in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C615212F4A00546369 /* MainViewControllerTest.h */; };
+		3C5FC3A71521357F001A594F /* MainViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEF1480790600F61C06 /* MainViewController.h */; };
+		3C5FC3A81521357F001A594F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDF01480790700F61C06 /* MainViewController.m */; };
 		3CDDE007151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */; };
 		3CDDE01A151E96F30074242D /* DataMBTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE017151E96F30074242D /* DataMBTestController.m */; };
 		3CDDE01B151E96F30074242D /* KIFTestScenario+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE019151E96F30074242D /* KIFTestScenario+DataMBAdditions.m */; };
@@ -140,10 +142,13 @@
 		3C369F5C15141204002840E8 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/libs/libOCMock.a; sourceTree = "<group>"; };
 		3C3861FC151A80DD00997CF6 /* DataMobile KIF tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DataMobile KIF tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3861FF151A80DE00997CF6 /* DataMobile copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DataMobile copy-Info.plist"; path = "/Users/zacharypatterson/projects/DataMobile-project/DataMobile copy-Info.plist"; sourceTree = "<absolute>"; };
-		3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerTest.m; sourceTree = "<group>"; };
 		3C57278615141F880092A47D /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
 		3C57278915141FF00092A47D /* ConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
 		3C57278C151421220092A47D /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		3C58B0C11520FCD100546369 /* DMAppDelegateStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAppDelegateStub.h; sourceTree = "<group>"; };
+		3C58B0C21520FCD200546369 /* DMAppDelegateStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAppDelegateStub.m; sourceTree = "<group>"; };
+		3C58B0C615212F4A00546369 /* MainViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewControllerTest.h; sourceTree = "<group>"; };
+		3C58B0C715212F4A00546369 /* MainViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerTest.m; sourceTree = "<group>"; };
 		3CDDE005151E8A9A0074242D /* KIFTestStep+DataMBAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+DataMBAdditions.h"; path = "KIFTests/KIFTestStep+DataMBAdditions.h"; sourceTree = "<group>"; };
 		3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+DataMBAdditions.m"; path = "KIFTests/KIFTestStep+DataMBAdditions.m"; sourceTree = "<group>"; };
 		3CDDE016151E96F30074242D /* DataMBTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataMBTestController.h; path = KIFTests/DataMBTestController.h; sourceTree = "<group>"; };
@@ -256,6 +261,8 @@
 				3CF15B7A151942CC008868C5 /* Utilities */,
 				3C369F5415140FE2002840E8 /* Test.m */,
 				3C369F3315140C80002840E8 /* Supporting Files */,
+				3C58B0C11520FCD100546369 /* DMAppDelegateStub.h */,
+				3C58B0C21520FCD200546369 /* DMAppDelegateStub.m */,
 			);
 			path = GHDataMobileTests;
 			sourceTree = "<group>";
@@ -275,7 +282,8 @@
 		3C4399BE151A659F00DEAE30 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3C4399C1151A65C800DEAE30 /* MainViewControllerTest.m */,
+				3C58B0C615212F4A00546369 /* MainViewControllerTest.h */,
+				3C58B0C715212F4A00546369 /* MainViewControllerTest.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -610,6 +618,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C5FC3A71521357F001A594F /* MainViewController.h in Sources */,
+				3C5FC3A81521357F001A594F /* MainViewController.m in Sources */,
+				3C5FC3A61521354E001A594F /* MainViewControllerTest.h in Sources */,
 				3C4399C3151A74D300DEAE30 /* DMAppDelegate.h in Sources */,
 				3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */,
 				3CF15B7E15194323008868C5 /* MyMapAnnotation.h in Sources */,
@@ -628,8 +639,6 @@
 				3C369F6815141A01002840E8 /* SendingSendState.m in Sources */,
 				3C369F6915141A01002840E8 /* SendableSendState.h in Sources */,
 				3C369F6A15141A01002840E8 /* SendableSendState.m in Sources */,
-				3C369F6B15141A01002840E8 /* MainViewController.h in Sources */,
-				3C369F6C15141A01002840E8 /* MainViewController.m in Sources */,
 				3C369F6D15141A01002840E8 /* DatePickerController.h in Sources */,
 				3C369F6E15141A01002840E8 /* DatePickerController.m in Sources */,
 				3C369F6F15141A01002840E8 /* MapViewController.h in Sources */,
@@ -648,7 +657,8 @@
 				3C57278A15141FF00092A47D /* ConfigTest.m in Sources */,
 				3CE0B67B1517DB600071E189 /* CoreDataHelperTest.m in Sources */,
 				3CF15B7D151942FA008868C5 /* MyMapAnnotationTest.m in Sources */,
-				3C4399C2151A65C800DEAE30 /* MainViewControllerTest.m in Sources */,
+				3C58B0C31520FCD200546369 /* DMAppDelegateStub.m in Sources */,
+				3C58B0C815212F4A00546369 /* MainViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

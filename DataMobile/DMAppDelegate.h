@@ -21,7 +21,4 @@
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays;
 - (void)stopUpdatingLocations;
 
-- (NSURL *)applicationDocumentsDirectory;
-
-
 @end

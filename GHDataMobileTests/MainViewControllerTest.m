@@ -7,13 +7,8 @@
 //
 
 #import "MainViewController.h"
-#import "DMAppDelegate.h"
-
-@interface MainViewControllerTest : GHTestCase
-
-@property (strong,nonatomic) MainViewController* controller;
-
-@end
+#import "MainViewControllerTest.h"
+#import "DMAppDelegateStub.h"
 
 @implementation MainViewControllerTest
 
@@ -22,12 +17,12 @@
 - (void)setUp
 {
     [super setUp];
-    
-    //Creating a mock appDelegate object:
-    id mockAppDelegate = [OCMockObject mockForClass:[DMAppDelegate class]];
         
-    controller = [[MainViewController alloc] initWithNibName:@"MainViewController" 
-                                                      bundle:nil];     
+    DMAppDelegateStub* appStub = [[UIApplication sharedApplication] delegate];
+    
+    controller = [[MainViewController alloc] initWithNibName:@"MainViewController"
+                                                      bundle:nil];
+    [controller viewDidLoad];
     // Set-up code here.
 }
 
@@ -41,10 +36,6 @@
 - (void)testAppDelegate
 {
     assertThat([controller appDelegate], is([[UIApplication sharedApplication] delegate]));
-    
-    GHAssertEquals([[[controller appDelegate] class] description],
-                   @"DMAppDelegate",
-                   @"");
 }
 
 - (void)testManagerDidFailWithError

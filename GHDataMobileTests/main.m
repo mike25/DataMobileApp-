@@ -11,6 +11,6 @@
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, @"GHUnitIPhoneAppDelegate");
+        return UIApplicationMain(argc, argv, nil, @"DMAppDelegateStub");
     }
 }

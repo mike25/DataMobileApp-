@@ -15,6 +15,9 @@
 #endif
 
 @interface DMAppDelegate()
+
+- (NSURL *)applicationDocumentsDirectory;
+
 @end
 
 @implementation DMAppDelegate
@@ -23,8 +26,8 @@ UIBackgroundTaskIdentifier bgTask;
 BOOL inBackground;
 
 @synthesize window = _window;
-@synthesize cdataHelper;
 
+@synthesize cdataHelper;
 @synthesize managerHandler;
 
 - (void)startUpdatingLocationsForDays:(NSInteger)numOfDays
@@ -40,6 +43,8 @@ BOOL inBackground;
     [managerHandler stopManager];
     [cdataHelper saveContext];
 }
+
+#pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation 
