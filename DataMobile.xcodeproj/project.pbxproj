@@ -17,28 +17,16 @@
 		3C369F5215140E12002840E8 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */; };
 		3C369F5515140FE2002840E8 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C369F5415140FE2002840E8 /* Test.m */; };
 		3C369F5D15141204002840E8 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C369F5C15141204002840E8 /* libOCMock.a */; };
-		3C369F6015141A01002840E8 /* AlertObserver.h in Sources */ = {isa = PBXBuildFile; fileRef = A1FBE3641486F1C200BB3D5F /* AlertObserver.h */; };
-		3C369F6115141A01002840E8 /* AlertViewManager.h in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEA1480785C00F61C06 /* AlertViewManager.h */; };
 		3C369F6215141A01002840E8 /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEB1480785C00F61C06 /* AlertViewManager.m */; };
-		3C369F6315141A01002840E8 /* SendState.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FECC14C6472000CC79C9 /* SendState.h */; };
 		3C369F6415141A01002840E8 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
-		3C369F6515141A01002840E8 /* NoSendState.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED514C650D800CC79C9 /* NoSendState.h */; };
 		3C369F6615141A01002840E8 /* NoSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED614C650D800CC79C9 /* NoSendState.m */; };
-		3C369F6715141A01002840E8 /* SendingSendState.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED814C650FE00CC79C9 /* SendingSendState.h */; };
 		3C369F6815141A01002840E8 /* SendingSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED914C650FE00CC79C9 /* SendingSendState.m */; };
-		3C369F6915141A01002840E8 /* SendableSendState.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDB14C6511A00CC79C9 /* SendableSendState.h */; };
 		3C369F6A15141A01002840E8 /* SendableSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */; };
-		3C369F6D15141A01002840E8 /* DatePickerController.h in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD5148432CD0079A0AA /* DatePickerController.h */; };
 		3C369F6E15141A01002840E8 /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
-		3C369F6F15141A01002840E8 /* MapViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129314FECF3B001D565A /* MapViewController.h */; };
 		3C369F7015141A01002840E8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
-		3C369F7415141A01002840E8 /* LocationManagerHandler.h in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD11483F0480079A0AA /* LocationManagerHandler.h */; };
 		3C369F7515141A01002840E8 /* LocationManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */; };
-		3C369F7615141A01002840E8 /* CSVExporter.h in Sources */ = {isa = PBXBuildFile; fileRef = A196CDE61480784600F61C06 /* CSVExporter.h */; };
 		3C369F7715141A01002840E8 /* CSVExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDE71480784600F61C06 /* CSVExporter.m */; };
-		3C369F7815141A01002840E8 /* FileSender.h in Sources */ = {isa = PBXBuildFile; fileRef = A18F328E148309CA0029B2BF /* FileSender.h */; };
 		3C369F7915141A01002840E8 /* FileSender.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F328F148309CA0029B2BF /* FileSender.m */; };
-		3C369F7A15141A01002840E8 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = A1FA278C149C22D4009745EB /* Config.h */; };
 		3C369F7B15141A01002840E8 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA278D149C22D4009745EB /* Config.m */; };
 		3C369F7C15141C07002840E8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C03148075B800F66E96 /* CoreData.framework */; };
 		3C369F7D15141C1E002840E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C211480760300F66E96 /* CoreLocation.framework */; };
@@ -68,7 +56,6 @@
 		3C3861F6151A80DD00997CF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A16E8C08148075B800F66E96 /* InfoPlist.strings */; };
 		3C3861F7151A80DD00997CF6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A196CDED148078CD00F61C06 /* Storyboard.storyboard */; };
 		3C3861F8151A80DD00997CF6 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FA278A149C2220009745EB /* config.plist */; };
-		3C4399C3151A74D300DEAE30 /* DMAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0E148075B800F66E96 /* DMAppDelegate.h */; };
 		3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
 		3C57278315141E860092A47D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3C57278715141F880092A47D /* FileSenderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C57278615141F880092A47D /* FileSenderTest.m */; };
@@ -77,8 +64,6 @@
 		3C57278D151421220092A47D /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C57278C151421220092A47D /* config.plist */; };
 		3C58B0C31520FCD200546369 /* DMAppDelegateStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C21520FCD200546369 /* DMAppDelegateStub.m */; };
 		3C58B0C815212F4A00546369 /* MainViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C715212F4A00546369 /* MainViewControllerTest.m */; };
-		3C5FC3A61521354E001A594F /* MainViewControllerTest.h in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C615212F4A00546369 /* MainViewControllerTest.h */; };
-		3C5FC3A71521357F001A594F /* MainViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A196CDEF1480790600F61C06 /* MainViewController.h */; };
 		3C5FC3A81521357F001A594F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDF01480790700F61C06 /* MainViewController.m */; };
 		3CDDE007151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */; };
 		3CDDE01A151E96F30074242D /* DataMBTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE017151E96F30074242D /* DataMBTestController.m */; };
@@ -89,7 +74,6 @@
 		3CE0B67B1517DB600071E189 /* CoreDataHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67A1517DB600071E189 /* CoreDataHelperTest.m */; };
 		3CE0B67E1517DDEE0071E189 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67D1517DDEE0071E189 /* CoreDataHelper.m */; };
 		3CE0B6851517E9550071E189 /* DataMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
-		3CE0B6861517EE8B0071E189 /* CoreDataHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67C1517DDEE0071E189 /* CoreDataHelper.h */; };
 		3CE0B6871517EE8B0071E189 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67D1517DDEE0071E189 /* CoreDataHelper.m */; };
 		3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
 		3CE9FED714C650D800CC79C9 /* NoSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED614C650D800CC79C9 /* NoSendState.m */; };
@@ -97,7 +81,6 @@
 		3CE9FEDD14C6511B00CC79C9 /* SendableSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FEDC14C6511A00CC79C9 /* SendableSendState.m */; };
 		3CF15B7915192AE8008868C5 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7815192AE8008868C5 /* MyMapAnnotation.m */; };
 		3CF15B7D151942FA008868C5 /* MyMapAnnotationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7C151942F9008868C5 /* MyMapAnnotationTest.m */; };
-		3CF15B7E15194323008868C5 /* MyMapAnnotation.h in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7715192AE8008868C5 /* MyMapAnnotation.h */; };
 		3CF15B7F15194323008868C5 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7815192AE8008868C5 /* MyMapAnnotation.m */; };
 		3CF15B8115195931008868C5 /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF15B8015195931008868C5 /* OCHamcrestIOS.framework */; };
 		A101D9AD14A2ADAE00DFC446 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
@@ -618,38 +601,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C5FC3A71521357F001A594F /* MainViewController.h in Sources */,
 				3C5FC3A81521357F001A594F /* MainViewController.m in Sources */,
-				3C5FC3A61521354E001A594F /* MainViewControllerTest.h in Sources */,
-				3C4399C3151A74D300DEAE30 /* DMAppDelegate.h in Sources */,
 				3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */,
-				3CF15B7E15194323008868C5 /* MyMapAnnotation.h in Sources */,
 				3CF15B7F15194323008868C5 /* MyMapAnnotation.m in Sources */,
-				3CE0B6861517EE8B0071E189 /* CoreDataHelper.h in Sources */,
 				3CE0B6871517EE8B0071E189 /* CoreDataHelper.m in Sources */,
 				3CE0B6851517E9550071E189 /* DataMobile.xcdatamodeld in Sources */,
-				3C369F6015141A01002840E8 /* AlertObserver.h in Sources */,
-				3C369F6115141A01002840E8 /* AlertViewManager.h in Sources */,
 				3C369F6215141A01002840E8 /* AlertViewManager.m in Sources */,
-				3C369F6315141A01002840E8 /* SendState.h in Sources */,
 				3C369F6415141A01002840E8 /* SendState.m in Sources */,
-				3C369F6515141A01002840E8 /* NoSendState.h in Sources */,
 				3C369F6615141A01002840E8 /* NoSendState.m in Sources */,
-				3C369F6715141A01002840E8 /* SendingSendState.h in Sources */,
 				3C369F6815141A01002840E8 /* SendingSendState.m in Sources */,
-				3C369F6915141A01002840E8 /* SendableSendState.h in Sources */,
 				3C369F6A15141A01002840E8 /* SendableSendState.m in Sources */,
-				3C369F6D15141A01002840E8 /* DatePickerController.h in Sources */,
 				3C369F6E15141A01002840E8 /* DatePickerController.m in Sources */,
-				3C369F6F15141A01002840E8 /* MapViewController.h in Sources */,
 				3C369F7015141A01002840E8 /* MapViewController.m in Sources */,
-				3C369F7415141A01002840E8 /* LocationManagerHandler.h in Sources */,
 				3C369F7515141A01002840E8 /* LocationManagerHandler.m in Sources */,
-				3C369F7615141A01002840E8 /* CSVExporter.h in Sources */,
 				3C369F7715141A01002840E8 /* CSVExporter.m in Sources */,
-				3C369F7815141A01002840E8 /* FileSender.h in Sources */,
 				3C369F7915141A01002840E8 /* FileSender.m in Sources */,
-				3C369F7A15141A01002840E8 /* Config.h in Sources */,
 				3C369F7B15141A01002840E8 /* Config.m in Sources */,
 				3C369F3915140C80002840E8 /* main.m in Sources */,
 				3C369F5515140FE2002840E8 /* Test.m in Sources */,
