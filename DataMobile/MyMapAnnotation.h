@@ -11,8 +11,8 @@
 
 @interface MyMapAnnotation : NSObject <MKAnnotation>
 
-@property (strong, nonatomic) NSManagedObject* object;
-@property (strong, nonatomic) NSString * name;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) NSDate* timestamp;
 
 -(MyMapAnnotation*)initWithObject:(NSManagedObject *)managedObject;
 -(MyMapAnnotation*)initWithObject:(NSManagedObject *)managedObject WithName:(NSString*)name;

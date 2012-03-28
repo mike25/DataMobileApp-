@@ -6,55 +6,59 @@
 //  Copyright (c) 2012 MML-Concordia. All rights reserved.
 //
 
-#import "MapViewControllerTest.h"
+#import <MapKit/MapKit.h>
+#import "MapViewController.h"
+#import "DMAppDelegateStub.h"
+#import "CoreDataHelper.h"
+
+@interface MapViewControllerTest : GHTestCase
+
+@property (strong,nonatomic) MapViewController* mapCtrl;
+@property (weak,nonatomic) DMAppDelegateStub* appStub;
+
+@end
 
 @implementation MapViewControllerTest
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize appStub;
+@synthesize mapCtrl;
 
-- (void)didReceiveMemoryWarning
+- (void)setUp
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+    [super setUp];
+
+    appStub.mockCDataHelper = [OCMockObject mockForClass:[CoreDataHelper class]];
+    mapCtrl = [[MapViewController alloc] initWithNibName:@"MapViewController" 
+                                                  bundle:nil];
+    [mapCtrl viewDidLoad];
     
-    // Release any cached data, images, etc that aren't in use.
+    // Set-up code here.
 }
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
+- (void)tearDown
 {
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-*/
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    // Tear-down code here.
+    
+    [super tearDown];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+/**
+ * Assert that if there are two or more recordings that are 
+ * both close in time and space, only one of that group is shown 
+ * on the map
+ */
+- (void)testDrawingDoesNotBloatTheMap
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    /* creating coordinates fixture */
+    NSMutableArray* locations = [NSMutableArray arrayWithCapacity:100];
+    
+    // TODO : add logic to add coordinates.
+    
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(MKMapViewDelegate)];
+    
+    mapCtrl.map.delegate = mockDelegate;
+    
+    
 }
 
 @end

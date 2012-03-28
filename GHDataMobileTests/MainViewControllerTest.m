@@ -35,8 +35,7 @@
 - (void)setUp
 {
     [super setUp];
-        
-    
+            
     controller = [[MainViewController alloc] initWithNibName:@"MainViewController"
                                                       bundle:nil];
     appStub.mockManagerHandler = [OCMockObject mockForClass:[LocationManagerHandler class]];

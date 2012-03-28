@@ -8,10 +8,17 @@
 
 #import "MyMapAnnotation.h"
 
+@interface MyMapAnnotation ()
+
+@property (strong, nonatomic) NSManagedObject* object;
+
+@end
+
 @implementation MyMapAnnotation
 
 @synthesize object;
 @synthesize name;
+@synthesize timestamp;
 
 -(MyMapAnnotation*)initWithObject:(NSManagedObject *)managedObject
 {
@@ -25,6 +32,7 @@
     {
         [self setObject:managedObject];
         [self setName:annotationName];
+        [self setTimestamp:(NSDate*)[object valueForKey:@"timestamp"]];
     }
     
     return self;
@@ -42,6 +50,8 @@
     
     return newArray;
 }
+
+# pragma mark - MKAnnotation
 
 - (NSString *)title {
 	return self.name;

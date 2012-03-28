@@ -15,6 +15,22 @@
 
 - (void)UIApplicationWillEnterForeground;
 
+/**
+ * Draws the passed array of MyMapAnnotation on the map
+ */
+- (void)drawLocations:(NSArray*)newLocations;
+
+/**
+ * Draws locations that have been recorded from startDate to EndDate
+ */
+- (void)drawLocationsForStartDate:(NSDate*)start WithEndDate:(NSDate*)end;
+
+/**
+ *  Returns the last coordinate recorded on the database
+ */
+- (CLLocationCoordinate2D)getLastCoordinate:(NSArray*)locations;
+
+
 @end
 
 @implementation MapViewController
@@ -48,12 +64,7 @@
     [map removeOverlays:map.overlays];
     
     /* drawing new Route */
-    CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[newLocations count]);
-    for (int i = 0; i < [newLocations count]; i++)
-    {
-        MyMapAnnotation* note = (MyMapAnnotation*)[newLocations objectAtIndex:i];
-        coordinates[i] = [note coordinate];
-    }
+    CLLocationCoordinate2D* coordinates = [MapViewController locationsToCoordinates:newLocations];
     MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates 
                                                          count:[newLocations count]];        
     [map addOverlay:polyLine];
@@ -74,6 +85,36 @@
     [self.map setRegion:adjustedRegion animated:YES];
     
     self.annotations = newLocations;
+}
+
++ (CLLocationCoordinate2D*)locationsToCoordinates:(NSArray*)locations
+{
+    CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[locations count]);
+
+    CLLocation* currentLocation = nil;
+    NSDate* currentTimestamp = nil;
+    
+    for (int i = 0; i < [locations count]; i++)
+    {
+        MyMapAnnotation* note = (MyMapAnnotation*)[locations objectAtIndex:i];                            
+        CLLocation* l = [[CLLocation alloc] initWithLatitude:note.coordinate.latitude 
+                                                   longitude:note.coordinate.longitude];                
+        if (i == 0)
+        {
+            currentLocation = l;
+            currentTimestamp = note.timestamp;
+        }
+        
+        else if ([currentLocation distanceFromLocation:l] > 100 
+                 || abs([note.timestamp timeIntervalSinceDate:currentTimestamp]) > 120) 
+        {
+            coordinates[i] = [note coordinate];
+            currentLocation = [[CLLocation alloc] initWithLatitude:note.coordinate.latitude 
+                                                         longitude:note.coordinate.longitude];
+            currentTimestamp = note.timestamp;
+        }
+    }
+    return coordinates;
 }
 
 - (CLLocationCoordinate2D)getLastCoordinate:(NSArray*)locations
