@@ -53,11 +53,7 @@
     NSMutableArray* locations = [NSMutableArray arrayWithCapacity:100];
     
     // TODO : add logic to add coordinates.
-    
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(MKMapViewDelegate)];
-    
-    mapCtrl.map.delegate = mockDelegate;
-    
+        
     
 }
 

@@ -13,5 +13,6 @@
 
 + (id)scenarioToLogIn;
 + (id)scenarioToStartRecording;
++ (id)scenarioToGoToMap;
 
 @end

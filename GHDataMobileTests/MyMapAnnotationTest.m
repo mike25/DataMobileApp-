@@ -33,6 +33,7 @@
         NSNumber* num = [NSNumber numberWithInt:i];        
         [[[mockManagedObject stub] andReturn:num] valueForKey:@"latitude"];
         [[[mockManagedObject stub] andReturn:num] valueForKey:@"longitude"];
+        [[[mockManagedObject stub] andReturn:nil] valueForKey:@"timestamp"];
         
         [array insertObject:mockManagedObject atIndex:i];
     }
@@ -56,6 +57,7 @@
     NSNumber* num = [NSNumber numberWithInt:45];        
     [[[mockManagedObject stub] andReturn:num] valueForKey:@"latitude"];
     [[[mockManagedObject stub] andReturn:num] valueForKey:@"longitude"];
+    [[[mockManagedObject stub] andReturn:nil] valueForKey:@"timestamp"];
     
     MyMapAnnotation* note = [[MyMapAnnotation alloc] initWithObject:mockManagedObject];
     

@@ -14,6 +14,7 @@
 - (void)initializeScenarios
 {
     [self addScenario:[KIFTestScenario scenarioToLogIn]];
+    [self addScenario:[KIFTestScenario scenarioToGoToMap]];     
     [self addScenario:[KIFTestScenario scenarioToStartRecording]];
     // Add additional scenarios you want to test here
 }

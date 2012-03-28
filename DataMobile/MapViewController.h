@@ -9,22 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+@class DMMapView;
 @class CoreDataHelper;
 
-@interface MapViewController : UIViewController <MKMapViewDelegate>
+@interface MapViewController : UIViewController
 
 @property (weak, nonatomic) CoreDataHelper* cdHelper;
-@property (strong, nonatomic) NSArray* annotations;
 
 @property (strong, nonatomic) NSDate* startDate;
 @property (strong, nonatomic) NSDate* endDate;
 
-@property (strong, nonatomic) IBOutlet MKMapView *map;
+@property (strong, nonatomic) IBOutlet DMMapView *map;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (strong, nonatomic) IBOutlet UIButton *goButton;
-
-+ (CLLocationCoordinate2D*)locationsToCoordinates:(NSArray*)locations;
 
 - (IBAction)startEndValueChanged:(id)sender;
 - (IBAction)dateValueChanged:(id)sender;

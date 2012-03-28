@@ -36,4 +36,15 @@
     return scenario;
 }
 
++ (id)scenarioToGoToMap
+{
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can read a map routes."];    
+    [scenario addStep:[KIFTestStep stepToReset]];
+
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"map" traits:UIAccessibilityTraitButton]];
+    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"map" traits:UIAccessibilityScreenChangedNotification]];
+    
+    return scenario;
+}
+
 @end
