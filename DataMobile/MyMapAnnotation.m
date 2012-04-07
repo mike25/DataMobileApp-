@@ -18,7 +18,7 @@
 
 @synthesize object;
 @synthesize name;
-@synthesize timestamp;
+@synthesize timeStamp;
 
 -(MyMapAnnotation*)initWithObject:(NSManagedObject *)managedObject
 {
@@ -32,7 +32,7 @@
     {
         [self setObject:managedObject];
         [self setName:annotationName];
-        [self setTimestamp:(NSDate*)[object valueForKey:@"timestamp"]];
+        [self setTimeStamp:(NSDate*)[object valueForKey:@"timestamp"]];
     }
     
     return self;

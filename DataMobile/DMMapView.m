@@ -70,16 +70,16 @@
         if (i == 0)
         {
             currentLocation = l;
-            currentTimestamp = note.timestamp;
+            currentTimestamp = note.timeStamp;
         }
         
         else if ([currentLocation distanceFromLocation:l] > 100 
-                 || abs([note.timestamp timeIntervalSinceDate:currentTimestamp]) > 120)
+                 || abs([note.timeStamp timeIntervalSinceDate:currentTimestamp]) > 120)
         {
             [strippedLocations addObject:[locations objectAtIndex:i]];
             currentLocation = [[CLLocation alloc] initWithLatitude:note.coordinate.latitude 
                                                          longitude:note.coordinate.longitude];
-            currentTimestamp = note.timestamp;
+            currentTimestamp = note.timeStamp;
         }
     
     }    
