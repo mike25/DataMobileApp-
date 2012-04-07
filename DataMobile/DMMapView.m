@@ -56,11 +56,11 @@
 }
 
 + (CLLocationCoordinate2D*)locationsToCoordinates:(NSArray*)locations
-{
-    CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[locations count]);
-    
+{    
     CLLocation* currentLocation = nil;
     NSDate* currentTimestamp = nil;
+    
+    NSMutableArray* strippedLocations = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < [locations count]; i++)
     {
@@ -74,14 +74,23 @@
         }
         
         else if ([currentLocation distanceFromLocation:l] > 100 
-                 || abs([note.timestamp timeIntervalSinceDate:currentTimestamp]) > 120) 
+                 || abs([note.timestamp timeIntervalSinceDate:currentTimestamp]) > 120)
         {
-            coordinates[i] = [note coordinate];
+            [strippedLocations addObject:[locations objectAtIndex:i]];
             currentLocation = [[CLLocation alloc] initWithLatitude:note.coordinate.latitude 
                                                          longitude:note.coordinate.longitude];
             currentTimestamp = note.timestamp;
         }
+    
+    }    
+
+    CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[strippedLocations count]);
+    
+    for (int i = 0; i < [strippedLocations count]; i++)
+    {
+        coordinates[i] = [[strippedLocations objectAtIndex:i] coordinate];
     }
+    
     return coordinates;
 }
 
