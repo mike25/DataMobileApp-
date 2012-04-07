@@ -61,6 +61,7 @@
 		3C3861F7151A80DD00997CF6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A196CDED148078CD00F61C06 /* Storyboard.storyboard */; };
 		3C3861F8151A80DD00997CF6 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FA278A149C2220009745EB /* config.plist */; };
 		3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C0F148075B800F66E96 /* DMAppDelegate.m */; };
+		3C56AC4A1530387D006A9CBB /* DMMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA52A211523C05500901417 /* DMMapView.m */; };
 		3C57278315141E860092A47D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3C57278715141F880092A47D /* FileSenderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C57278615141F880092A47D /* FileSenderTest.m */; };
 		3C57278A15141FF00092A47D /* ConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C57278915141FF00092A47D /* ConfigTest.m */; };
@@ -130,7 +131,7 @@
 		3C0C592F152F9A6F00F0F2B8 /* DMMapViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapViewTest.m; sourceTree = "<group>"; };
 		3C0C5932152FA5F700F0F2B8 /* coordinates-fixture.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "coordinates-fixture.xml"; sourceTree = "<group>"; };
 		3C0C596C152FD7A200F0F2B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		3C0C5981152FDB6A00F0F2B8 /* libTBXML-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libTBXML-iOS.a"; path = "usr/include/TBXML/build/Release-iphoneos/libTBXML-iOS.a"; sourceTree = "<group>"; };
+		3C0C5981152FDB6A00F0F2B8 /* libTBXML-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libTBXML-iOS.a"; path = "usr/include/TBXML/build/Release-iphoneos/libTBXML-iOS.a"; sourceTree = "<group>"; };
 		3C3440AC151D5E5200D6A860 /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "../../Library/Developer/Xcode/DerivedData/DataMobile-chaipffgndwyxqfhrhjarfctyukn/Build/Products/Debug-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		3C369F2D15140C80002840E8 /* GHDataMobileTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHDataMobileTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C369F3415140C80002840E8 /* GHDataMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GHDataMobileTests-Info.plist"; sourceTree = "<group>"; };
@@ -296,6 +297,7 @@
 		3C57278E151422FE0092A47D /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3C0C5981152FDB6A00F0F2B8 /* libTBXML-iOS.a */,
 				3C3440AC151D5E5200D6A860 /* libKIF.a */,
 				3C369F5C15141204002840E8 /* libOCMock.a */,
 			);
@@ -399,7 +401,6 @@
 		A16E8BEE148075B800F66E96 = {
 			isa = PBXGroup;
 			children = (
-				3C0C5981152FDB6A00F0F2B8 /* libTBXML-iOS.a */,
 				A16E8C05148075B800F66E96 /* DataMobile */,
 				3C369F3215140C80002840E8 /* GHDataMobileTests */,
 				3CDDDFFC151E87630074242D /* KIFDataMobileTests */,
@@ -638,6 +639,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C56AC4A1530387D006A9CBB /* DMMapView.m in Sources */,
 				3C5FC3A81521357F001A594F /* MainViewController.m in Sources */,
 				3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */,
 				3CF15B7F15194323008868C5 /* MyMapAnnotation.m in Sources */,

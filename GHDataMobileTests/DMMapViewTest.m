@@ -36,7 +36,7 @@
     [super tearDown];
 }
 
-- (void)setUpTestLocationToCoordinates
+- (void)setUpReduceLocations
 {
     /* creating the Location array fixture */
     locationFixture = [[NSMutableArray alloc] init];   
@@ -84,12 +84,40 @@
     MyMapAnnotation* annotation = (MyMapAnnotation*)[locationFixture objectAtIndex:0];    
     HC_assertThatDouble(annotation.coordinate.longitude,
                         equalToDouble(-73.57760599768996));
-
+    HC_assertThatDouble(annotation.coordinate.latitude,
+                        equalToDouble(45.49587642201236));    
+    HC_assertThatInteger([locationFixture count], equalToInteger(163));
 }
 
-- (void)testLocationsToCoordinates
+- (void)testReduceLocations
 {
-    [self setUpTestLocationToCoordinates];
+    [self setUpReduceLocations];
+    
+    NSArray* strippedLocations = [DMMapView reduceLocations:locationFixture];
+    
+    for (MyMapAnnotation* note1 in strippedLocations)
+    {
+        for (MyMapAnnotation* note2 in strippedLocations) 
+        {
+            if(note1 != note2)
+            {
+                CLLocation* l1 = [[CLLocation alloc] initWithLatitude:note1.coordinate.latitude 
+                                                            longitude:note1.coordinate.longitude];
+                CLLocation* l2 = [[CLLocation alloc] initWithLatitude:note2.coordinate.latitude 
+                                                            longitude:note2.coordinate.longitude];                
+                
+                CLLocationDistance distance = [l1 distanceFromLocation:l2];
+                NSTimeInterval timeInterval = abs([l1.timestamp timeIntervalSinceDate:l2.timestamp]);
+                
+                GHAssertTrue( distance > 100 || timeInterval > 120,
+                             @"The number of Locations has not been reduced properly. Distance is %f and TimeInterval is %f, should be distance > %f or TimeInterval > %f",
+                             distance,
+                             timeInterval,
+                             100.0,
+                             120.0);
+            }        
+        }
+    }
 }
 
 

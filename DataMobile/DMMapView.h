@@ -24,6 +24,12 @@
  */
 - (CLLocationCoordinate2D)getLastCoordinate;
 
+/**
+ * Remove from the passed array of locations locations that are both
+ * close in time and space and return the resulting array.
+ */
++ (NSArray*)reduceLocations:(NSArray*)locations;
+
 + (CLLocationCoordinate2D*)locationsToCoordinates:(NSArray*)locations;
 
 @end

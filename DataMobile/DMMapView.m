@@ -55,8 +55,8 @@
     [self setRegion:adjustedRegion animated:YES];
 }
 
-+ (CLLocationCoordinate2D*)locationsToCoordinates:(NSArray*)locations
-{    
++(NSArray *)reduceLocations:(NSArray *)locations
+{
     CLLocation* currentLocation = nil;
     NSDate* currentTimestamp = nil;
     
@@ -80,10 +80,15 @@
             currentLocation = [[CLLocation alloc] initWithLatitude:note.coordinate.latitude 
                                                          longitude:note.coordinate.longitude];
             currentTimestamp = note.timeStamp;
-        }
-    
-    }    
+        }        
+    }
+    return strippedLocations;
+}
 
++ (CLLocationCoordinate2D*)locationsToCoordinates:(NSArray*)locations
+{    
+    NSArray* strippedLocations = [DMMapView reduceLocations:locations];
+    
     CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[strippedLocations count]);
     
     for (int i = 0; i < [strippedLocations count]; i++)
