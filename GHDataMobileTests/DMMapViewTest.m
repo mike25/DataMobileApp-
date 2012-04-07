@@ -7,11 +7,18 @@
 //
 
 #import "DMMapView.h"
+#import "TBXML.h"
 
 @interface DMMapViewTest : GHTestCase <NSXMLParserDelegate>
+{
+    BOOL captureCharacters;
+}
 
 @property (strong,nonatomic) DMMapView* map;
 @property (strong,nonatomic) NSMutableArray* locationFixture;
+
+// NOTE : Trying to create a partial mock delegate is not feasible
+// due to the current (lack of) features of the OCMock Library.
 @property (strong,nonatomic) id mockParserDelegate;
 
 @end
@@ -41,27 +48,15 @@
     locationFixture = [[NSMutableArray alloc] init];   
     NSString *path = [[NSBundle mainBundle] pathForResource:@"coordinates-fixture"
                                                      ofType:@"xml"];
-    GHAssertNotNil(path, @"The path to the coordinates-fixture.xml could not be determined");
-    
+    GHAssertNotNil(path, @"The path to the coordinates-fixture.xml could not be determined");    
     NSData *xmlData = [[NSData alloc] initWithContentsOfFile:path];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
-    
-    /* setting up the mock delegate */
-    mockParserDelegate = [OCMockObject partialMockForObject:self];
-    for (int i = 0 ; i < 163; i++)
-    {
-        [[[mockParserDelegate expect] andForwardToRealObject] parser:[OCMArg any] 
-                                                     didStartElement:[OCMArg any] 
-                                                        namespaceURI:[OCMArg any]
-                                                       qualifiedName:[OCMArg any] 
-                                                          attributes:[OCMArg any]];
-    }    
-    [parser setDelegate:mockParserDelegate];
-    
+    [parser setDelegate:self];
+    captureCharacters = NO;
     BOOL parseSucceeded = [parser parse];
-    GHTestLog([[parser parserError] description]);
     GHAssertTrue(parseSucceeded, @"The parsing of the xml fixture file failed");
-    [mockParserDelegate verify];
+    
+    
 }
 
 # pragma mark - NSXMLParserDelegate
@@ -72,6 +67,23 @@ didStartElement:(NSString *)elementName
  qualifiedName:(NSString *)qName
     attributes:(NSDictionary *)attributeDict
 {
+    if([elementName isEqualToString:@"column"])
+    {
+        captureCharacters = YES;        
+    }
+}
+
+-(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+
+}
+
+-(void)parser:(NSXMLParser *)parser 
+didEndElement:(NSString *)elementName 
+ namespaceURI:(NSString *)namespaceURI
+qualifiedName:(NSString *)qName
+{
+
 }
 
 @end

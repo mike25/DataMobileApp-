@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3C0C5930152F9A6F00F0F2B8 /* DMMapViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C592F152F9A6F00F0F2B8 /* DMMapViewTest.m */; };
 		3C0C5933152FA5F700F0F2B8 /* coordinates-fixture.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3C0C5932152FA5F700F0F2B8 /* coordinates-fixture.xml */; };
+		3C0C596D152FD7A200F0F2B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C596C152FD7A200F0F2B8 /* libz.dylib */; };
+		3C0C5982152FDB6A00F0F2B8 /* libTBXML-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C5981152FDB6A00F0F2B8 /* libTBXML-iOS.a */; };
 		3C3440AD151D5E5200D6A860 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3440AC151D5E5200D6A860 /* libKIF.a */; };
 		3C3440AE151D613E00D6A860 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16979B4148739C3006E8AB7 /* CoreGraphics.framework */; };
 		3C369F2F15140C80002840E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
@@ -127,6 +129,8 @@
 /* Begin PBXFileReference section */
 		3C0C592F152F9A6F00F0F2B8 /* DMMapViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapViewTest.m; sourceTree = "<group>"; };
 		3C0C5932152FA5F700F0F2B8 /* coordinates-fixture.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "coordinates-fixture.xml"; sourceTree = "<group>"; };
+		3C0C596C152FD7A200F0F2B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3C0C5981152FDB6A00F0F2B8 /* libTBXML-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libTBXML-iOS.a"; path = "usr/include/TBXML/build/Release-iphoneos/libTBXML-iOS.a"; sourceTree = "<group>"; };
 		3C3440AC151D5E5200D6A860 /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "../../Library/Developer/Xcode/DerivedData/DataMobile-chaipffgndwyxqfhrhjarfctyukn/Build/Products/Debug-iphoneos/libKIF.a"; sourceTree = "<group>"; };
 		3C369F2D15140C80002840E8 /* GHDataMobileTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHDataMobileTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C369F3415140C80002840E8 /* GHDataMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GHDataMobileTests-Info.plist"; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C0C5982152FDB6A00F0F2B8 /* libTBXML-iOS.a in Frameworks */,
+				3C0C596D152FD7A200F0F2B8 /* libz.dylib in Frameworks */,
 				3CF15B8115195931008868C5 /* OCHamcrestIOS.framework in Frameworks */,
 				3C57278B151420570092A47D /* SenTestingKit.framework in Frameworks */,
 				3C57278315141E860092A47D /* MapKit.framework in Frameworks */,
@@ -393,6 +399,7 @@
 		A16E8BEE148075B800F66E96 = {
 			isa = PBXGroup;
 			children = (
+				3C0C5981152FDB6A00F0F2B8 /* libTBXML-iOS.a */,
 				A16E8C05148075B800F66E96 /* DataMobile */,
 				3C369F3215140C80002840E8 /* GHDataMobileTests */,
 				3CDDDFFC151E87630074242D /* KIFDataMobileTests */,
@@ -416,6 +423,7 @@
 		A16E8BFC148075B800F66E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C0C596C152FD7A200F0F2B8 /* libz.dylib */,
 				3CF15B8015195931008868C5 /* OCHamcrestIOS.framework */,
 				3C369F4E15140D2E002840E8 /* GHUnitIOS.framework */,
 				3CE0128B14FECDAB001D565A /* MapKit.framework */,
@@ -758,7 +766,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GHDataMobileTests/GHDataMobileTests-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/usr/include\"";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/usr/include\"/**";
 				INFOPLIST_FILE = "GHDataMobileTests/GHDataMobileTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -788,7 +796,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GHDataMobileTests/GHDataMobileTests-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/usr/include\"";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/usr/include\"/**";
 				INFOPLIST_FILE = "GHDataMobileTests/GHDataMobileTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
