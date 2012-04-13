@@ -11,6 +11,9 @@
 
 @implementation DMMapView
 
+static const double limitSeconds = 120;
+static const double limitMeters = 100;
+
 @synthesize myLocations;
 
 - (void)drawLocations:(NSArray*)newLocations
@@ -26,9 +29,10 @@
     [self removeOverlays:self.overlays];
     
     /* drawing new Route */
+    newLocations = [DMMapView reduceLocations:newLocations];
     CLLocationCoordinate2D* coordinates = [DMMapView locationsToCoordinates:newLocations];
-    MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates 
-                                                         count:[newLocations count]];        
+    MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates
+                                                         count:[newLocations count]];
     [self addOverlay:polyLine];
     free(coordinates);
     
@@ -36,7 +40,7 @@
     MyMapAnnotation* first_notation = (MyMapAnnotation*)[newLocations objectAtIndex:[newLocations count]-1];
     MyMapAnnotation* last_notation = (MyMapAnnotation*)[newLocations objectAtIndex:0];
     [first_notation setName:@"End Point"];
-    [last_notation setName:@"start Point"];
+    [last_notation setName:@"Start Point"];
     [self addAnnotation:first_notation];
     [self addAnnotation:last_notation];
     [self selectAnnotation:first_notation animated:YES];
@@ -57,44 +61,49 @@
 
 +(NSArray *)reduceLocations:(NSArray *)locations
 {
-    CLLocation* currentLocation = nil;
-    NSDate* currentTimestamp = nil;
-    
+    /* Remove locations so that the timeStamp are not */
     NSMutableArray* strippedLocations = [[NSMutableArray alloc] init];
-    
     for (int i = 0; i < [locations count]; i++)
     {
-        MyMapAnnotation* note = (MyMapAnnotation*)[locations objectAtIndex:i];                            
-        CLLocation* l = [[CLLocation alloc] initWithLatitude:note.coordinate.latitude 
-                                                   longitude:note.coordinate.longitude];                
+        MyMapAnnotation* note = (MyMapAnnotation*)[locations objectAtIndex:i];
+        CLLocation* l = [[CLLocation alloc] initWithLatitude:note.coordinate.latitude
+                                                   longitude:note.coordinate.longitude];
         if (i == 0)
         {
-            currentLocation = l;
-            currentTimestamp = note.timeStamp;
-        }
-        
-        else if ([currentLocation distanceFromLocation:l] > 100 
-                 || abs([note.timeStamp timeIntervalSinceDate:currentTimestamp]) > 120)
-        {
             [strippedLocations addObject:[locations objectAtIndex:i]];
-            currentLocation = [[CLLocation alloc] initWithLatitude:note.coordinate.latitude 
-                                                         longitude:note.coordinate.longitude];
-            currentTimestamp = note.timeStamp;
         }        
-    }
+        else
+        {
+            BOOL conflicts = NO;
+            for (MyMapAnnotation* st_note in strippedLocations) 
+            {
+                CLLocation* l2 = [[CLLocation alloc] initWithLatitude:st_note.coordinate.latitude
+                                                           longitude:st_note.coordinate.longitude];
+                if (abs([l2 distanceFromLocation:l]) < limitMeters 
+                    && abs([note.timeStamp timeIntervalSinceDate:st_note.timeStamp]) < limitSeconds) 
+                {
+                    conflicts = YES;
+                    break;
+                }
+            }
+            if (!conflicts) 
+            {
+                [strippedLocations addObject:[locations objectAtIndex:i]];
+            }
+        }        
+    }    
+        
     return strippedLocations;
 }
 
-+ (CLLocationCoordinate2D*)locationsToCoordinates:(NSArray*)locations
-{    
-    NSArray* strippedLocations = [DMMapView reduceLocations:locations];
-    
++ (CLLocationCoordinate2D*)locationsToCoordinates:(NSArray*)strippedLocations
+{        
     CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D)*[strippedLocations count]);
     
     for (int i = 0; i < [strippedLocations count]; i++)
     {
-        coordinates[i] = [[strippedLocations objectAtIndex:i] coordinate];
-    }
+        coordinates[i] = [[strippedLocations objectAtIndex:i] coordinate];        
+    }    
     
     return coordinates;
 }

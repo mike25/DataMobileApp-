@@ -75,12 +75,13 @@
 		3CDDE007151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */; };
 		3CDDE01A151E96F30074242D /* DataMBTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE017151E96F30074242D /* DataMBTestController.m */; };
 		3CDDE01B151E96F30074242D /* KIFTestScenario+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE019151E96F30074242D /* KIFTestScenario+DataMBAdditions.m */; };
+		3CDFB41F15321C2900C771D2 /* DataMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
+		3CDFB42115321C4700C771D2 /* DMMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA52A211523C05500901417 /* DMMapView.m */; };
 		3CE0128E14FECDB4001D565A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE0128B14FECDAB001D565A /* MapKit.framework */; };
 		3CE0129514FECF3B001D565A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0129414FECF3B001D565A /* MapViewController.m */; };
 		3CE0B6771517DACA0071E189 /* DataMobile.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
 		3CE0B67B1517DB600071E189 /* CoreDataHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67A1517DB600071E189 /* CoreDataHelperTest.m */; };
 		3CE0B67E1517DDEE0071E189 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67D1517DDEE0071E189 /* CoreDataHelper.m */; };
-		3CE0B6851517E9550071E189 /* DataMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A16E8C11148075B800F66E96 /* DataMobile.xcdatamodeld */; };
 		3CE0B6871517EE8B0071E189 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0B67D1517DDEE0071E189 /* CoreDataHelper.m */; };
 		3CE9FED214C64D9E00CC79C9 /* SendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED114C64D9E00CC79C9 /* SendState.m */; };
 		3CE9FED714C650D800CC79C9 /* NoSendState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9FED614C650D800CC79C9 /* NoSendState.m */; };
@@ -639,12 +640,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CDFB41F15321C2900C771D2 /* DataMobile.xcdatamodeld in Sources */,
 				3C56AC4A1530387D006A9CBB /* DMMapView.m in Sources */,
 				3C5FC3A81521357F001A594F /* MainViewController.m in Sources */,
 				3C4399C4151A74D300DEAE30 /* DMAppDelegate.m in Sources */,
 				3CF15B7F15194323008868C5 /* MyMapAnnotation.m in Sources */,
 				3CE0B6871517EE8B0071E189 /* CoreDataHelper.m in Sources */,
-				3CE0B6851517E9550071E189 /* DataMobile.xcdatamodeld in Sources */,
 				3C369F6215141A01002840E8 /* AlertViewManager.m in Sources */,
 				3C369F6415141A01002840E8 /* SendState.m in Sources */,
 				3C369F6615141A01002840E8 /* NoSendState.m in Sources */,
@@ -673,6 +674,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CDFB42115321C4700C771D2 /* DMMapView.m in Sources */,
 				3C3861DD151A80DD00997CF6 /* main.m in Sources */,
 				3C3861DE151A80DD00997CF6 /* DMAppDelegate.m in Sources */,
 				3C3861DF151A80DD00997CF6 /* DataMobile.xcdatamodeld in Sources */,
