@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:DataMobile-project/DataMobile.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DataMobile-project/usr/include/TBXML/TBXML.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DataMobile-project/usr/include/KIF/KIF.xcodeproj">
+   </FileRef>
+</Workspace>

@@ -1,6 +1,6 @@
 [submodule "DataMobile-project/usr/include/KIF"]
-	path = usr/include/KIF
+	path = DataMobile-project/usr/include/KIF
 	url = https://github.com/square/KIF.git
 [submodule "DataMobile-project/usr/include/TBXML"]
-	path = usr/include/TBXML
+	path = DataMobile-project/usr/include/TBXML
 	url = https://github.com/71squared/TBXML.git
