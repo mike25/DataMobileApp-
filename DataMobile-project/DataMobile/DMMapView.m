@@ -11,8 +11,8 @@
 
 @implementation DMMapView
 
-static const double limitSeconds = 120;
-static const double limitMeters = 100;
+static const double limitSeconds = 2000;
+static const double limitMeters = 2000;
 
 @synthesize myLocations;
 
@@ -29,7 +29,10 @@ static const double limitMeters = 100;
     [self removeOverlays:self.overlays];
     
     /* drawing new Route */
+    NSLog(@"before : %i", [newLocations count]);
     newLocations = [DMMapView reduceLocations:newLocations];
+    NSLog(@"after : %i", [newLocations count]);
+    
     CLLocationCoordinate2D* coordinates = [DMMapView locationsToCoordinates:newLocations];
     MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates
                                                          count:[newLocations count]];
@@ -60,14 +63,12 @@ static const double limitMeters = 100;
 }
 
 +(NSArray *)reduceLocations:(NSArray *)locations
-{
-    /* Remove locations so that the timeStamp are not */
+{    
     NSMutableArray* strippedLocations = [[NSMutableArray alloc] init];
     for (int i = 0; i < [locations count]; i++)
     {
         MyMapAnnotation* note = (MyMapAnnotation*)[locations objectAtIndex:i];
-        CLLocation* l = [[CLLocation alloc] initWithLatitude:note.coordinate.latitude
-                                                   longitude:note.coordinate.longitude];
+        
         if (i == 0)
         {
             [strippedLocations addObject:[locations objectAtIndex:i]];
@@ -75,20 +76,23 @@ static const double limitMeters = 100;
         else
         {
             BOOL conflicts = NO;
-            for (MyMapAnnotation* st_note in strippedLocations) 
+            for (MyMapAnnotation* st_note in strippedLocations)
             {
-                CLLocation* l2 = [[CLLocation alloc] initWithLatitude:st_note.coordinate.latitude
-                                                           longitude:st_note.coordinate.longitude];
-                if (abs([l2 distanceFromLocation:l]) < limitMeters 
-                    && abs([note.timeStamp timeIntervalSinceDate:st_note.timeStamp]) < limitSeconds) 
+                CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter:[st_note coordinate]
+                                                                           radius:limitMeters
+                                                                       identifier:@"none"];
+                NSDate* previousStamp = [(MyMapAnnotation*)[locations objectAtIndex:(i-1)] timeStamp];
+                
+                if ([region containsCoordinate:[note coordinate]]
+                    && abs([note.timeStamp timeIntervalSinceDate:previousStamp]) < limitSeconds) 
                 {
                     conflicts = YES;
                     break;
-                }
+                }            
             }
             if (!conflicts) 
             {
-                [strippedLocations addObject:[locations objectAtIndex:i]];
+                [strippedLocations addObject:note];
             }
         }        
     }    

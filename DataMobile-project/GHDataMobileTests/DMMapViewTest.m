@@ -105,8 +105,9 @@
     
     NSArray* strippedLocations = [DMMapView reduceLocations:locationFixture];
     
-    GHAssertTrue([strippedLocations count] < [locationFixture count]/2,
-                 @"The array has not been reduced enough");
+    NSUInteger size = 5;
+    
+    GHAssertLessThanOrEqual([strippedLocations count], size, @"The array has not been reduced enough");
     GHTestLog(@"%i", [strippedLocations count]);
     
     for (MyMapAnnotation* note1 in strippedLocations)
