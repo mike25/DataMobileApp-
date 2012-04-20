@@ -142,7 +142,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad];    
     
     self.map.delegate = self.map;
     self.map.showsUserLocation = YES;

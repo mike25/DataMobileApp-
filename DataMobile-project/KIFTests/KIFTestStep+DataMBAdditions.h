@@ -10,12 +10,14 @@
 
 @interface KIFTestStep (DataMBAdditions)
 
-// Factory Steps
+/* Single Step factory */
+
+// dummy step
 + (id)stepToReset;
 
-/**
- *  Steps 
- */
+/*  Mutliple Step factory */
 + (NSArray *)stepsToWaitForLocationNotifications:(NSInteger)numberOfNotifications;
+
+
 
 @end

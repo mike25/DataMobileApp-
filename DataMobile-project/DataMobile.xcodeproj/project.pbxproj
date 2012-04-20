@@ -70,6 +70,9 @@
 		3C58B0C31520FCD200546369 /* DMAppDelegateStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C21520FCD200546369 /* DMAppDelegateStub.m */; };
 		3C58B0C815212F4A00546369 /* MainViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C715212F4A00546369 /* MainViewControllerTest.m */; };
 		3C5FC3A81521357F001A594F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDF01480790700F61C06 /* MainViewController.m */; };
+		3C788906153FCE00007A89E2 /* DataMobile.sqlite in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C788905153FCE00007A89E2 /* DataMobile.sqlite */; };
+		3C78893A1540EF16007A89E2 /* KIFTestStep+DatePickerAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7889391540EF16007A89E2 /* KIFTestStep+DatePickerAddition.m */; };
+		3C78893D15411378007A89E2 /* KIFTestStep+MapStepsAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C78893C15411377007A89E2 /* KIFTestStep+MapStepsAddition.m */; };
 		3CA52A1D15239E1E00901417 /* MapViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA52A1C15239E1E00901417 /* MapViewControllerTest.m */; };
 		3CA52A221523C05500901417 /* DMMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA52A211523C05500901417 /* DMMapView.m */; };
 		3CDDE007151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */; };
@@ -128,6 +131,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3C788902153FCD71007A89E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Documents;
+			dstSubfolderSpec = 16;
+			files = (
+				3C788906153FCE00007A89E2 /* DataMobile.sqlite in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3C0C592F152F9A6F00F0F2B8 /* DMMapViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapViewTest.m; sourceTree = "<group>"; };
 		3C0C5932152FA5F700F0F2B8 /* coordinates-fixture.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "coordinates-fixture.xml"; sourceTree = "<group>"; };
@@ -150,6 +166,11 @@
 		3C58B0C11520FCD100546369 /* DMAppDelegateStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAppDelegateStub.h; sourceTree = "<group>"; };
 		3C58B0C21520FCD200546369 /* DMAppDelegateStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAppDelegateStub.m; sourceTree = "<group>"; };
 		3C58B0C715212F4A00546369 /* MainViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerTest.m; sourceTree = "<group>"; };
+		3C788905153FCE00007A89E2 /* DataMobile.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = DataMobile.sqlite; path = KIFTests/DataMobile.sqlite; sourceTree = "<group>"; };
+		3C7889381540EF16007A89E2 /* KIFTestStep+DatePickerAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+DatePickerAddition.h"; path = "KIFTests/KIFTestStep+DatePickerAddition.h"; sourceTree = "<group>"; };
+		3C7889391540EF16007A89E2 /* KIFTestStep+DatePickerAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+DatePickerAddition.m"; path = "KIFTests/KIFTestStep+DatePickerAddition.m"; sourceTree = "<group>"; };
+		3C78893B15411377007A89E2 /* KIFTestStep+MapStepsAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+MapStepsAddition.h"; path = "KIFTests/KIFTestStep+MapStepsAddition.h"; sourceTree = "<group>"; };
+		3C78893C15411377007A89E2 /* KIFTestStep+MapStepsAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+MapStepsAddition.m"; path = "KIFTests/KIFTestStep+MapStepsAddition.m"; sourceTree = "<group>"; };
 		3CA52A1C15239E1E00901417 /* MapViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerTest.m; sourceTree = "<group>"; };
 		3CA52A201523C05500901417 /* DMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapView.h; sourceTree = "<group>"; };
 		3CA52A211523C05500901417 /* DMMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapView.m; sourceTree = "<group>"; };
@@ -305,6 +326,36 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
+		3C788904153FCDDD007A89E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C788905153FCE00007A89E2 /* DataMobile.sqlite */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C7889071540B63C007A89E2 /* Scenarios */ = {
+			isa = PBXGroup;
+			children = (
+				3CDDE018151E96F30074242D /* KIFTestScenario+DataMBAdditions.h */,
+				3CDDE019151E96F30074242D /* KIFTestScenario+DataMBAdditions.m */,
+			);
+			name = Scenarios;
+			sourceTree = "<group>";
+		};
+		3C7889081540B64D007A89E2 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				3C78893B15411377007A89E2 /* KIFTestStep+MapStepsAddition.h */,
+				3C78893C15411377007A89E2 /* KIFTestStep+MapStepsAddition.m */,
+				3CDDE005151E8A9A0074242D /* KIFTestStep+DataMBAdditions.h */,
+				3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */,
+				3C7889381540EF16007A89E2 /* KIFTestStep+DatePickerAddition.h */,
+				3C7889391540EF16007A89E2 /* KIFTestStep+DatePickerAddition.m */,
+			);
+			name = Steps;
+			sourceTree = "<group>";
+		};
 		3CA52A1F1523C02400901417 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,12 +368,11 @@
 		3CDDDFFC151E87630074242D /* KIFDataMobileTests */ = {
 			isa = PBXGroup;
 			children = (
+				3C788904153FCDDD007A89E2 /* Supporting Files */,
 				3CDDE016151E96F30074242D /* DataMBTestController.h */,
 				3CDDE017151E96F30074242D /* DataMBTestController.m */,
-				3CDDE018151E96F30074242D /* KIFTestScenario+DataMBAdditions.h */,
-				3CDDE019151E96F30074242D /* KIFTestScenario+DataMBAdditions.m */,
-				3CDDE005151E8A9A0074242D /* KIFTestStep+DataMBAdditions.h */,
-				3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */,
+				3C7889071540B63C007A89E2 /* Scenarios */,
+				3C7889081540B64D007A89E2 /* Steps */,
 			);
 			name = KIFDataMobileTests;
 			sourceTree = "<group>";
@@ -542,6 +592,7 @@
 				3C3861DC151A80DD00997CF6 /* Sources */,
 				3C3861EE151A80DD00997CF6 /* Frameworks */,
 				3C3861F4151A80DD00997CF6 /* Resources */,
+				3C788902153FCD71007A89E2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -695,6 +746,8 @@
 				3CDDE007151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m in Sources */,
 				3CDDE01A151E96F30074242D /* DataMBTestController.m in Sources */,
 				3CDDE01B151E96F30074242D /* KIFTestScenario+DataMBAdditions.m in Sources */,
+				3C78893A1540EF16007A89E2 /* KIFTestStep+DatePickerAddition.m in Sources */,
+				3C78893D15411378007A89E2 /* KIFTestStep+MapStepsAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

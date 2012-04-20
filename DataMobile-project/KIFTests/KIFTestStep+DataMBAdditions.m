@@ -27,7 +27,6 @@
 
 #pragma mark - Step Collections
 
-
 + (NSArray *)stepsToWaitForLocationNotifications:(NSInteger)numberOfNotifications
 {
     NSMutableArray *steps = [NSMutableArray array];

@@ -8,13 +8,13 @@
 
 #import "KIFTestScenario+DataMBAdditions.h"
 #import "KIFTestStep+DataMBAdditions.h"
+#import "KIFTestStep+MapStepsAddition.h"
 
 @implementation KIFTestScenario (DataMBAdditions)
 
 + (id)scenarioToLogIn
 {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can successfully log in."];
-    [scenario addStep:[KIFTestStep stepToReset]];
         
     return scenario;
 }
@@ -39,10 +39,18 @@
 + (id)scenarioToGoToMap
 {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can read a map routes."];    
-    [scenario addStep:[KIFTestStep stepToReset]];
 
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"map" traits:UIAccessibilityTraitButton]];
-    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"map" traits:UIAccessibilityScreenChangedNotification]];
+    
+    /* Selecting Time Interval */
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"d MMM yyyy, hh:mm"];
+    
+    NSDate *startDate = [dateFormatter dateFromString:@"16 Apr 2012, 07:00"];
+    NSDate *endDate = [dateFormatter dateFromString:@"18 Apr 2012, 07:00"];    
+    
+    [scenario addStepsFromArray:[KIFTestStep stepsToSelectTimePeriodWithStartDate:startDate 
+                                                                       AndEndDate:endDate]];
     
     return scenario;
 }
