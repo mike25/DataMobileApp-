@@ -55,9 +55,15 @@ BOOL inBackground;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    cdataHelper = [[CoreDataHelper alloc] 
-                   initWithURL:[[self applicationDocumentsDirectory] 
-                                URLByAppendingPathComponent:@"DataMobile.sqlite"]];
+    
+#if RUN_KIF_TESTS
+    NSURL *cdataUrl = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"DataMobile"
+                                                                                         ofType:@"sqlite"]];
+#else     
+    NSURL *cdataUrl = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"DataMobile.sqlite"];    
+#endif
+        
+    cdataHelper = [[CoreDataHelper alloc] initWithURL:cdataUrl];
  
     [cdataHelper insertNewUserIfNotExists];
     

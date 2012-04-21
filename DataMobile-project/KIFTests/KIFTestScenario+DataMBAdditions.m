@@ -46,7 +46,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"d MMM yyyy, hh:mm"];
     
-    NSDate *startDate = [dateFormatter dateFromString:@"16 Apr 2012, 07:00"];
+    NSDate *startDate = [dateFormatter dateFromString:@"17 Apr 2012, 07:00"];
     NSDate *endDate = [dateFormatter dateFromString:@"18 Apr 2012, 07:00"];    
     
     [scenario addStepsFromArray:[KIFTestStep stepsToSelectTimePeriodWithStartDate:startDate 

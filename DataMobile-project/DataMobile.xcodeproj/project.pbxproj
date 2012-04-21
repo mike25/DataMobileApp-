@@ -56,7 +56,6 @@
 		3C3861F1151A80DD00997CF6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C211480760300F66E96 /* CoreLocation.framework */; };
 		3C3861F2151A80DD00997CF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8BFF148075B800F66E96 /* Foundation.framework */; };
 		3C3861F3151A80DD00997CF6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16E8C03148075B800F66E96 /* CoreData.framework */; };
-		3C3861F5151A80DD00997CF6 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
 		3C3861F6151A80DD00997CF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A16E8C08148075B800F66E96 /* InfoPlist.strings */; };
 		3C3861F7151A80DD00997CF6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A196CDED148078CD00F61C06 /* Storyboard.storyboard */; };
 		3C3861F8151A80DD00997CF6 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FA278A149C2220009745EB /* config.plist */; };
@@ -70,11 +69,12 @@
 		3C58B0C31520FCD200546369 /* DMAppDelegateStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C21520FCD200546369 /* DMAppDelegateStub.m */; };
 		3C58B0C815212F4A00546369 /* MainViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C58B0C715212F4A00546369 /* MainViewControllerTest.m */; };
 		3C5FC3A81521357F001A594F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A196CDF01480790700F61C06 /* MainViewController.m */; };
-		3C788906153FCE00007A89E2 /* DataMobile.sqlite in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C788905153FCE00007A89E2 /* DataMobile.sqlite */; };
 		3C78893A1540EF16007A89E2 /* KIFTestStep+DatePickerAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7889391540EF16007A89E2 /* KIFTestStep+DatePickerAddition.m */; };
 		3C78893D15411378007A89E2 /* KIFTestStep+MapStepsAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C78893C15411377007A89E2 /* KIFTestStep+MapStepsAddition.m */; };
 		3CA52A1D15239E1E00901417 /* MapViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA52A1C15239E1E00901417 /* MapViewControllerTest.m */; };
 		3CA52A221523C05500901417 /* DMMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA52A211523C05500901417 /* DMMapView.m */; };
+		3CABD2A2154356AC00C0F11E /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
+		3CABD2AA15435F5F00C0F11E /* DataMobile.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3CABD2A915435F5F00C0F11E /* DataMobile.sqlite */; };
 		3CDDE007151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */; };
 		3CDDE01A151E96F30074242D /* DataMBTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE017151E96F30074242D /* DataMBTestController.m */; };
 		3CDDE01B151E96F30074242D /* KIFTestScenario+DataMBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDE019151E96F30074242D /* KIFTestScenario+DataMBAdditions.m */; };
@@ -94,7 +94,6 @@
 		3CF15B7D151942FA008868C5 /* MyMapAnnotationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7C151942F9008868C5 /* MyMapAnnotationTest.m */; };
 		3CF15B7F15194323008868C5 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF15B7815192AE8008868C5 /* MyMapAnnotation.m */; };
 		3CF15B8115195931008868C5 /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF15B8015195931008868C5 /* OCHamcrestIOS.framework */; };
-		A101D9AD14A2ADAE00DFC446 /* config-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = A101D9AB14A2ACE900DFC446 /* config-test.plist */; };
 		A169767C14873199006E8AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169767B14873199006E8AB7 /* UIKit.framework */; };
 		A16AEBD31483F0480079A0AA /* LocationManagerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD21483F0480079A0AA /* LocationManagerHandler.m */; };
 		A16AEBD7148432CD0079A0AA /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AEBD6148432CD0079A0AA /* DatePickerController.m */; };
@@ -132,14 +131,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3C788902153FCD71007A89E2 /* CopyFiles */ = {
+		3C788902153FCD71007A89E2 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = Documents;
-			dstSubfolderSpec = 16;
+			dstSubfolderSpec = 7;
 			files = (
-				3C788906153FCE00007A89E2 /* DataMobile.sqlite in CopyFiles */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -159,14 +158,12 @@
 		3C369F5415140FE2002840E8 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		3C369F5C15141204002840E8 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/libs/libOCMock.a; sourceTree = "<group>"; };
 		3C3861FC151A80DD00997CF6 /* DataMobile KIF tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DataMobile KIF tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C3861FF151A80DE00997CF6 /* DataMobile copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DataMobile copy-Info.plist"; path = "/Users/zacharypatterson/projects/DataMobile-project/DataMobile copy-Info.plist"; sourceTree = "<absolute>"; };
 		3C57278615141F880092A47D /* FileSenderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSenderTest.m; sourceTree = "<group>"; };
 		3C57278915141FF00092A47D /* ConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
 		3C57278C151421220092A47D /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		3C58B0C11520FCD100546369 /* DMAppDelegateStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAppDelegateStub.h; sourceTree = "<group>"; };
 		3C58B0C21520FCD200546369 /* DMAppDelegateStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAppDelegateStub.m; sourceTree = "<group>"; };
 		3C58B0C715212F4A00546369 /* MainViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerTest.m; sourceTree = "<group>"; };
-		3C788905153FCE00007A89E2 /* DataMobile.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = DataMobile.sqlite; path = KIFTests/DataMobile.sqlite; sourceTree = "<group>"; };
 		3C7889381540EF16007A89E2 /* KIFTestStep+DatePickerAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+DatePickerAddition.h"; path = "KIFTests/KIFTestStep+DatePickerAddition.h"; sourceTree = "<group>"; };
 		3C7889391540EF16007A89E2 /* KIFTestStep+DatePickerAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+DatePickerAddition.m"; path = "KIFTests/KIFTestStep+DatePickerAddition.m"; sourceTree = "<group>"; };
 		3C78893B15411377007A89E2 /* KIFTestStep+MapStepsAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+MapStepsAddition.h"; path = "KIFTests/KIFTestStep+MapStepsAddition.h"; sourceTree = "<group>"; };
@@ -174,6 +171,7 @@
 		3CA52A1C15239E1E00901417 /* MapViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerTest.m; sourceTree = "<group>"; };
 		3CA52A201523C05500901417 /* DMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapView.h; sourceTree = "<group>"; };
 		3CA52A211523C05500901417 /* DMMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapView.m; sourceTree = "<group>"; };
+		3CABD2A915435F5F00C0F11E /* DataMobile.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = DataMobile.sqlite; path = KIFTests/DataMobile.sqlite; sourceTree = "<group>"; };
 		3CDDE005151E8A9A0074242D /* KIFTestStep+DataMBAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+DataMBAdditions.h"; path = "KIFTests/KIFTestStep+DataMBAdditions.h"; sourceTree = "<group>"; };
 		3CDDE006151E8A9A0074242D /* KIFTestStep+DataMBAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+DataMBAdditions.m"; path = "KIFTests/KIFTestStep+DataMBAdditions.m"; sourceTree = "<group>"; };
 		3CDDE016151E96F30074242D /* DataMBTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataMBTestController.h; path = KIFTests/DataMBTestController.h; sourceTree = "<group>"; };
@@ -329,7 +327,7 @@
 		3C788904153FCDDD007A89E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3C788905153FCE00007A89E2 /* DataMobile.sqlite */,
+				3CABD2A915435F5F00C0F11E /* DataMobile.sqlite */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -458,7 +456,6 @@
 				3C57278E151422FE0092A47D /* Libraries */,
 				A16E8BFC148075B800F66E96 /* Frameworks */,
 				A16E8BFA148075B800F66E96 /* Products */,
-				3C3861FF151A80DE00997CF6 /* DataMobile copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -592,7 +589,7 @@
 				3C3861DC151A80DD00997CF6 /* Sources */,
 				3C3861EE151A80DD00997CF6 /* Frameworks */,
 				3C3861F4151A80DD00997CF6 /* Resources */,
-				3C788902153FCD71007A89E2 /* CopyFiles */,
+				3C788902153FCD71007A89E2 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -655,6 +652,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CABD2A2154356AC00C0F11E /* config-test.plist in Resources */,
 				3CE0B6771517DACA0071E189 /* DataMobile.xcdatamodeld in Resources */,
 				3C369F3715140C80002840E8 /* InfoPlist.strings in Resources */,
 				3C57278D151421220092A47D /* config.plist in Resources */,
@@ -666,7 +664,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C3861F5151A80DD00997CF6 /* config-test.plist in Resources */,
+				3CABD2AA15435F5F00C0F11E /* DataMobile.sqlite in Resources */,
 				3C3861F6151A80DD00997CF6 /* InfoPlist.strings in Resources */,
 				3C3861F7151A80DD00997CF6 /* Storyboard.storyboard in Resources */,
 				3C3861F8151A80DD00997CF6 /* config.plist in Resources */,
@@ -677,7 +675,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A101D9AD14A2ADAE00DFC446 /* config-test.plist in Resources */,
 				A16E8C0A148075B800F66E96 /* InfoPlist.strings in Resources */,
 				A196CDEE148078CD00F61C06 /* Storyboard.storyboard in Resources */,
 				A1FA278B149C2220009745EB /* config.plist in Resources */,
@@ -885,7 +882,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/usr/include/KIF/**",
 				);
-				INFOPLIST_FILE = "DataMobile copy-Info.plist";
+				INFOPLIST_FILE = "DataMobile/DataMobile-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/DataMobile-chaipffgndwyxqfhrhjarfctyukn/Build/Products/Debug-iphoneos\"",
@@ -916,7 +913,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/usr/include/KIF/**",
 				);
-				INFOPLIST_FILE = "DataMobile copy-Info.plist";
+				INFOPLIST_FILE = "DataMobile/DataMobile-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/DataMobile-chaipffgndwyxqfhrhjarfctyukn/Build/Products/Debug-iphoneos\"",

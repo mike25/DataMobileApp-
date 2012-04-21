@@ -38,15 +38,17 @@
                                        AndEndDate:(NSDate*)endDate
 {
     NSMutableArray *steps = [NSMutableArray array];
-    
+
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Start"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Start"]];
     [steps addObjectsFromArray:[KIFTestStep stepsToPickDate:startDate]];    
     
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"End"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"End"]];
     [steps addObjectsFromArray:[KIFTestStep stepsToPickDate:endDate]];
 
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Go" 
-                                                              traits:UIAccessibilityTraitButton]];
+                                                               traits:UIAccessibilityTraitButton]];
     
     return steps;
 }
