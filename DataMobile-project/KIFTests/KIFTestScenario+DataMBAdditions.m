@@ -52,6 +52,9 @@
     [scenario addStepsFromArray:[KIFTestStep stepsToSelectTimePeriodWithStartDate:startDate 
                                                                        AndEndDate:endDate]];
     
+    /* Tapping on back button */
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Welcome To DataMobile"]];
+    
     return scenario;
 }
 

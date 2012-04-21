@@ -11,6 +11,11 @@
 
 @implementation KIFTestStep (MapStepsAddition)
 
++(id)stepToWaitForMapToGenerate
+{
+    return [KIFTestStep stepToWaitForTimeInterval:4 description:@"Wait for the map to generate."];
+}
+
 + (NSArray *)stepsToPickDate:(NSDate*)date
 {
     NSMutableArray *steps = [NSMutableArray array];
@@ -39,17 +44,19 @@
 {
     NSMutableArray *steps = [NSMutableArray array];
 
-    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Start"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Start"]];
-    [steps addObjectsFromArray:[KIFTestStep stepsToPickDate:startDate]];    
+    [steps addObjectsFromArray:[KIFTestStep stepsToPickDate:startDate]];
+
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Go" 
+                                                               traits:UIAccessibilityTraitButton]];
+    [steps addObject:[KIFTestStep stepToWaitForMapToGenerate]];
     
-    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"End"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"End"]];
     [steps addObjectsFromArray:[KIFTestStep stepsToPickDate:endDate]];
 
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Go" 
                                                                traits:UIAccessibilityTraitButton]];
-    
+    [steps addObject:[KIFTestStep stepToWaitForMapToGenerate]];    
     return steps;
 }
 

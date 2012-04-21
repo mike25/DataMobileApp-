@@ -10,6 +10,8 @@
 
 @interface KIFTestStep (MapStepsAddition)
 
++ (id)stepToWaitForMapToGenerate;
+
 + (NSArray *)stepsToPickDate:(NSDate*)date;
 + (NSArray *)stepsToSelectTimePeriodWithStartDate:(NSDate*)startDate
                                        AndEndDate:(NSDate*)endDate;
