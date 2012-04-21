@@ -55,12 +55,23 @@ BOOL inBackground;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSString *cdataPath = [[[self applicationDocumentsDirectory] path] stringByAppendingPathComponent:@"DataMobile.sqlite"];
+    NSURL *cdataUrl = [NSURL fileURLWithPath:cdataPath];
     
-#if RUN_KIF_TESTS
-    NSURL *cdataUrl = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"DataMobile"
-                                                                                         ofType:@"sqlite"]];
-#else     
-    NSURL *cdataUrl = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"DataMobile.sqlite"];    
+#if RUN_KIF_TESTS    
+    // Load Fixture Database
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:cdataPath]) 
+    {
+        NSString *fixtureStorePath = [[NSBundle mainBundle] pathForResource:@"DataMobile" 
+                                                                     ofType:@"sqlite"];
+        if (fixtureStorePath) 
+        {
+            [fileManager copyItemAtPath:fixtureStorePath 
+                                 toPath:cdataPath
+                                  error:NULL];
+        }
+    }    
 #endif
         
     cdataHelper = [[CoreDataHelper alloc] initWithURL:cdataUrl];
