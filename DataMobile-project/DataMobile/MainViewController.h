@@ -19,7 +19,7 @@
 {
     @private int daysToRecord;
 }
-
+//testing code
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
 @property (strong, nonatomic) IBOutlet UILabel *recordingLabel;
